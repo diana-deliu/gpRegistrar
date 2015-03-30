@@ -9,7 +9,7 @@ use DB;
 class MainController extends Controller {
 
 	public function index() {
-		return DB::select('select * from all_tables');
+		return DB::select('select * from user_tables');
 	}
 
 }
