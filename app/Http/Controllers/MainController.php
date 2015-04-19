@@ -9,7 +9,11 @@ use DB;
 class MainController extends Controller {
 
 	public function index() {
-		return DB::select('select * from user_tables');
+		return view('pages.index');
+	}
+	
+	public function test() {
+		return view('pages.test');
 	}
 
 }
