@@ -20,24 +20,45 @@ body {
 
 /* logo */
 .navbar-inner .logo-textbox {
-    line-height: 90px;
     vertical-align: middle;
     padding: 0 10px;
     margin: 0;
+    height: 90px;
     font-size: 40px;
     font-family: 'Poiret One', cursive;
     float: left;
+    font-weight: bold;
+    border-right: 20px solid #ff5757;
 }
 
 .navbar-inner .logo-textbox a {
     color: #000000;
 }
+
+.navbar-inner .logo-textbox p {
+    padding: 0 10px 0 10px;
+    margin: 15px 0 0 0;
+    line-height: 40px;
+    vertical-align: bottom;
+}
+
+.navbar-inner .logo-textbox span {
+    padding: 0 10px 0 10px;
+    font-size: 10px;
+    font-family: "Open Sans", sans-serif;
+    margin: 0;
+    line-height: 12px;
+    vertical-align: top;
+    font-weight: normal;
+}
+
 .navbar .logo-box {
     position: relative;
     width: 160px;
     height: 90px;
     float: left;
     display: table;
+    border-right: 20px solid #ff5757;
 }
 
 .navbar .logo-box img {

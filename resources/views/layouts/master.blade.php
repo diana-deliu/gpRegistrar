@@ -6,6 +6,11 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}"/>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}"/>
     <link rel="stylesheet" href="{{ asset('css/white.css') }}"/>
+    <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('favicon_images/apple-icon-60x60.png') }}"/>
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon_images/favicon-16x16.png') }}"/>
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <link rel="shortcut icon" href="{{ asset('http://licenta.local/favicon_images/favicon.ico') }}"/>
+    <meta name="theme-color" content="#ffffff">
     <title>SimfoMed - Medicină de familie</title>
 </head>
 <body>
@@ -21,6 +26,7 @@
         <div class="logo-textbox">
             <a href="{{ url('/') }}">
                 <p>SimfoMed</p>
+                <span>Sănătatea dumneavoastră - simfonie pentru noi!</span>
             </a>
         </div>
         <div class="topmenu-outer">

@@ -1433,7 +1433,6 @@ a {
 a:hover,
 a:focus {
     color: #0a6ebd;
-    text-decoration: underline;
 }
 
 a:focus {
@@ -8226,9 +8225,9 @@ body {
     text-rendering: optimizeLegibility;
 }
 
-p {
+/*p {
     margin: 0 0 1em;
-}
+}*/
 
 input,
 button {
