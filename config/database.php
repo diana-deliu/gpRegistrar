@@ -82,14 +82,15 @@ return [
 						'password' => env ( 'DB_PASSWORD', '' ),
 						'prefix' => '' 
 				],
+
 				'oracle' => [ 
 						'driver' => 'oracle',
-						'host' => 'ROOTP4044130X.net.work',
-						'port' => '1521',
-						'database' => 'ORCL',
-						'username' => 'licenta',
-						'password' => 'licenta',
-						'charset' => 'WE8ISO8859P15',
+						'host' => env ( 'DB_HOST', 'forge' ),
+						'port' => env ( 'DB_PORT', 'forge' ),
+						'database' => env ( 'DB_DATABASE', 'forge' ),
+						'username' => env ( 'DB_USERNAME', 'forge' ),
+						'password' => env ( 'DB_PASSWORD', 'forge' ),
+						'charset' => env ( 'DB_CHARSET', 'forge' ),
 						'prefix' => '' 
 				] 
 		]

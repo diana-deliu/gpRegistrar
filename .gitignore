@@ -1,3 +1,9 @@
-/vendor
+!/vendor/
+/vendor/*
+!/vendor/laravel/
+/vendor/laravel/*
+!/vendor/laravel/framework/
+/storage/framework/sessions
+/storage/logs
 /node_modules
 .env
