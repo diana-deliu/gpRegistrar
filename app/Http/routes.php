@@ -12,6 +12,8 @@
 */
 
 Route::get('/', 'HomeController@index');
+Route::get('create_admin', 'AdminController@create');
+Route::get('admin', 'AdminController@index');
 
 Route::controllers([
     'auth' => 'Auth\AuthController',
