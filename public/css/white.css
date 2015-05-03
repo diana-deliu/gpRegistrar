@@ -54,12 +54,15 @@
     color: #000000;
 }
 
-.menu.accordion-menu ul li a:hover,
-.menu.accordion-menu ul li.active a {
-	background: #000000;
+.menu.accordion-menu > ul > li > a:hover,
+.menu.accordion-menu > ul > li.active > a {
+	background: #ffffff;
     color: #000000;
+    -webkit-box-shadow: inset 0 0 30px rgba(0, 0, 0, .2);
+    -moz-box-shadow: inset 0 0 30px rgba(0, 0, 0, .2);
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, .2);
 }
 
 .menu.accordion-menu ul li a {
-    color: #FFFFFF;
+    color: #000000;
 }

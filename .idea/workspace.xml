@@ -1,48 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="14c6ca65-0e62-45c3-9d2d-2138a68557cf" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/chart_blue_30.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/doctor_blue_20.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/doctor_blue_30.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/favicon_images/favicon-32x32.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/favicon_images/favicon-96x96.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/injured_orange_30.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/lab_green_30.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/medicine_green_30.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/notification_red_30.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/pacient_orange_30.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/recommendation_orange_30.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/registry_red_30.png" />
-      <change type="DELETED" beforePath="C:\Users\diana.deliu\laravelWorkspace\licenta\public\favicon_images\android-icon-144x144.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\diana.deliu\laravelWorkspace\licenta\public\favicon_images\android-icon-192x192.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\diana.deliu\laravelWorkspace\licenta\public\favicon_images\android-icon-36x36.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\diana.deliu\laravelWorkspace\licenta\public\favicon_images\android-icon-48x48.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\diana.deliu\laravelWorkspace\licenta\public\favicon_images\android-icon-72x72.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\diana.deliu\laravelWorkspace\licenta\public\favicon_images\apple-icon-120x120.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\diana.deliu\laravelWorkspace\licenta\public\favicon_images\apple-icon-144x144.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\diana.deliu\laravelWorkspace\licenta\public\favicon_images\apple-icon-152x152.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\diana.deliu\laravelWorkspace\licenta\public\favicon_images\apple-icon-180x180.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\diana.deliu\laravelWorkspace\licenta\public\favicon_images\apple-icon-57x57.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\diana.deliu\laravelWorkspace\licenta\public\favicon_images\apple-icon-60x60.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\diana.deliu\laravelWorkspace\licenta\public\favicon_images\apple-icon-72x72.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\diana.deliu\laravelWorkspace\licenta\public\favicon_images\apple-icon-76x76.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\diana.deliu\laravelWorkspace\licenta\public\favicon_images\apple-icon-precomposed.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\diana.deliu\laravelWorkspace\licenta\public\favicon_images\apple-icon.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\diana.deliu\laravelWorkspace\licenta\public\favicon_images\ms-icon-150x150.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\diana.deliu\laravelWorkspace\licenta\public\favicon_images\ms-icon-310x310.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\diana.deliu\laravelWorkspace\licenta\public\favicon_images\ms-icon-70x70.png" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/favicon_images/android-icon-96x96.png" afterPath="$PROJECT_DIR$/public/favicon_images/android-icon-96x96.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/favicon_images/apple-icon-114x114.png" afterPath="$PROJECT_DIR$/public/favicon_images/apple-icon-114x114.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/favicon_images/favicon-16x16.png" afterPath="$PROJECT_DIR$/public/favicon_images/favicon-16x16.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/favicon_images/favicon.ico" afterPath="$PROJECT_DIR$/public/favicon_images/favicon.ico" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/images/heart_final_100.png" afterPath="$PROJECT_DIR$/public/images/heart_final_100.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/favicon_images/ms-icon-144x144.png" afterPath="$PROJECT_DIR$/public/favicon_images/ms-icon-144x144.png" />
+    <list default="true" id="14c6ca65-0e62-45c3-9d2d-2138a68557cf" name="Default" comment="Added icons &#10;Fixed authentication buttons&#10;">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/add_red_20.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/chart_blue_20.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/consult_orange_30.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/doctor.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/information_red_20.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/optional_blue_20.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/patient_red_30.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/registry_orange_20.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/survey_blue_30.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/vaccine_red_30.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/partials/admin_left_sidebar.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/js/sidebar.js" />
+      <change type="MOVED" beforePath="C:\Users\diana.deliu\laravelWorkspace\licenta\public\images\lab_green_30.png" afterPath="$PROJECT_DIR$/public/images/lab_blue_30.png" />
+      <change type="MOVED" beforePath="C:\Users\diana.deliu\laravelWorkspace\licenta\public\images\pacient_orange_30.png" afterPath="$PROJECT_DIR$/public/images/edit_orange_20.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/bootstrap.css" afterPath="$PROJECT_DIR$/public/css/bootstrap.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/index.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/index.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/partials/left_sidebar.blade.php" afterPath="$PROJECT_DIR$/resources/views/partials/left_sidebar.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/master.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/master.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/style.css" afterPath="$PROJECT_DIR$/public/css/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/white.css" afterPath="$PROJECT_DIR$/public/css/white.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="licenta.iws" />
@@ -68,11 +46,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="master.blade.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="master.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/layouts/master.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.366667" vertical-offset="524" max-vertical-offset="1675">
-              <caret line="31" column="34" selection-start-line="31" selection-start-column="34" selection-end-line="31" selection-end-column="34" />
+            <state vertical-scroll-proportion="0.599319" vertical-offset="697" max-vertical-offset="1775">
+              <caret line="49" column="68" selection-start-line="49" selection-start-column="68" selection-end-line="49" selection-end-column="68" />
               <folding />
             </state>
           </provider>
@@ -81,8 +59,8 @@
       <file leaf-file-name="white.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/css/white.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.5522387" vertical-offset="704" max-vertical-offset="1750">
-              <caret line="35" column="4" selection-start-line="35" selection-start-column="4" selection-end-line="37" selection-end-column="49" />
+            <state vertical-scroll-proportion="-2.477612" vertical-offset="1009" max-vertical-offset="1825">
+              <caret line="47" column="23" selection-start-line="47" selection-start-column="23" selection-end-line="48" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -91,29 +69,84 @@
       <file leaf-file-name="left_sidebar.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/partials/left_sidebar.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.7" vertical-offset="1224" max-vertical-offset="1775">
-              <caret line="57" column="63" selection-start-line="57" selection-start-column="63" selection-end-line="57" selection-end-column="63" />
+            <state vertical-scroll-proportion="-10.833333" vertical-offset="450" max-vertical-offset="3525">
+              <caret line="31" column="25" selection-start-line="31" selection-start-column="25" selection-end-line="31" selection-end-column="25" />
+              <folding>
+                <element signature="n#style#0;n#span#0;n#a#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#ul#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#a#0;n#li#1;n#ul#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#ul#0;n#li#1;n#ul#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#a#0;n#li#2;n#ul#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#ul#0;n#li#2;n#ul#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#a#0;n#li#5;n#ul#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#ul#0;n#li#5;n#ul#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="admin_left_sidebar.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/partials/admin_left_sidebar.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-22.833334" vertical-offset="15" max-vertical-offset="925">
+              <caret line="28" column="17" selection-start-line="0" selection-start-column="0" selection-end-line="31" selection-end-column="7" />
+              <folding>
+                <element signature="n#style#0;n#span#0;n#a#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#ul#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/css/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-8.820895" vertical-offset="10034" max-vertical-offset="10875">
+              <caret line="425" column="22" selection-start-line="425" selection-start-column="22" selection-end-line="425" selection-end-column="22" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="bootstrap.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="sidebar.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/js/sidebar.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-3.7313433" vertical-offset="0" max-vertical-offset="2125">
+              <caret line="10" column="29" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="password.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/auth/password.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-15.0" vertical-offset="0" max-vertical-offset="725">
+              <caret line="18" column="14" selection-start-line="18" selection-start-column="14" selection-end-line="18" selection-end-column="14" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-10.833333" vertical-offset="0" max-vertical-offset="475">
+              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bootstrap.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/css/bootstrap.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.15669014" vertical-offset="119286" max-vertical-offset="219775">
-              <caret line="4775" column="1" selection-start-line="4775" selection-start-column="1" selection-end-line="4775" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/admin/index.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.6666665" vertical-offset="0" max-vertical-offset="350">
-              <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
-              <folding />
+            <state vertical-scroll-proportion="-3.9850745" vertical-offset="35083" max-vertical-offset="219775">
+              <caret line="1414" column="19" selection-start-line="1414" selection-start-column="19" selection-end-line="1414" selection-end-column="19" />
+              <folding>
+                <element signature="e#160020#160295#2" expanded="true" />
+                <element signature="e#160943#161218#2" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -121,8 +154,8 @@
       <file leaf-file-name="test.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/pages/test.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.866667" vertical-offset="339" max-vertical-offset="1025">
-              <caret line="23" column="39" selection-start-line="23" selection-start-column="39" selection-end-line="23" selection-end-column="39" />
+            <state vertical-scroll-proportion="-13.333333" vertical-offset="0" max-vertical-offset="1025">
+              <caret line="16" column="50" selection-start-line="16" selection-start-column="50" selection-end-line="16" selection-end-column="50" />
               <folding />
             </state>
           </provider>
@@ -149,15 +182,17 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" />
         <option value="$PROJECT_DIR$/resources/views/includes/header.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/includes/footer.blade.php" />
-        <option value="$PROJECT_DIR$/public/css/white.css" />
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/config/database.php" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/resources/views/layouts/master.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/index.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/partials/left_sidebar.blade.php" />
-        <option value="$PROJECT_DIR$/public/css/style.css" />
         <option value="$PROJECT_DIR$/public/css/bootstrap.css" />
+        <option value="$PROJECT_DIR$/public/js/sidebar.js" />
+        <option value="$PROJECT_DIR$/public/css/white.css" />
+        <option value="$PROJECT_DIR$/public/css/style.css" />
+        <option value="$PROJECT_DIR$/resources/views/layouts/master.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/partials/admin_left_sidebar.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/partials/left_sidebar.blade.php" />
       </list>
     </option>
   </component>
@@ -171,10 +206,10 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="27" />
-    <option name="y" value="126" />
-    <option name="width" value="1938" />
-    <option name="height" value="1064" />
+    <option name="x" value="418" />
+    <option name="y" value="71" />
+    <option name="width" value="1932" />
+    <option name="height" value="1092" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -199,6 +234,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -214,60 +250,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="licenta" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="licenta" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="licenta" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="licenta" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="licenta" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="layouts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="licenta" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="licenta" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -319,7 +301,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -338,10 +319,10 @@
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\diana.deliu\laravelWorkspace\licenta\public\images" />
+      <recent name="C:\Users\diana.deliu\laravelWorkspace\licenta\public\js" />
       <recent name="C:\Users\diana.deliu\laravelWorkspace\licenta\public\favicon_images" />
       <recent name="C:\Users\diana.deliu\laravelWorkspace\licenta\public" />
       <recent name="C:\Users\diana.deliu\laravelWorkspace\licenta\public\css" />
-      <recent name="C:\Users\diana.deliu\laravelWorkspace\licenta\resources\views\admin" />
     </key>
   </component>
   <component name="RunManager">
@@ -419,27 +400,33 @@
       <option name="project" value="LOCAL" />
       <updated>1429805402355</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Added icons &#10;Fixed authentication buttons&#10;">
+      <created>1430397443566</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1430397443566</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="27" y="126" width="1938" height="1064" extended-state="0" />
+    <frame x="418" y="71" width="1932" height="1092" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21506551" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32969433" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22887701" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23497854" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32969433" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -468,26 +455,18 @@
     <MESSAGE value="Added right-top-sided buttons (Authentica &amp; Register)" />
     <MESSAGE value="Configured home &#10;Added logo&#10;Added title" />
     <MESSAGE value="Added favicon&#10;Styled logo&#10;&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added favicon&#10;Styled logo&#10;&#10;" />
+    <MESSAGE value="Added icons &#10;Fixed authentication buttons&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added icons &#10;Fixed authentication buttons&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/master.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1850">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="844" max-vertical-offset="10400">
           <caret line="55" column="19" selection-start-line="55" selection-start-column="19" selection-end-line="55" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -503,7 +482,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="10400">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -689,13 +667,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/auth/password.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.166667" vertical-offset="0" max-vertical-offset="725">
-          <caret line="17" column="33" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/AuthController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.3157895" vertical-offset="0" max-vertical-offset="1025">
@@ -738,13 +709,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26717559" vertical-offset="0" max-vertical-offset="655">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2919708" vertical-offset="0" max-vertical-offset="685">
@@ -780,14 +744,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/pages/test.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.866667" vertical-offset="339" max-vertical-offset="1025">
-          <caret line="23" column="39" selection-start-line="23" selection-start-column="39" selection-end-line="23" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-6.6666665" vertical-offset="0" max-vertical-offset="350">
@@ -796,42 +752,97 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/style.css">
+    <entry file="file://$PROJECT_DIR$/resources/views/pages/test.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33268481" vertical-offset="9079" max-vertical-offset="10250">
-          <caret line="370" column="46" selection-start-line="370" selection-start-column="40" selection-end-line="370" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/white.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.5522387" vertical-offset="704" max-vertical-offset="1750">
-          <caret line="35" column="4" selection-start-line="35" selection-start-column="4" selection-end-line="37" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/partials/left_sidebar.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.7" vertical-offset="1224" max-vertical-offset="1775">
-          <caret line="57" column="63" selection-start-line="57" selection-start-column="63" selection-end-line="57" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/master.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.366667" vertical-offset="524" max-vertical-offset="1675">
-          <caret line="31" column="34" selection-start-line="31" selection-start-column="34" selection-end-line="31" selection-end-column="34" />
+        <state vertical-scroll-proportion="-13.333333" vertical-offset="0" max-vertical-offset="1025">
+          <caret line="16" column="50" selection-start-line="16" selection-start-column="50" selection-end-line="16" selection-end-column="50" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/css/bootstrap.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.15669014" vertical-offset="119286" max-vertical-offset="219775">
-          <caret line="4775" column="1" selection-start-line="4775" selection-start-column="1" selection-end-line="4775" selection-end-column="1" />
+        <state vertical-scroll-proportion="-3.9850745" vertical-offset="35083" max-vertical-offset="219775">
+          <caret line="1414" column="19" selection-start-line="1414" selection-start-column="19" selection-end-line="1414" selection-end-column="19" />
+          <folding>
+            <element signature="e#160020#160295#2" expanded="true" />
+            <element signature="e#160943#161218#2" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.833333" vertical-offset="0" max-vertical-offset="475">
+          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/sidebar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.7313433" vertical-offset="0" max-vertical-offset="2125">
+          <caret line="10" column="29" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/white.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.477612" vertical-offset="1009" max-vertical-offset="1825">
+          <caret line="47" column="23" selection-start-line="47" selection-start-column="23" selection-end-line="48" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.820895" vertical-offset="10034" max-vertical-offset="10875">
+          <caret line="425" column="22" selection-start-line="425" selection-start-column="22" selection-end-line="425" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/partials/admin_left_sidebar.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-22.833334" vertical-offset="15" max-vertical-offset="925">
+          <caret line="28" column="17" selection-start-line="0" selection-start-column="0" selection-end-line="31" selection-end-column="7" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#a#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#ul#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/partials/left_sidebar.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.833333" vertical-offset="450" max-vertical-offset="3525">
+          <caret line="31" column="25" selection-start-line="31" selection-start-column="25" selection-end-line="31" selection-end-column="25" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#a#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#ul#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#a#0;n#li#1;n#ul#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#ul#0;n#li#1;n#ul#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#a#0;n#li#2;n#ul#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#ul#0;n#li#2;n#ul#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#a#0;n#li#5;n#ul#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#ul#0;n#li#5;n#ul#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/auth/password.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.0" vertical-offset="0" max-vertical-offset="725">
+          <caret line="18" column="14" selection-start-line="18" selection-start-column="14" selection-end-line="18" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/master.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.599319" vertical-offset="697" max-vertical-offset="1775">
+          <caret line="49" column="68" selection-start-line="49" selection-start-column="68" selection-end-line="49" selection-end-column="68" />
           <folding />
         </state>
       </provider>
