@@ -2,8 +2,9 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\Schema;
 
-class CreateValoriParametriiTable extends Migration {
+class CreateSurveyQuestionsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,9 +13,14 @@ class CreateValoriParametriiTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('valori_parametrii', function(Blueprint $table)
+		Schema::create('survey_questions', /**
+         * @param Blueprint $table
+         */
+        function(Blueprint $table)
 		{
 			$table->increments('id');
+            $table->string('question');
+            $table->integer('question_id');
 			$table->timestamps();
 		});
 	}
@@ -26,7 +32,7 @@ class CreateValoriParametriiTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('valori_parametrii');
+		Schema::drop('survey_questions');
 	}
 
 }

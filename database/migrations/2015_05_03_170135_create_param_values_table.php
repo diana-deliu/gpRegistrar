@@ -2,8 +2,9 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\Schema;
 
-class CreateAdministratoriTable extends Migration {
+class CreateParamValuesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,9 +13,11 @@ class CreateAdministratoriTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('administratori', function(Blueprint $table)
+		Schema::create('param_values', function(Blueprint $table)
 		{
 			$table->increments('id');
+            $table->string('value');
+            $table->integer('element_id');
 			$table->timestamps();
 		});
 	}
@@ -26,7 +29,7 @@ class CreateAdministratoriTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('administratori');
+		Schema::drop('param_values');
 	}
 
 }

@@ -2,8 +2,9 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\Schema;
 
-class CreateParametriiOptionaliTable extends Migration {
+class CreateAdminsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,9 +13,13 @@ class CreateParametriiOptionaliTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('parametrii_optionali', function(Blueprint $table)
+		Schema::create('admins', function(Blueprint $table)
 		{
 			$table->increments('id');
+
+            $table->integer('user_id')->unsigned()->index();
+            $table->foreign('user_id')->references('id')->on('users');
+
 			$table->timestamps();
 		});
 	}
@@ -26,7 +31,7 @@ class CreateParametriiOptionaliTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('parametrii_optionali');
+		Schema::drop('admins');
 	}
 
 }

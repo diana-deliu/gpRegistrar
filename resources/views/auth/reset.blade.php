@@ -23,7 +23,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-lg-12">
-                            <button type="submit" class="btn btn-primary col-lg-4">Resetează-mi parola</button>
+                            <button type="submit" class="btn git btn-primary col-lg-4">Resetează-mi parola</button>
                         </div>
                     </div>
                 </fieldset>

@@ -2,8 +2,9 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\Schema;
 
-class CreateConsultatiiTable extends Migration {
+class CreateConsultsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,9 +13,14 @@ class CreateConsultatiiTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('consultatii', function(Blueprint $table)
+		Schema::create('consults', /**
+         * @param Blueprint $table
+         */
+        function(Blueprint $table)
 		{
 			$table->increments('id');
+            $table->integer('patient_id');
+            $table->dateTime('consult_date');
 			$table->timestamps();
 		});
 	}
@@ -26,7 +32,7 @@ class CreateConsultatiiTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('consultatii');
+		Schema::drop('consults');
 	}
 
 }

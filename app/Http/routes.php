@@ -14,6 +14,8 @@
 Route::get('/', 'HomeController@index');
 Route::get('create_admin', 'AdminController@create');
 Route::get('admin', 'AdminController@index');
+Route::get('medic', 'MedicController@index');
+Route::get('patient', 'PatientController@index');
 
 Route::controllers([
     'auth' => 'Auth\AuthController',

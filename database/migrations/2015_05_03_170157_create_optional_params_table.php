@@ -2,8 +2,9 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\Schema;
 
-class CreateIntrebariChestionareTable extends Migration {
+class CreateOptionalParamsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,9 +13,10 @@ class CreateIntrebariChestionareTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('intrebari_chestionare', function(Blueprint $table)
+		Schema::create('optional_params', function(Blueprint $table)
 		{
 			$table->increments('id');
+            $table->string('parameter');
 			$table->timestamps();
 		});
 	}
@@ -26,7 +28,7 @@ class CreateIntrebariChestionareTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('intrebari_chestionare');
+		Schema::drop('optional_params');
 	}
 
 }

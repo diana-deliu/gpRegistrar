@@ -2,8 +2,9 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\Schema;
 
-class CreateRaspunsuriChestionareTable extends Migration {
+class CreateLabsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,9 +13,11 @@ class CreateRaspunsuriChestionareTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('raspunsuri_chestionare', function(Blueprint $table)
+		Schema::create('labs', function(Blueprint $table)
 		{
 			$table->increments('id');
+            $table->integer('patient_id');
+            $table->integer('treatment_id');
 			$table->timestamps();
 		});
 	}
@@ -26,7 +29,7 @@ class CreateRaspunsuriChestionareTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('raspunsuri_chestionare');
+		Schema::drop('labs');
 	}
 
 }

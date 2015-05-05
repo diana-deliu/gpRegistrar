@@ -2,8 +2,9 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\Schema;
 
-class CreateMediciTable extends Migration {
+class CreateVaccinesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,9 +13,12 @@ class CreateMediciTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('medici', function(Blueprint $table)
+		Schema::create('vaccines', function(Blueprint $table)
 		{
 			$table->increments('id');
+            $table->integer('patient_id');
+            $table->dateTime('start_date');
+            $table->integer('interval');
 			$table->timestamps();
 		});
 	}
@@ -26,7 +30,7 @@ class CreateMediciTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('medici');
+		Schema::drop('vaccines');
 	}
 
 }
