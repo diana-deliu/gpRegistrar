@@ -8,20 +8,9 @@ use Illuminate\Http\Request;
 
 class MedicController extends Controller {
 
-    public function create(Registrar $registrar)
+    public function __construct()
     {
-        $request = [
-            'name' => 'medic',
-            'email' => 'medic@medimpuls.ro',
-            'password' => 'medic'
-        ];
-
-        $registrar->create($request);
-    }
-
-    public function index(Registrar $registrar)
-    {
-        return view('medic.index');
+        $this->middleware('medic');
     }
 
 }

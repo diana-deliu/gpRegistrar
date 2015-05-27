@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}"/>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}"/>
     <link rel="stylesheet" href="{{ asset('css/white.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('css/pnotify.custom.min.css') }}"/>
     <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
@@ -64,5 +65,6 @@
 <script src="{{ asset('js/jquery.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('js/sidebar.js') }}"></script>
+<script src="{{ asset('js/pnotify.custom.min.js') }}"></script>
 </body>
 </html>

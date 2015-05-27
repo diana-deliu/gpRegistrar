@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+
 class HomeController extends Controller {
 
 	/*
@@ -13,11 +15,10 @@ class HomeController extends Controller {
 	|
 	*/
 
-	/**
-	 * Create a new controller instance.
-	 *
-	 * @return void
-	 */
+    /**
+     * Create a new controller instance.
+     *
+     */
 	public function __construct()
 	{
 		$this->middleware('auth');
@@ -30,7 +31,16 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('home');
+        $user = Auth::user();
+        switch($user->role) {
+            case 'admin':
+                return view('admin.index');
+            case 'medic':
+                return view('medic.index');
+            case 'patient':
+                return view('patient.index');
+        }
+		return redirect('auth/login');
 	}
 
 }

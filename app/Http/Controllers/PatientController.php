@@ -8,27 +8,8 @@ use Illuminate\Http\Request;
 
 class PatientController extends Controller {
 
-    /**
-     * @param Registrar $registrar
-     */
-    public function create(Registrar $registrar)
+    public function __construct()
     {
-        $request = [
-            'name' => 'patient',
-            'email' => 'patient@medimpuls.ro',
-            'password' => 'patient'
-        ];
-
-        $registrar->create($request);
+        $this->middleware('patient');
     }
-
-    /**
-     * @param Registrar $registrar
-     * @return \Illuminate\View\View
-     */
-    public function index(Registrar $registrar)
-    {
-        return view('patient.index');
-    }
-
 }
