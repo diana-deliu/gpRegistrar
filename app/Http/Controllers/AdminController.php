@@ -11,7 +11,7 @@ class AdminController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('medic', ['except' => 'create']);
+        $this->middleware('admin', ['except' => 'create']);
     }
 
     /**
@@ -40,4 +40,8 @@ class AdminController extends Controller
         return view('admin.index');
     }
 
+    public function new_medic() {
+
+        return view('admin.newmedic');
+    }
 }

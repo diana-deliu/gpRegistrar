@@ -18,7 +18,6 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
-    <title>GPRegistrar - Cea mai la îndemână aplicație pentru medici și pacienți!</title>
 </head>
 <body>
 <main class="page-content content-wrap">
@@ -31,11 +30,13 @@
                     </a></span>
                 </a>
             </div>
-            <div class="logo-textbox">
-                <a href="{{ url('/') }}">
-                    <p><strong>gp</strong>Registrar</p>
-                    <span>Cea mai la îndemână aplicație pentru medici și pacienți!</span>
-                </a>
+            <div class="logo-textbox-wrapper">
+                <div class="logo-textbox">
+                    <a href="{{ url('/') }}">
+                        <p><strong>gp</strong>Registrar</p>
+                        {{--<span>Cea mai la îndemână aplicație pentru medici și pacienți!</span>--}}
+                    </a>
+                </div>
             </div>
             <div class="topmenu-outer">
                 <div class="top-menu">
@@ -43,7 +44,7 @@
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         @if(Auth::check())
-                            <li>Bine ai venit, {{ Auth::user()->name }} </li>
+                            <li><strong>{{ Auth::user()->email }}</strong></li>
                         @else
                             <li>
                                 <a href="{{ url('/auth/login') }}"><span>Autentificare</span></a>
