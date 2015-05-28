@@ -13,7 +13,17 @@
 
 Route::get('/', 'HomeController@index');
 Route::get('create_admin', 'AdminController@create');
-Route::get('admin/new_medic', 'AdminController@new_medic');
+
+Route::get('admin/add_medic', 'AdminController@addMedic');
+Route::post('admin/create_medic', 'AdminController@createMedic');
+Route::get('admin/view_medic', 'AdminController@viewMedic');
+Route::get('admin/edit_medic/{id}', 'AdminController@editMedic');
+Route::post('admin/update_medic/{id}', 'AdminController@updateMedic');
+Route::get('admin/remove_medic/{id}', 'AdminController@removeMedic');
+
+Route::get('admin/view_patient', 'AdminController@viewPatient');
+
+
 //Route::get('admin', 'AdminController@index');
 //Route::get('medic', 'MedicController@index');
 //Route::get('patient', 'PatientController@index');

@@ -1,6 +1,7 @@
 @extends('layouts.master') @section('content')
     <div class="main_container">
         <div class="container">
+            @include('partials.errors')
             <div class="col-lg-6 col-lg-offset-3 centered">
                 {!! Form::open(['class' => 'form-horizontal form-medimpuls']) !!}
                 <h3>Recuperare parolă</h3>

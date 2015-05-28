@@ -2,8 +2,9 @@
 
 @section('content')
 
-    @include('partials.left_sidebar')
+    @include('partials.medic_left_sidebar')
 
     <div class="main_container">
+        @include('partials.error')
     </div>
 @stop

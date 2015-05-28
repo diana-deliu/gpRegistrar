@@ -44,7 +44,10 @@
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         @if(Auth::check())
-                            <li><strong>{{ Auth::user()->email }}</strong></li>
+                            <li class="welcome-right"><strong>{{ Auth::user()->email }}</strong></li>
+                            <li>
+                                <a href="{{ url('/auth/logout') }}"><span>Logout</span></a>
+                            </li>
                         @else
                             <li>
                                 <a href="{{ url('/auth/login') }}"><span>Autentificare</span></a>

@@ -30,7 +30,7 @@ $('.sidebar .accordion-menu > li.droplink > a').click(function () {
     return false;
 });
 
-$('.sidebar .accordion-menu .sub-menu li.droplink > a').click(function () {
+/*$('.sidebar .accordion-menu .sub-menu li.droplink > a').click(function () {
 
     var menu = $(this).parent().parent(),
         sidebar = $('.page-sidebar-inner'),
@@ -52,7 +52,7 @@ $('.sidebar .accordion-menu .sub-menu li.droplink > a').click(function () {
         });
     }
     return false;
-});
+});*/
 
 // Makes .page-inner height same as .page-sidebar height
 var sidebarAndContentHeight = function () {

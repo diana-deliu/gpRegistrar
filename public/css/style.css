@@ -25,6 +25,7 @@ body {
     position: absolute;
     left: 50%;
 }
+
 /* logo */
 .navbar-inner .logo-textbox {
     vertical-align: middle;
@@ -69,7 +70,7 @@ body {
 }
 
 .navbar .logo-box img {
-    float:left;
+    float: left;
     width: 100px;
 }
 
@@ -119,14 +120,16 @@ body {
     margin: 30px 0;
 }
 
-ul.nav.navbar-nav.navbar-right > li {
-    padding: 30px 30px 30px 30px;
-}
-
 /* Top Menu */
 
 .navbar-nav.navbar-right {
     margin-right: 0;
+}
+
+.nav .welcome-right {
+    line-height: 90px;
+    vertical-align: middle;
+    padding: 0 30px;
 }
 
 ul.navbar-right > li > a:hover {
@@ -186,7 +189,6 @@ ul.navbar-right > li > a:hover {
     padding-top: 60px;
 }
 
-
 .sidebar {
     padding-top: 60px;
 }
@@ -196,7 +198,7 @@ ul.navbar-right > li > a:hover {
 }
 
 .page-sidebar .page-sidebar-inner {
-    height: 100%!important;
+    height: 100% !important;
 }
 
 .small-sidebar .page-sidebar {
@@ -204,7 +206,7 @@ ul.navbar-right > li > a:hover {
 }
 
 .small-sidebar .page-sidebar-inner {
-    overflow: visible!important;
+    overflow: visible !important;
 }
 
 .sidebar-header {
@@ -252,7 +254,6 @@ ul.navbar-right > li > a:hover {
     display: none;
 }
 
-
 /* Menu */
 
 .menu li a .badge {
@@ -287,7 +288,7 @@ body:not(.page-horizontal-bar):not(.small-sidebar) .menu.accordion-menu a {
 }
 
 .menu.accordion-menu a p {
-    line-height: 1.42857143!important;
+    line-height: 1.42857143 !important;
     margin: 0;
 }
 
@@ -354,7 +355,7 @@ body:not(.page-horizontal-bar):not(.small-sidebar) .menu.accordion-menu a {
     padding-left: 26px;
 }
 
-.menu.accordion-menu .sub-menu li .sub-menu li .sub-menu li a{
+.menu.accordion-menu .sub-menu li .sub-menu li .sub-menu li a {
     padding-left: 31px;
 }
 
@@ -367,23 +368,23 @@ body:not(.page-horizontal-bar):not(.small-sidebar) .menu.accordion-menu a {
 }
 
 .menu ul {
-    padding: 10px 0;
+    padding: 0;
     z-index: 99;
 }
 
 .compact-menu:not(.small-sidebar) .menu.accordion-menu li a {
-    text-align: left!important;
+    text-align: left !important;
 }
 
 .compact-menu:not(.page-horizontal-bar) .menu.accordion-menu > li > a > p {
-    display: inline!important;
+    display: inline !important;
 }
 
 .compact-menu .menu.accordion-menu a span.menu-icon {
-    display: inline-block!important;
-    font-size: 14px!important;
-    margin-bottom: 0!important;
-    margin-right: 10px!important;
+    display: inline-block !important;
+    font-size: 14px !important;
+    margin-bottom: 0 !important;
+    margin-right: 10px !important;
 }
 
 .compact-menu .menu.accordion-menu li a .arrow:before {
@@ -395,7 +396,7 @@ body:not(.page-horizontal-bar):not(.small-sidebar) .menu.accordion-menu a {
 }
 
 .page-horizontal-bar.compact-menu.small-sidebar .menu.accordion-menu ul {
-    top: 46px!important;
+    top: 46px !important;
 }
 
 .hover-menu .menu.accordion-menu span.arrow {
@@ -404,7 +405,7 @@ body:not(.page-horizontal-bar):not(.small-sidebar) .menu.accordion-menu a {
 
 .hover-menu .menu.accordion-menu li:hover > ul,
 .hover-menu .menu.accordion-menu li.open:hover > ul {
-    display: inline-block!important;
+    display: inline-block !important;
 }
 
 .hover-menu .accordion-menu li {
@@ -422,16 +423,16 @@ body:not(.page-horizontal-bar):not(.small-sidebar) .menu.accordion-menu a {
 .hover-menu .sidebar .page-sidebar-inner,
 .hover-menu .sidebar .menu,
 .hover-menu .sidebar .slimScrollDiv {
-    overflow: visible!important;
+    overflow: visible !important;
 }
 
 .hover-menu .accordion-menu ul li a {
-    text-align: left!important;
+    text-align: left !important;
 }
 
 .hover-menu .sidebar .slimScrollBar,
 .hover-menu .slimScrollBar {
-    display: none!important;
+    display: none !important;
 }
 
 div.main_container {
@@ -452,7 +453,7 @@ div.main_container {
     padding-right: 25px;
     padding-top: 19px;
     padding-bottom: 19px;
-    overflow:hidden;
+    overflow: hidden;
 }
 
 .page-footer p {

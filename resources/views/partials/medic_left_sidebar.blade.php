@@ -5,7 +5,7 @@
         </div>
         <ul class="menu accordion-menu">
             <li class="active droplink">
-                <a href="#">
+                <a href="{{ url('medic/view_patient') }}">
                     <img src="{{ asset('images/patient_red_30.png') }}"/>
 
                     <p>Pacienți</p>

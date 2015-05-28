@@ -19,7 +19,8 @@ class CreateMedicsTable extends Migration {
             $table->string('firstname');
             $table->string('lastname');
             $table->string('practice');
-            $table->string('doc_code');
+            $table->string('doc_code')->unique();
+            $table->text('address');
 
             $table->integer('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users');

@@ -25,7 +25,7 @@ class CheckIfPatient {
             }
         }
         $user = $this->auth->user();
-        if ($user->role != 'patient') {
+        if ($user->role != 'patient' || $user->role != 'admin' || $user->role != 'medic') {
             return redirect()->guest('auth/login');
         }
 

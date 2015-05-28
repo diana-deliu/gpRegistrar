@@ -13,15 +13,15 @@
                 </a>
                 <ul class="sub-menu" style="display: none;">
                     <li class="active droplink">
-                        <a href="{{ url('admin/new_medic') }}">
+                        <a href="{{ url('admin/add_medic') }}">
                             <img src="{{ asset('images/add_red_20.png') }}"/><br/>
                             Adaugă medici
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{{ url('admin/view_medic') }}">
                             <img src="{{ asset('images/edit_orange_20.png') }}"/><br/>
-                            Editează medici
+                            Administrează medici
                         </a>
                     </li>
 
