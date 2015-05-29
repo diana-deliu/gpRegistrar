@@ -30,24 +30,27 @@ class CheckIfAdmin {
 	 * @return mixed
 	 */
     public function handle($request, Closure $next)
+{
+    if ($this->auth->guest())
     {
-        if ($this->auth->guest())
+        if ($request->ajax())
         {
-            if ($request->ajax())
-            {
-                return response('Unauthorized.', 401);
-            }
-            else
-            {
-                return redirect()->guest('auth/login');
-            }
+            return response('Unauthorized.', 401);
         }
-        $user = $this->auth->user();
-        if ($user->role != 'admin') {
+        else
+        {
             return redirect()->guest('auth/login');
         }
-
-        return $next($request);
     }
+    $user = $this->auth->user();
+    if ($user->role != 'admin') {
+        return redirect('/')->with([
+            'flash_message' => 'Nu aveți drepturi să accesați această pagină!',
+            'flash_message_type' => 'alert-danger'
+        ]);
+    }
+
+    return $next($request);
+}
 
 }

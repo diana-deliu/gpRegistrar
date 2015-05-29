@@ -5,7 +5,7 @@
         </div>
         <ul class="menu accordion-menu">
             <li class="active droplink">
-                <a href="{{ url('medic/view_patient') }}">
+                <a href="#">
                     <img src="{{ asset('images/patient_red_30.png') }}"/>
 
                     <p>Pacienți</p>
@@ -13,15 +13,15 @@
                 </a>
                 <ul class="sub-menu" style="display: none;">
                     <li>
-                        <a href="#">
+                        <a href="{{ url('medic/add_patient') }}">
                             <img src="{{ asset('images/information_red_20.png') }}"/><br/>
-                            Informații generale
+                            Adaugă pacienți
                         </a>
                     </li>
                     <li class="active droplink">
-                        <a href="#">
+                        <a href="{{ url('medic/view_patient') }}">
                             <img src="{{ asset('images/registry_orange_20.png') }}"/><br/>
-                            Fișe medicale
+                            Administrare pacienți
                         </a>
                     </li>
                     <li>

@@ -129,7 +129,7 @@ body {
 .nav .welcome-right {
     line-height: 90px;
     vertical-align: middle;
-    padding: 0 30px;
+    padding: 0 20px;
 }
 
 ul.navbar-right > li > a:hover {
@@ -435,12 +435,37 @@ body:not(.page-horizontal-bar):not(.small-sidebar) .menu.accordion-menu a {
     display: none !important;
 }
 
-div.main_container {
-    padding: 90px 20px 0 20px;
+.main_container {
+    padding: 100px 20px 0 20px;
     background: #F1F4F9;
     min-height: 1084px !important;
     position: relative;
     overflow: hidden;
+}
+
+.restriction-list ul li {
+    display:inline;
+}
+
+.navbar-right .notification span {
+    line-height: 90px;
+    vertical-align: middle;
+    font-size: 18px;
+    padding: 0 10px;
+}
+
+.navbar-right .user span {
+    line-height: 90px;
+    vertical-align: middle;
+    font-size: 18px;
+    padding: 0 10px;
+}
+
+.navbar-right .message span {
+    line-height: 90px;
+    vertical-align: middle;
+    font-size: 18px;
+    padding: 0 10px;
 }
 
 .page-footer {

@@ -1,32 +1,49 @@
 <?php namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Auth\Guard;
 
-class CheckIfMedic {
+class CheckIfMedic
+{
+    /**
+     * The Guard implementation.
+     *
+     * @var Guard
+     */
+    protected $auth;
 
-	/**
-	 * Handle an incoming request.
-	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @param  \Closure  $next
-	 * @return mixed
-	 */
+    /**
+     * Create a new filter instance.
+     *
+     * @param  Guard $auth
+     */
+    public function __construct(Guard $auth)
+    {
+        $this->auth = $auth;
+    }
+
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Closure $next
+     * @return mixed
+     */
     public function handle($request, Closure $next)
     {
-        if ($this->auth->guest())
-        {
-            if ($request->ajax())
-            {
+        if ($this->auth->guest()) {
+            if ($request->ajax()) {
                 return response('Unauthorized.', 401);
-            }
-            else
-            {
+            } else {
                 return redirect()->guest('auth/login');
             }
         }
         $user = $this->auth->user();
-        if ($user->role != 'medic' || $user->role != 'admin') {
-            return redirect()->guest('auth/login');
+        if ($user->role != 'medic' && $user->role != 'admin') {
+            return redirect('/')->with([
+                'flash_message' => 'Nu aveți drepturi să accesați această pagină!',
+                'flash_message_type' => 'alert-danger'
+            ]);
         }
 
         return $next($request);

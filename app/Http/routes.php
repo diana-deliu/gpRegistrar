@@ -21,7 +21,13 @@ Route::get('admin/edit_medic/{id}', 'AdminController@editMedic');
 Route::post('admin/update_medic/{id}', 'AdminController@updateMedic');
 Route::get('admin/remove_medic/{id}', 'AdminController@removeMedic');
 
-Route::get('admin/view_patient', 'AdminController@viewPatient');
+Route::get('medic/add_patient', 'MedicController@addPatient');
+Route::post('medic/create_patient', 'MedicController@createPatient');
+Route::get('medic/view_patient', 'MedicController@viewPatient');
+Route::get('medic/edit_patient/{id}', 'MedicController@editPatient');
+Route::post('medic/update_patient/{id}', 'MedicController@updatePatient');
+Route::get('medic/remove_patient/{id}', 'MedicController@removePatient');
+Route::get('medic/import_patient', 'MedicController@importPatient');
 
 
 //Route::get('admin', 'AdminController@index');

@@ -1,9 +1,26 @@
 <?php namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Auth\Guard;
 
 class CheckIfPatient {
 
+    /**
+     * The Guard implementation.
+     *
+     * @var Guard
+     */
+    protected $auth;
+
+    /**
+     * Create a new filter instance.
+     *
+     * @param  Guard $auth
+     */
+    public function __construct(Guard $auth)
+    {
+        $this->auth = $auth;
+    }
 	/**
 	 * Handle an incoming request.
 	 *
@@ -25,8 +42,11 @@ class CheckIfPatient {
             }
         }
         $user = $this->auth->user();
-        if ($user->role != 'patient' || $user->role != 'admin' || $user->role != 'medic') {
-            return redirect()->guest('auth/login');
+        if ($user->role != 'patient' && $user->role != 'admin' && $user->role != 'medic') {
+            return redirect('/')->with([
+                'flash_message' => 'Nu aveți drepturi să accesați această pagină!',
+                'flash_message_type' => 'alert-danger'
+            ]);
         }
 
         return $next($request);

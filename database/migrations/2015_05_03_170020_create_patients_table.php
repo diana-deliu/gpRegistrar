@@ -23,16 +23,11 @@ class CreatePatientsTable extends Migration {
             $table->string('firstname');
             $table->string('lastname');
             $table->string('address');
-            $table->string('email');
-            $table->integer('medic_id');
 
             $table->integer('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users');
 
 			$table->timestamps();
-
-
-
 
 		});
 	}

@@ -31,7 +31,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="password" class="col-lg-2 control-label">Parola</label>
+                    <label for="password" class="col-lg-2 control-label">Parolă</label>
 
                     <div class="col-lg-6">
                         {!! Form::password('password', ['class' => 'form-control'])!!}
@@ -59,7 +59,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="address" class="col-lg-2 control-label">Adresa</label>
+                    <label for="address" class="col-lg-2 control-label">Adresă</label>
 
                     <div class="col-lg-6">
                         {!! Form::textarea('address', old('address'), ['class' => 'form-control', 'rows' => '3'])!!}

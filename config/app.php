@@ -145,7 +145,8 @@ return [
 		'App\Providers\ConfigServiceProvider',
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
-		'yajra\Oci8\Oci8ServiceProvider'
+		'yajra\Oci8\Oci8ServiceProvider',
+        'Maatwebsite\Excel\ExcelServiceProvider'
 		
 
 	],
@@ -196,7 +197,8 @@ return [
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
         'Form'      => 'Illuminate\Html\FormFacade',
-        'Html'      => 'Illuminate\Html\HtmlFacade'
+        'Html'      => 'Illuminate\Html\HtmlFacade',
+        'Excel' => 'Maatwebsite\Excel\Facades\Excel',
 
 	],
 
