@@ -461,13 +461,6 @@ body:not(.page-horizontal-bar):not(.small-sidebar) .menu.accordion-menu a {
     padding: 0 10px;
 }
 
-.navbar-right .message span {
-    line-height: 90px;
-    vertical-align: middle;
-    font-size: 18px;
-    padding: 0 10px;
-}
-
 .page-footer {
     background: #fff;
     width: 100%;

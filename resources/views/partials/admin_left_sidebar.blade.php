@@ -12,7 +12,7 @@
                     <span class="glyphicon glyphicon-chevron-left" style="float:right;margin-top:-39px;"></span>
                 </a>
                 <ul class="sub-menu" style="display: none;">
-                    <li class="active droplink">
+                    <li class="droplink">
                         <a href="{{ url('admin/add_medic') }}">
                             <img src="{{ asset('images/add_red_20.png') }}"/><br/>
                             Adaugă medici

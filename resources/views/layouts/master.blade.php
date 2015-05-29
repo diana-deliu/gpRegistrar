@@ -45,7 +45,6 @@
                     <ul class="nav navbar-nav navbar-right">
                         @if(Auth::check())
                             <li class="user"><span class="glyphicon glyphicon-user"></span></li>
-                            <li class="message"><span class="glyphicon glyphicon-comment"></span></li>
                             <li class="notification"><span class="glyphicon glyphicon-globe"></span></li>
                             <li class="welcome-right"><strong>{{ Auth::user()->email }}</strong></li>
 

@@ -4,7 +4,7 @@
 
         </div>
         <ul class="menu accordion-menu">
-            <li class="active droplink">
+            <li class="droplink">
                 <a href="#">
                     <img src="{{ asset('images/patient_red_30.png') }}"/>
 
@@ -41,7 +41,7 @@
                 </a>
                 <ul class="sub-menu" style="display: none;">
                     <li>
-                        <a href="#">
+                        <a href="{{ url('medic/optional_param') }}">
                             <img src="{{ asset('images/optional_blue_20.png') }}"/><br/>
                             Parametrii opționali
                         </a>

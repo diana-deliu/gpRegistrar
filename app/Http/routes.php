@@ -28,6 +28,8 @@ Route::get('medic/edit_patient/{id}', 'MedicController@editPatient');
 Route::post('medic/update_patient/{id}', 'MedicController@updatePatient');
 Route::get('medic/remove_patient/{id}', 'MedicController@removePatient');
 Route::get('medic/import_patient', 'MedicController@importPatient');
+Route::get('medic/optional_param', 'MedicController@optionalParam');
+
 
 
 //Route::get('admin', 'AdminController@index');

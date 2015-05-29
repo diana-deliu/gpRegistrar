@@ -154,4 +154,9 @@ class MedicController extends Controller
         $maxFileSize = $this->max_file_upload_in_bytes() / (1024 * 1024);
         return view('medic.importpatient', compact('maxFileSize'));
     }
+
+    public function optionalParam()
+    {
+        return view('medic.optionalparam');
+    }
 }
