@@ -19,8 +19,16 @@ class CreateConsultsTable extends Migration {
         function(Blueprint $table)
 		{
 			$table->increments('id');
-            $table->integer('patient_id');
-            $table->dateTime('consult_date');
+
+            $table->integer('patient_id')->unsigned();
+            $table->foreign('patient_id')->references('id')->on('patients');
+
+            $table->integer('height');
+            $table->integer('weight');
+            $table->dateTime('abdominal_circumference');
+            $table->string('blood_pressure');
+            $table->string('glucose');
+
 			$table->timestamps();
 		});
 	}

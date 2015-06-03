@@ -73,5 +73,10 @@
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('js/sidebar.js') }}"></script>
 <script src="{{ asset('js/pnotify.custom.min.js') }}"></script>
+<script src="{{ asset('js/collapse.js') }}"></script>
+<script src="{{ asset('js/moment-with-locales.js') }}"></script>
+<script src="{{ asset('js/transition.js') }}"></script>
+<script src="{{ asset('js/bootstrap-datetimepicker.js') }}"></script>
+@yield('footer_scripts')
 </body>
 </html>

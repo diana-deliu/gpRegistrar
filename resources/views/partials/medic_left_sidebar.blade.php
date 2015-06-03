@@ -35,30 +35,8 @@
             <li class="droplink">
                 <a href="#">
                     <img src="{{ asset('images/consult_orange_30.png') }}"/>
-
                     <p>Consultații</p>
-                    <span class="glyphicon glyphicon-chevron-left" style="float:right;margin-top:-39px;"></span>
                 </a>
-                <ul class="sub-menu" style="display: none;">
-                    <li>
-                        <a href="{{ url('medic/optional_param') }}">
-                            <img src="{{ asset('images/optional_blue_20.png') }}"/><br/>
-                            Parametrii opționali
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <img src="{{ asset('images/add_red_20.png') }}"/><br/>
-                            Adaugă consultație
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <img src="{{ asset('images/edit_orange_20.png') }}"/><br/>
-                            Editează consultație
-                        </a>
-                    </li>
-                </ul>
             <li class="droplink">
                 <a href="#">
                     <img src="{{ asset('images/lab_blue_30.png') }}"/>
@@ -67,12 +45,6 @@
                     <span class="glyphicon glyphicon-chevron-left" style="float:right;margin-top:-39px;"></span>
                 </a>
                 <ul class="sub-menu" style="display: none;">
-                    <li>
-                        <a href="#">
-                            <img src="{{ asset('images/optional_blue_20.png') }}"/><br/>
-                            Parametrii opționali
-                        </a>
-                    </li>
                     <li>
                         <a href="#">
                             <img src="{{ asset('images/add_red_20.png') }}"/><br/>

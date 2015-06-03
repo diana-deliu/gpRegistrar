@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class Patient extends Model {
+class Consult extends Model {
 
     /**
      * The database table used by the model.
@@ -16,15 +16,11 @@ class Patient extends Model {
      *
      * @var array
      */
-    protected $fillable = ['cnp','firstname', 'lastname', 'address', 'user_id'];
+    protected $fillable = ['patient_id', 'height', 'weight', 'abdominal_circumference', 'blood_pressure', 'glucose'];
 
 
-    public function user() {
-        return $this->belongsTo('App\User');
-    }
-
-    public function consults() {
-        return $this->hasMany('App\Consult');
+    public function patient() {
+        return $this->belongsTo('App\Patient');
     }
 
 }

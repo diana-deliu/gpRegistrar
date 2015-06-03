@@ -28,9 +28,11 @@ Route::get('medic/edit_patient/{id}', 'MedicController@editPatient');
 Route::post('medic/update_patient/{id}', 'MedicController@updatePatient');
 Route::get('medic/remove_patient/{id}', 'MedicController@removePatient');
 Route::get('medic/import_patient', 'MedicController@importPatient');
-Route::get('medic/optional_param', 'MedicController@optionalParam');
 
+Route::get('medic/patient_buttons/{id}', 'MedicController@buttonsPatient');
 
+Route::get('medic/add_consult/{id}', 'MedicController@addConsult');
+Route::post('medic/create_consult/{id}', 'MedicController@createConsult');
 
 //Route::get('admin', 'AdminController@index');
 //Route::get('medic', 'MedicController@index');

@@ -3,10 +3,12 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Http\Requests\CreateConsultRequest;
 use App\Http\Requests\CreatePatientRequest;
 use App\Http\Requests\UpdatePatientRequest;
 use App\Patient;
 use App\Services\Registrar;
+use DateTime;
 use Illuminate\Http\Request;
 
 class MedicController extends Controller
@@ -57,10 +59,30 @@ class MedicController extends Controller
         return view('medic.viewpatient', compact('patients'));
     }
 
+    private function getDataFromCNP($cnp, &$sex, &$birthDate, &$age) {
+        if ($cnp[0] == 1) {
+            $sex = 'masculin';
+        }
+        else {
+            $sex = 'feminin';
+        }
+        $format = 'ymd';
+        $date = substr($cnp, 1, 6);
+        $birthDate = date_create_from_format($format, $date);
+        $currentDate = new DateTime();
+        $age = $currentDate->diff($birthDate)->y;
+
+        $birthDate = $birthDate->format('d.m.Y');
+    }
+
     private function patientToArray($patient)
     {
         $item = array_except($patient->toArray(), ['created_at']);
         $item['email'] = $patient->user->email;
+        $this->getDataFromCNP($item['cnp'], $sex, $birthDate, $age);
+        $item['sex'] = $sex;
+        $item['birthDate'] = $birthDate;
+        $item['age'] = $age;
 
         return $item;
     }
@@ -155,8 +177,40 @@ class MedicController extends Controller
         return view('medic.importpatient', compact('maxFileSize'));
     }
 
-    public function optionalParam()
+    /*public function optionalParam()
     {
         return view('medic.optionalparam');
+    }*/
+
+    public function buttonsPatient($id)
+    {
+        $patient = Patient::find($id);
+        $patient = $this->patientToArray($patient);
+       return view('medic.patientbuttons', compact('patient'));
+   }
+
+    public function addConsult($id)
+    {
+        $patient = Patient::find($id);
+        $patient = $this->patientToArray($patient);
+        return view('medic.addconsult', compact('patient'));
+    }
+
+    public function createConsult(CreateConsultRequest $request)
+    {
+
+        $result = Patient::create($request->all());
+
+        if ($result == 0) {
+            return redirect('/')->with([
+                'flash_message' => 'Consultația nu a putut fi adăugată!',
+                'flash_message_type' => 'alert-danger'
+            ]);
+        }
+
+        return redirect('/')->with([
+            'flash_message' => 'Consultația a fost adăugată cu succes!',
+            'flash_message_type' => 'alert-success'
+        ]);
     }
 }

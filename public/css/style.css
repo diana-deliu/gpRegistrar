@@ -435,6 +435,14 @@ body:not(.page-horizontal-bar):not(.small-sidebar) .menu.accordion-menu a {
     display: none !important;
 }
 
+tr.hover {
+    cursor: pointer;
+}
+
+.main_container .patients-button-bar {
+    margin: 70px 0 0 0;
+}
+
 .main_container {
     padding: 100px 20px 0 20px;
     background: #F1F4F9;

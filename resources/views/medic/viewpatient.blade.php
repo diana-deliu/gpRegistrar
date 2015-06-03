@@ -6,7 +6,7 @@
 
     <div class="main_container">
         @include('partials.errors')
-        <table class="table table-striped table-hover ">
+        <table class="table table-striped table-hover">
             <thead>
             <tr>
                 <th>Id</th>
@@ -28,16 +28,20 @@
             @foreach($patients as $patient)
 
                 <tr>
-                    <td>{{ $patient['id'] }}</td>
+
+                    <td><a href="{{url('medic/patient_buttons').'/'.$patient['id']}}">{{ $patient['id'] }}</a></td>
                     <td>{{ $patient['cnp'] }}</td>
                     <td>{{ $patient['lastname'] }}</td>
                     <td>{{ $patient['firstname'] }}</td>
                     <td>{{ $patient['email'] }}</td>
-                    <td><a href="{{url ('medic/edit_patient').'/'.$patient['id']}}"
-                           class="btn btn-warning btn-xs">Editare</a></td>
                 </tr>
+                </a>
+
             @endforeach
             </tbody>
         </table>
     </div>
+@stop
+@section('footer_scripts')
+    @include('partials.table_row_link')
 @stop
