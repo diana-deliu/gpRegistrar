@@ -6,6 +6,7 @@
 
     <div class="main_container">
         @include('partials.errors')
+        @include('partials.error')
         <table class="table table-striped table-hover ">
             <thead>
             <tr>

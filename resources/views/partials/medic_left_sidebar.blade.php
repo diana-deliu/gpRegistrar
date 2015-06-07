@@ -19,7 +19,7 @@
                         </a>
                     </li>
                     <li class="active droplink">
-                        <a href="{{ url('medic/view_patient') }}">
+                        <a href="{{ url('medic/view_patients') }}">
                             <img src="{{ asset('images/registry_orange_20.png') }}"/><br/>
                             Administrare pacienți
                         </a>
@@ -32,13 +32,30 @@
                     </li>
                 </ul>
             </li>
+                <li class="droplink">
+                    <a href="#">
+                        <img src="{{ asset('images/consult_orange_30.png') }}"/>
+
+                        <p>Consultații</p>
+                        <span class="glyphicon glyphicon-chevron-left" style="float:right;margin-top:-39px;"></span>
+                    </a>
+                    <ul class="sub-menu" style="display: none;">
+                        <li>
+                            <a href="{{ url('medic/add_consult') }}">
+                                <img src="{{ asset('images/add_red_20.png') }}"/><br/>
+                                Adaugă consultații
+                            </a>
+                        </li>
+                        <li class="droplink">
+                            <a href="{{ url('medic/view_generalconsults') }}">
+                                <img src="{{ asset('images/edit_orange_20.png') }}"/><br/>
+                                Administrare consultații
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             <li class="droplink">
-                <a href="#">
-                    <img src="{{ asset('images/consult_orange_30.png') }}"/>
-                    <p>Consultații</p>
-                </a>
-            <li class="droplink">
-                <a href="#">
+                <a href="{{ url('medic/edit_consults') }}">
                     <img src="{{ asset('images/lab_blue_30.png') }}"/>
 
                     <p>Analize</p>
@@ -46,15 +63,15 @@
                 </a>
                 <ul class="sub-menu" style="display: none;">
                     <li>
-                        <a href="#">
+                        <a href="{{ url('medic/add_lab') }}">
                             <img src="{{ asset('images/add_red_20.png') }}"/><br/>
                             Adaugă analize
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{{ url('medic/view_labs') }}">
                             <img src="{{ asset('images/edit_orange_20.png') }}"/><br/>
-                            Editează analize
+                            Administrare analize
                         </a>
                     </li>
                 </ul>

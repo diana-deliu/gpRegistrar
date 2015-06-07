@@ -7,23 +7,20 @@
     <div class="main_container">
         @include('partials.errors')
         @include('partials.error')
-        {!! Form::open(['url' => 'medic/create_consult', 'class' => 'form-horizontal']) !!}
+        {!! Form::open(['url' => 'medic/update_consult/'.$consult['id'], 'class' => 'form-horizontal']) !!}
         <fieldset>
-            <legend><h3>Adăugare consultaţie</h3></legend>
+            <legend><h3>Editare consultație</h3></legend>
             <div class="form-group">
+
                 <div class="panel panel-default col-lg-3 col-md-offset-1">
                     <div class="panel-body">
                         <a href="#" class="btn btn-primary btn-xs pull-right" id="patient_change_btn">
                             Pacient</a>
                         CNP: <span id="patient_cnp">
-                            @if(isset($patient))
                                 {{ $patient['cnp'] }}
-                            @endif
                             </span><br/>
                         Nume: <span id="patient_name">
-                                @if(isset($patient))
-                                    {{ $patient['firstname'] }} {{ $patient['lastname'] }}
-                                @endif
+                                {{ $patient['firstname'] }} {{ $patient['lastname'] }}
                             </span>
                     </div>
                 </div>
@@ -31,12 +28,12 @@
             <div class="form-group">
                 <label for="date" class="col-lg-2 control-label">Dată</label>
 
-                <div class="col-lg-6">
+                <div class="col-lg-2">
                     <div class="container">
                         <div class="col-lg-2">
                             <div class="form-group">
                                 <div class='input-group date' id='datetimepicker11'>
-                                    {!! Form::text('date', old('date'), ['class' => 'form-control'])!!}
+                                    {!! Form::text('date', $consult['date'], ['class' => 'form-control'])!!}
                                     <span class="input-group-addon">
                                         <span class="glyphicon glyphicon-calendar">
                                         </span>
@@ -47,16 +44,12 @@
                     </div>
                 </div>
             </div>
-            @if(isset($patient))
-                {!! Form::hidden('patient_id', $patient['id']) !!}
-            @else
-                {!! Form::hidden('patient_id', null, ['id'=>'patient_id_hidden']) !!}
-            @endif
+            {!! Form::hidden('patient_id', $patient['id']) !!}
             <div class="form-group">
-                <label for="height" class="col-lg-2 control-label">Înălţime [cm]</label>
+                <label for="height" class="col-lg-2 control-label">Înălțime [cm]</label>
 
                 <div class="col-lg-2">
-                    {!! Form::text('height', old('height'), ['class' => 'form-control'])!!}
+                    {!! Form::text('height', $consult['height'], ['class' => 'form-control']) !!}
                     <span class="help-block"></span>
                 </div>
             </div>
@@ -64,16 +57,15 @@
                 <label for="weight" class="col-lg-2 control-label">Greutate [kg]</label>
 
                 <div class="col-lg-2">
-                    {!! Form::text('weight', old('weight'), ['class' => 'form-control'])!!}
+                    {!! Form::text('weight', $consult['weight'], ['class' => 'form-control']) !!}
                     <span class="help-block"></span>
                 </div>
             </div>
             <div class="form-group">
-                <label for="abdominal_circumference" class="col-lg-2 control-label">Circumferinţă abdominală
-                    [cm]</label>
+                <label for="abdominal_circumference" class="col-lg-2 control-label">Circumferință abdominală [cm]</label>
 
                 <div class="col-lg-2">
-                    {!! Form::text('abdominal_circumference', null, ['class' => 'form-control'])!!}
+                    {!! Form::text('abdominal_circumference', $consult['abdominal_circumference'], ['class' => 'form-control']) !!}
                     <span class="help-block"></span>
                 </div>
             </div>
@@ -81,21 +73,22 @@
                 <label for="blood_pressure" class="col-lg-2 control-label">Tensiune [mm/Hg]</label>
 
                 <div class="col-lg-2">
-                    {!! Form::text('blood_pressure', old('blood_pressure'), ['class' => 'form-control'])!!}
+                    {!! Form::text('blood_pressure', $consult['blood_pressure'], ['class' => 'form-control']) !!}
                     <span class="help-block"></span>
                 </div>
             </div>
             <div class="form-group">
-                <label for="glucose" class="col-lg-2 control-label">Glicemie</label>
+                <label for="blood_pressure" class="col-lg-2 control-label">Glicemie</label>
 
                 <div class="col-lg-2">
-                    {!! Form::text('glucose', old('glucose'), ['class' => 'form-control'])!!}
+                    {!! Form::text('glucose', $consult['glucose'], ['class' => 'form-control']) !!}
                     <span class="help-block"></span>
                 </div>
             </div>
             <div class="form-group">
-                <div class="col-lg-6 col-lg-offset-2">
-                    <button type="submit" class="btn btn-default">Adăugare consultație</button>
+                <div class="col-lg-2 col-lg-offset-2">
+                    <button type="submit" class="btn btn-default">Editare</button>
+                    <a href="{{ url('medic/remove_consult').'/'.$consult['id'] }}" class="btn btn-primary pull-right">Ștergere</a>
                 </div>
             </div>
         </fieldset>

@@ -16,9 +16,22 @@ class CreateLabsTable extends Migration {
 		Schema::create('labs', function(Blueprint $table)
 		{
 			$table->increments('id');
-            $table->integer('patient_id');
-            $table->integer('treatment_id');
-			$table->timestamps();
+            $table->dateTime('date');
+
+            $table->integer('patient_id')->unsigned();
+            $table->foreign('patient_id')->references('id')->on('patients');
+
+            $table->string('hemoglobin');
+            $table->string('vsh');
+            $table->string('transaminases');
+            $table->string('cholesterol');
+            $table->string('triglycerides');
+            $table->string('creatinine');
+            $table->string('urea');
+            $table->string('urine');
+            $table->string('copro');
+
+            $table->timestamps();
 		});
 	}
 

@@ -6,6 +6,7 @@
 
     <div class="main_container">
         @include('partials.errors')
+        @include('partials.error')
         {!! Form::open(['url' => 'medic/create_patient', 'class' => 'form-horizontal']) !!}
         <fieldset>
             <legend><h3>Adăugare pacient</h3></legend>

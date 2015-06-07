@@ -6,6 +6,7 @@
 
     <div class="main_container">
         @include('partials.errors')
+        @include('partials.error')
         {!! Form::open(['url' => 'medic/update_patient/'.$patient['id'], 'class' => 'form-horizontal']) !!}
         <fieldset>
             <legend><h3>Editare pacient</h3></legend>
@@ -48,7 +49,7 @@
             <div class="form-group">
                 <div class="col-lg-6 col-lg-offset-2">
                     <button type="submit" class="btn btn-warning">Editare</button>
-                    <a href="{{ url('medic/remove_patient').'/'.$patient['id'] }}" class="btn btn-primary pull-right">Ștergere înregistrare</a>
+                    <a href="{{ url('medic/remove_patient').'/'.$patient['id'] }}" class="btn btn-primary pull-right">Ștergere</a>
                 </div>
             </div>
         </fieldset>

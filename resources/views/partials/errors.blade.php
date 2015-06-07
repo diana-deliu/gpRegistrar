@@ -1,6 +1,6 @@
 @if (count($errors) > 0)
     <div class="alert alert-danger">
-        There were some problems with your input:<br>
+        Au intervenit probleme în procesarea cererii:<br>
         <ul>
             @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>

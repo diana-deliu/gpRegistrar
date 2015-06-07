@@ -33,11 +33,11 @@ body {
     margin: 0;
     height: 90px;
     font-size: 40px;
-    font-family: 'Poiret One', cursive;
+    font-family: 'Source Sans Pro', sans-serif;
     float: left;
     position: relative;
     left: -50%;
-    /*font-weight: bold;*/
+    font-weight: 200;
 }
 
 .navbar-inner .logo-textbox a {

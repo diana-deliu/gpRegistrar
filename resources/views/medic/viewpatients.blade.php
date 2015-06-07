@@ -6,7 +6,8 @@
 
     <div class="main_container">
         @include('partials.errors')
-        <table class="table table-striped table-hover">
+        @include('partials.error')
+        <table class="table table-striped table-hover patients">
             <thead>
             <tr>
                 <th>Id</th>
@@ -29,7 +30,7 @@
 
                 <tr>
 
-                    <td><a href="{{url('medic/patient_buttons').'/'.$patient['id']}}">{{ $patient['id'] }}</a></td>
+                    <td><a href="{{url('medic/patient_details').'/'.$patient['id']}}">{{ $patient['id'] }}</a></td>
                     <td>{{ $patient['cnp'] }}</td>
                     <td>{{ $patient['lastname'] }}</td>
                     <td>{{ $patient['firstname'] }}</td>

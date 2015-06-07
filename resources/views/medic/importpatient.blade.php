@@ -6,6 +6,7 @@
 
     <div class="main_container">
         @include('partials.errors')
+        @include('partials.error')
         {!! Form::open(['url' => 'medic/import_patient', 'class' => 'form-horizontal']) !!}
         <fieldset>
             <div class="panel panel-default">
