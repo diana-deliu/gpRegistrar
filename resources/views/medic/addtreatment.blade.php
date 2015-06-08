@@ -7,9 +7,9 @@
     <div class="main_container">
         @include('partials.errors')
         @include('partials.error')
-        {!! Form::open(['url' => 'medic/create_consult', 'class' => 'form-horizontal']) !!}
+        {!! Form::open(['url' => 'medic/create_treatment', 'class' => 'form-horizontal']) !!}
         <fieldset>
-            <legend><h3>Adăugare consultaţie</h3></legend>
+            <legend><h3>Adăugare recomandare</h3></legend>
             <div class="form-group">
                 <div class="panel panel-default col-lg-4 col-md-offset-1">
                     <div class="panel-body">
@@ -53,49 +53,62 @@
                 {!! Form::hidden('patient_id', null, ['id'=>'patient_id_hidden']) !!}
             @endif
             <div class="form-group">
-                <label for="height" class="col-lg-2 control-label">Înălţime [cm]</label>
+                <label for="diagnosis" class="col-lg-2 control-label">Diagnostic</label>
 
                 <div class="col-lg-2">
-                    {!! Form::text('height', old('height'), ['class' => 'form-control'])!!}
+                    {!! Form::select('diagnosis', $diagnosis, null, ['class' => 'form-control'])!!}
                     <span class="help-block"></span>
                 </div>
             </div>
             <div class="form-group">
-                <label for="weight" class="col-lg-2 control-label">Greutate [kg]</label>
+                <label for="treatment" class="col-lg-2 control-label">Tratament</label>
 
                 <div class="col-lg-2">
-                    {!! Form::text('weight', old('weight'), ['class' => 'form-control'])!!}
+                    {!! Form::select('treatment', $treatments, null, ['class' => 'form-control'])!!}
                     <span class="help-block"></span>
                 </div>
             </div>
             <div class="form-group">
-                <label for="abdominal_circumference" class="col-lg-2 control-label">Circumferinţă abdominală
-                    [cm]</label>
+                <label for="extra" class="col-lg-2 control-label">Specificații</label>
+                <button type="button" class="btn btn-primary" data-container="body" data-toggle="popover" data-placement="right" data-content='Se va completa cu numărul de tablete/picături pe zi, precum și recomandări, spre exemplu "înainte de masă", exact ca pe rețetă.' data-original-title="" title="">Info</button>
+
 
                 <div class="col-lg-2">
-                    {!! Form::text('abdominal_circumference', null, ['class' => 'form-control'])!!}
+                    {!! Form::textarea('extra', old('extra'), ['class' => 'form-control', 'rows' => '5'])!!}
                     <span class="help-block"></span>
                 </div>
             </div>
             <div class="form-group">
-                <label for="blood_pressure" class="col-lg-2 control-label">Tensiune [mm/Hg]</label>
+                <label for="referral" class="col-lg-2 control-label">Trimitere</label>
+                <button type="button" class="btn btn-primary" data-container="body" data-toggle="popover" data-placement="right" data-content='Se va specifica secția și motivul/id-ul și data analizelor/consultației pe baza cărora s-a considerat necesară trimiterea' data-original-title="" title="">Info</button>
+
 
                 <div class="col-lg-2">
-                    {!! Form::text('blood_pressure', old('blood_pressure'), ['class' => 'form-control'])!!}
+                    {!! Form::textarea('referral', old('referral'), ['class' => 'form-control', 'rows' => '3'])!!}
                     <span class="help-block"></span>
                 </div>
             </div>
             <div class="form-group">
-                <label for="glucose" class="col-lg-2 control-label">Glicemie</label>
+                <label for="interval" class="col-lg-2 control-label">Interval consultație viitoare [luni]</label>
+                <button type="button" class="btn btn-primary" data-container="body" data-toggle="popover" data-placement="right" data-content='Dacă se setează acest câmp, se va seta automat și notificarea pentru pacient și medic.' data-original-title="" title="">Info</button>
 
                 <div class="col-lg-2">
-                    {!! Form::text('glucose', old('glucose'), ['class' => 'form-control'])!!}
+                    {!! Form::select('interval', $intervals, null, ['class' => 'form-control'])!!}
                     <span class="help-block"></span>
                 </div>
             </div>
+            <div class="form-group">
+                <label for="appointment" class="col-lg-2 control-label">Setare programare viitoare</label>
+
+                <div class="col-lg-2">
+                    {!! Form::checkbox('appointment', old('appointment'), true)!!}
+                    <span class="help-block"></span>
+                </div>
+            </div>
+
             <div class="form-group">
                 <div class="col-lg-6 col-lg-offset-2">
-                    <button type="submit" class="btn btn-default">Adăugare consultație</button>
+                    <button type="submit" class="btn btn-default">Adăugare</button>
                 </div>
             </div>
         </fieldset>
@@ -122,4 +135,5 @@
 @section('footer_scripts')
     @include('partials.date_picker')
     @include('partials.patients_dropdown')
+    @include('partials.popover')
 @stop

@@ -1514,7 +1514,7 @@ hr {
     cursor: pointer;
 }
 
-h1,
+h1
 h2,
 h3,
 h4,
@@ -1527,7 +1527,7 @@ h6,
 .h5,
 .h6 {
     font-family: 'Source Sans Pro', sans-serif;
-    font-weight: 100;
+    font-weight: 200;
     line-height: 1.1;
     color: #000000;
 }
@@ -6520,6 +6520,7 @@ a.list-group-item-danger.active:focus {
     margin-bottom: 0;
     font-size: 15px;
     color: inherit;
+    font-weight: 400;
 }
 
 .panel-title > a,

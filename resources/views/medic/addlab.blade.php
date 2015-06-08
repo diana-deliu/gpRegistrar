@@ -11,7 +11,7 @@
         <fieldset>
             <legend><h3>Adăugare analize</h3></legend>
             <div class="form-group">
-                <div class="panel panel-default col-lg-3 col-md-offset-1">
+                <div class="panel panel-default col-lg-4 col-md-offset-1">
                     <div class="panel-body">
                         <a href="#" class="btn btn-primary btn-xs pull-right" id="patient_change_btn">
                             Pacient</a>

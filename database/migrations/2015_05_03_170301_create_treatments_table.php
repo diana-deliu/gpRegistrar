@@ -16,11 +16,18 @@ class CreateTreatmentsTable extends Migration {
 		Schema::create('treatments', function(Blueprint $table)
 		{
 			$table->increments('id');
-            $table->string('treatment')->nullable();
-            $table->dateTime('treatment_date');
-            $table->string('referral')->nullable();
-            $table->integer('patient_id');
-			$table->timestamps();
+
+            $table->integer('patient_id')->unsigned();
+            $table->foreign('patient_id')->references('id')->on('patients');
+
+            $table->dateTime('date');
+            $table->integer('interval');
+            $table->string('diagnosis');
+            $table->string('treatment');
+            $table->string('extra');
+            $table->string('referral');
+            $table->boolean('appointment');
+            $table->timestamps();
 		});
 	}
 

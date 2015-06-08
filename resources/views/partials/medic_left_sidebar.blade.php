@@ -15,7 +15,7 @@
                     <li>
                         <a href="{{ url('medic/add_patient') }}">
                             <img src="{{ asset('images/information_red_20.png') }}"/><br/>
-                            Adaugă pacienți
+                            Adăugare pacient
                         </a>
                     </li>
                     <li class="active droplink">
@@ -43,7 +43,7 @@
                         <li>
                             <a href="{{ url('medic/add_consult') }}">
                                 <img src="{{ asset('images/add_red_20.png') }}"/><br/>
-                                Adaugă consultații
+                                Adăugare consultație
                             </a>
                         </li>
                         <li class="droplink">
@@ -55,7 +55,7 @@
                     </ul>
                 </li>
             <li class="droplink">
-                <a href="{{ url('medic/edit_consults') }}">
+                <a href="#">
                     <img src="{{ asset('images/lab_blue_30.png') }}"/>
 
                     <p>Analize</p>
@@ -65,7 +65,7 @@
                     <li>
                         <a href="{{ url('medic/add_lab') }}">
                             <img src="{{ asset('images/add_red_20.png') }}"/><br/>
-                            Adaugă analize
+                            Adăugare analize
                         </a>
                     </li>
                     <li>
@@ -81,14 +81,44 @@
                     <img src="{{ asset('images/vaccine_red_30.png') }}"/>
 
                     <p>Vaccinări</p>
+                    <span class="glyphicon glyphicon-chevron-left" style="float:right;margin-top:-39px;"></span>
                 </a>
+                <ul class="sub-menu" style="display: none;">
+                    <li>
+                        <a href="{{ url('medic/add_vaccine') }}">
+                            <img src="{{ asset('images/add_red_20.png') }}"/><br/>
+                            Adăugare vaccinăre
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url('medic/view_vaccines') }}">
+                            <img src="{{ asset('images/edit_orange_20.png') }}"/><br/>
+                            Administrare vaccinări
+                        </a>
+                    </li>
+                </ul>
             </li>
-            <li>
+            <li class="droplink">
                 <a href="#">
                     <img src="{{ asset('images/recommendation_orange_30.png') }}"/>
 
                     <p>Recomandări</p>
+                    <span class="glyphicon glyphicon-chevron-left" style="float:right;margin-top:-39px;"></span>
                 </a>
+                <ul class="sub-menu" style="display: none;">
+                    <li>
+                        <a href="{{ url('medic/add_treatment') }}">
+                            <img src="{{ asset('images/add_red_20.png') }}"/><br/>
+                            Adăugare recomandare
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url('medic/view_treatments') }}">
+                            <img src="{{ asset('images/edit_orange_20.png') }}"/><br/>
+                            Administrare recomandări
+                        </a>
+                    </li>
+                </ul>
             </li>
             <li class="droplink">
                 <a href="#">
@@ -101,7 +131,7 @@
                     <li>
                         <a href="#">
                             <img src="{{ asset('images/add_red_20.png') }}"/><br/>
-                            Adaugă chestionar
+                            Adăugare chestionar
                         </a>
                     </li>
                     <li>

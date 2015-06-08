@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateVaccinesTable extends Migration {
 
+
 	/**
 	 * Run the migrations.
 	 *
@@ -16,10 +17,17 @@ class CreateVaccinesTable extends Migration {
 		Schema::create('vaccines', function(Blueprint $table)
 		{
 			$table->increments('id');
-            $table->integer('patient_id');
+
+            $table->integer('patient_id')->unsigned();
+            $table->foreign('patient_id')->references('id')->on('patients');
+
             $table->dateTime('start_date');
+            $table->integer('category')->unsigned();
             $table->integer('interval');
-			$table->timestamps();
+            $table->boolean('notification');
+            $table->boolean('appointment');
+
+            $table->timestamps();
 		});
 	}
 

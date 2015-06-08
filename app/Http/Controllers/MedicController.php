@@ -5,19 +5,72 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Http\Requests\CreateConsultRequest;
+use App\Http\Requests\CreateTreatmentRequest;
 use App\Http\Requests\CreateLabRequest;
 use App\Http\Requests\CreatePatientRequest;
+use App\Http\Requests\CreateVaccineRequest;
 use App\Http\Requests\UpdateConsultRequest;
 use App\Http\Requests\UpdateLabRequest;
 use App\Http\Requests\UpdatePatientRequest;
+use App\Http\Requests\UpdateTreatmentRequest;
+use App\Http\Requests\UpdateVaccineRequest;
 use App\Lab;
 use App\Patient;
 use App\Services\Registrar;
+use App\Treatment;
+use App\Vaccine;
 use DateTime;
 use Illuminate\Http\Request;
 
 class MedicController extends Controller
 {
+    /* Helpers */
+    private $categories = [
+        '0' => 'sugar',
+        '1' => 'gravidă',
+        '2' => 'antirabic',
+        '3' => 'antitetanos',
+        '4' => 'HPV',
+        '5' => 'poliomielitic',
+        '6' => 'antigripal'
+    ];
+
+    private $intervals = [
+        '1' => '1',
+        '2' => '2',
+        '3' => '3',
+        '4' => '4',
+        '5' => '5',
+        '6' => '6',
+        '7' => '7',
+        '8' => '8',
+        '9' => '9',
+        '10' => '10',
+        '11' => '11',
+        '12' => '12'
+    ];
+
+    private $diagnosis = [
+        '0' => 'anemie',
+        '1' => 'hipertensiune arterială',
+        '2' => 'rabie',
+        '3' => 'varicelă',
+        '4' => 'oreion',
+        '5' => 'apendicită',
+        '6' => 'chist ovarian',
+        '7' => 'dismenoree'
+    ];
+
+    private $treatments = [
+        '0' => 'Algocalmin',
+        '1' => 'Nurofen Forte',
+        '2' => 'Nurofen Immedia',
+        '3' => 'Klacid',
+        '4' => 'Proctolog',
+        '5' => 'Paracetamol',
+        '6' => 'Progesteron',
+        '7' => 'Coldrex'
+    ];
 
     public function __construct()
     {
@@ -29,6 +82,7 @@ class MedicController extends Controller
         return $registrar->create($request);
     }
 
+    /****************** Patient related ******************/
     /**
      * @return \Illuminate\View\View
      */
@@ -198,7 +252,6 @@ class MedicController extends Controller
         return min($max_upload, $max_post, $memory_limit);
     }
 
-
     public function importPatient()
     {
         $maxFileSize = $this->max_file_upload_in_bytes() / (1024 * 1024);
@@ -212,7 +265,13 @@ class MedicController extends Controller
         return view('medic.patientdetails', compact('patient'));
     }
 
+    /****************** Patient related *****************
 
+    /****************** Consult related *****************
+
+     * @param CreateConsultRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function createConsult(CreateConsultRequest $request)
     {
         $requestAll = $request->all();
@@ -272,20 +331,6 @@ class MedicController extends Controller
 
         return $item;
     }
-
-    /*public function updateConsult($id, UpdateConsultRequest $request)
-    {
-        $patient = Patient::find($id);
-        $user = $patient->user();
-
-        $patient->update(array_only($request->all(), ['cnp', 'lastname', 'firstname', 'address']));
-        $user->update(array_only($request->all(), ['email']));
-
-        return redirect('medic/view_consults')->with([
-            'flash_message' => 'Pacientul a fost editat cu succes!',
-            'flash_message_type' => 'alert-success'
-        ]);
-    }*/
 
     /**
      * @return \Illuminate\View\View
@@ -367,6 +412,10 @@ class MedicController extends Controller
         ]);
     }
 
+    /****************** Consult related *****************/
+
+    /****************** Lab related *****************/
+
     public function addLab()
     {
         return view('medic.addlab');
@@ -436,6 +485,7 @@ class MedicController extends Controller
 
         return view('medic.labdetails', compact('lab', 'patient'));
     }
+
     /**
      * @param $id
      * @return \Illuminate\View\View
@@ -475,4 +525,305 @@ class MedicController extends Controller
         ]);
     }
 
+    /****************** Lab related *****************/
+
+    /****************** Vaccine related *****************/
+
+    public function addVaccine()
+    {
+        $categories = $this->categories;
+        $intervals = $this->intervals;
+        return view('medic.addvaccine', compact('categories', 'intervals'));
+    }
+
+    public function createVaccine(CreateVaccineRequest $request)
+    {
+        $requestAll = $request->all();
+        $requestAll['start_date'] = date_create_from_format('d.m.Y H:i', $requestAll['start_date']);
+        if (!(isset($requestAll['notification'])) || is_null($requestAll['notification'])) {
+            $requestAll['notification'] = false;
+        } else {
+            $requestAll['notification'] = true;
+        }
+        if (!(isset($requestAll['appointment'])) || is_null($requestAll['appointment'])) {
+            $requestAll['appointment'] = false;
+        } else {
+            $requestAll['appointment'] = true;
+        }
+        $result = Vaccine::create($requestAll);
+
+        if (is_null($result)) {
+            return redirect('/')->with([
+                'flash_message' => 'Vaccinările nu au putut fi adăugate!',
+                'flash_message_type' => 'alert-danger'
+            ]);
+        }
+
+        return redirect('medic/view_vaccines')->with([
+            'flash_message' => 'Vaccinările au fost adăugate cu succes!',
+            'flash_message_type' => 'alert-success'
+        ]);
+    }
+
+    /**
+     * @return \Illuminate\View\View
+     */
+    public function viewVaccines()
+    {
+        $vaccines = $this->getVaccines(20);
+
+        return view('medic.viewvaccines', compact('vaccines'));
+    }
+
+
+    private function getVaccines($number)
+    {
+
+        $vaccines_objects = Vaccine::all()->take($number)->all();
+
+        $vaccines = [];
+
+        foreach ($vaccines_objects as $vaccine) {
+
+            $vaccines[] = $this->vaccineToArray($vaccine);
+
+        }
+
+        return $vaccines;
+    }
+
+    private function vaccineToArray($vaccine, $makeReadable = true)
+    {
+        $item = array_except($vaccine->toArray(), ['created_at', 'updated_at']);
+        $patient = $vaccine->patient;
+        $item['lastname'] = $patient->lastname;
+        $item['firstname'] = $patient->firstname;
+        if ($makeReadable) {
+            $item['category'] = $this->categories[$item['category']];
+            $item['interval'] = $this->intervals[$item['interval']];
+            if ($item['interval'] > 1) {
+                $item['interval'] .= " luni";
+            } else {
+                $item['interval'] .= " lună";
+            }
+
+            $item['notification'] = ($item['notification']) ? 'Da' : 'Nu';
+            $item['appointment'] = ($item['appointment']) ? 'Da' : 'Nu';
+        }
+
+        return $item;
+    }
+
+    public function vaccineDetails($id)
+    {
+        $vaccine = Vaccine::find($id);
+        $patient = $vaccine->patient;
+        $vaccine = $this->vaccineToArray($vaccine);
+        $patient = $this->patientToArray($patient);
+
+        return view('medic.vaccinedetails', compact('vaccine', 'patient'));
+    }
+
+    /**
+     * @param $id
+     * @return \Illuminate\View\View
+     */
+    public function editVaccine($id)
+    {
+        $vaccine = Vaccine::find($id);
+        $vaccine = $this->vaccineToArray($vaccine, false);
+        $patient = Patient::find($vaccine['patient_id']);
+        $categories = $this->categories;
+        $intervals = $this->intervals;
+
+        return view('medic.editvaccine', compact('vaccine', 'patient', 'categories', 'intervals'));
+    }
+
+    public function updateVaccine($id, UpdateVaccineRequest $request)
+    {
+        $vaccine = Vaccine::find($id);
+
+        $requestAll = $request->all();
+        $requestAll['start_date'] = date_create_from_format('d.m.Y H:i', $requestAll['start_date']);
+
+        if (!(isset($requestAll['notification'])) || is_null($requestAll['notification'])) {
+            $requestAll['notification'] = false;
+        } else {
+            $requestAll['notification'] = true;
+        }
+        if (!(isset($requestAll['appointment'])) || is_null($requestAll['appointment'])) {
+            $requestAll['appointment'] = false;
+        } else {
+            $requestAll['appointment'] = true;
+        }
+        $vaccine->update($requestAll);
+
+        return redirect('medic/view_vaccines')->with([
+            'flash_message' => 'Vaccinarea a fost editată cu succes!',
+            'flash_message_type' => 'alert-success'
+        ]);
+    }
+
+    public function removeVaccine($id)
+    {
+        $vaccine = Vaccine::find($id);
+
+        $vaccine->delete();
+
+        return redirect('medic/view_vaccines')->with([
+            'flash_message' => 'Vaccinarea a fost ștearsă cu succes!',
+            'flash_message_type' => 'alert-success'
+        ]);
+    }
+    /****************** Vaccine related *****************/
+
+    /****************** Treatment related *****************/
+    public function addTreatment()
+    {
+        $categories = $this->categories;
+        $intervals = $this->intervals;
+        $diagnosis = $this->diagnosis;
+        $treatments = $this->treatments;
+
+        return view('medic.addtreatment', compact('categories', 'intervals', 'diagnosis', 'treatments'));
+    }
+
+    public function createTreatment(CreateTreatmentRequest $request)
+    {
+        $requestAll = $request->all();
+        $requestAll['date'] = date_create_from_format('d.m.Y H:i', $requestAll['date']);
+        if (!(isset($requestAll['appointment'])) || is_null($requestAll['appointment'])) {
+            $requestAll['appointment'] = false;
+        } else {
+            $requestAll['appointment'] = true;
+        }
+        $result = Treatment::create($requestAll);
+
+        if (is_null($result)) {
+            return redirect('/')->with([
+                'flash_message' => 'Recomandarea nu a putut fi adăugată!',
+                'flash_message_type' => 'alert-danger'
+            ]);
+        }
+
+        return redirect('medic/view_treatments')->with([
+            'flash_message' => 'Recomandarea a fost adăugată cu succes!',
+            'flash_message_type' => 'alert-success'
+        ]);
+    }
+
+    /**
+     * @return \Illuminate\View\View
+     */
+    public function viewTreatments()
+    {
+        $treatments = $this->getTreatments(20);
+
+        return view('medic.viewtreatments', compact('treatments'));
+    }
+
+    private function getTreatments($number)
+    {
+
+        $treatments_objects = Treatment::all()->take($number)->all();
+
+        $treatments = [];
+
+        foreach ($treatments_objects as $treatment) {
+
+            $treatments[] = $this->treatmentToArray($treatment);
+
+        }
+
+        return $treatments;
+    }
+
+    private function treatmentToArray($treatment, $makeReadable = true)
+    {
+        $item = array_except($treatment->toArray(), ['created_at', 'updated_at']);
+        $patient = $treatment->patient;
+        $item['lastname'] = $patient->lastname;
+        $item['firstname'] = $patient->firstname;
+        if ($makeReadable) {
+            $item['diagnosis'] = $this->diagnosis[$item['diagnosis']];
+            $item['treatment'] = $this->treatments[$item['treatment']];
+            $item['interval'] = $this->intervals[$item['interval']];
+            if ($item['interval'] > 1) {
+                $item['interval'] .= " luni";
+            } else {
+                $item['interval'] .= " lună";
+            }
+
+            $item['appointment'] = ($item['appointment']) ? 'Da' : 'Nu';
+        }
+
+        return $item;
+    }
+
+    public function treatmentDetails($id)
+    {
+        $treatment = Treatment::find($id);
+        $patient = $treatment->patient;
+        $treatment = $this->treatmentToArray($treatment);
+        $patient = $this->patientToArray($patient);
+
+        return view('medic.treatmentdetails', compact('treatment', 'patient'));
+    }
+
+    /**
+     * @param $id
+     * @return \Illuminate\View\View
+     */
+    public function editTreatment($id)
+    {
+        $treatment = Treatment::find($id);
+        $treatment = $this->treatmentToArray($treatment, false);
+        $patient = Patient::find($treatment['patient_id']);
+        $intervals = $this->intervals;
+        $treatments = $this->treatments;
+        $diagnosis = $this->diagnosis;
+
+        return view('medic.edittreatment', compact('treatment', 'patient', 'intervals', 'treatments', 'diagnosis'));
+    }
+
+    /**
+     * @param $id
+     * @param UpdateTreatmentRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function updateTreatment($id, UpdateTreatmentRequest $request)
+    {
+        $treatment = Treatment::find($id);
+
+        $requestAll = $request->all();
+        $requestAll['date'] = date_create_from_format('d.m.Y H:i', $requestAll['date']);
+
+        if (!(isset($requestAll['appointment'])) || is_null($requestAll['appointment'])) {
+            $requestAll['appointment'] = false;
+        } else {
+            $requestAll['appointment'] = true;
+        }
+        $treatment->update($requestAll);
+
+        return redirect('medic/view_treatments')->with([
+            'flash_message' => 'Recomandarea a fost editată cu succes!',
+            'flash_message_type' => 'alert-success'
+        ]);
+    }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function removeTreatment($id)
+    {
+        $treatment = Treatment::find($id);
+
+        $treatment->delete();
+
+        return redirect('medic/view_treatments')->with([
+            'flash_message' => 'Recomandarea a fost ștearsă cu succes!',
+            'flash_message_type' => 'alert-success'
+        ]);
+    }
 }

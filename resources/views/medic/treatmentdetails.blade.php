@@ -1,3 +1,13 @@
+<?php
+function checkIfSet($value)
+{
+    if (!strlen($value)) {
+        return "-";
+    }
+    return $value;
+}
+
+?>
 @extends('layouts.master')
 
 @section('content')
@@ -6,7 +16,7 @@
     <div class="main_container">
         @include('partials.errors')
         @include('partials.error')
-        <legend><h3>Vizualizare consultaţie</h3></legend>
+        <legend><h3>Vizualizare recomandare</h3></legend>
         <div class="row">
             <div class="form-group">
                 <div class="panel panel-default col-lg-3 col-md-offset-1">
@@ -20,66 +30,79 @@
         </div>
 
         <div class="row">
-            <div class="col-xs-6 col-sm-3 col-md-offset-1">
-                <div class="panel panel-default">
+            <div class="col-xs-6 col-sm-2 col-md-offset-1">
+                <div class="panel panel-warning">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Dată consultație</h3>
+                        <h3 class="panel-title">Dată recomandare</h3>
                     </div>
                     <div class="panel-body">
-                        <p>{{ $consult['date'] }}</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-6 col-sm-3">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Înălțime</h3>
-                    </div>
-                    <div class="panel-body">
-                        <p>{{ $consult['height'] }}</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-6 col-sm-3">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Greutate</h3>
-                    </div>
-                    <div class="panel-body">
-                        <p>{{ $consult['weight'] }}</p>
+                        <p>{{ $treatment['date'] }}</p>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-xs-6 col-sm-3 col-md-offset-1">
+            <div class="col-xs-6 col-sm-2 col-md-offset-1">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Circumferință abdominală</h3>
+                        <h3 class="panel-title">Diagnostic</h3>
                     </div>
                     <div class="panel-body">
-                        <p>{{ $consult['abdominal_circumference'] }}</p>
+                        <p>{{ $treatment['diagnosis'] }}</p>
                     </div>
                 </div>
             </div>
-            <div class="col-xs-6 col-sm-3">
+            <div class="col-xs-6 col-sm-2">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Tensiune</h3>
+                        <h3 class="panel-title">Tratament</h3>
                     </div>
                     <div class="panel-body">
-                        <p>{{ $consult['blood_pressure'] }}</p>
+                        <p>{{ $treatment['treatment'] }}</p>
                     </div>
                 </div>
             </div>
-            <div class="col-xs-6 col-sm-3">
+            <div class="col-xs-6 col-sm-2">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Glicemie</h3>
+                        <h3 class="panel-title">Specificaţii</h3>
                     </div>
                     <div class="panel-body">
-                        <p>{{ $consult['glucose'] }}</p>
+                        <p>{{ checkIfSet($treatment['extra']) }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-6 col-sm-2 col-md-offset-1">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Trimitere</h3>
+                    </div>
+                    <div class="panel-body">
+                        <p>{{ checkIfSet($treatment['referral']) }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Interval consultaţie viitoare [luni] </h3>
+                    </div>
+                    <div class="panel-body">
+                        <p>{{ $treatment['interval'] }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Setare programare viitoare</h3>
+                    </div>
+                    <div class="panel-body">
+                        <p>{{ $treatment['appointment'] }}</p>
                     </div>
                 </div>
             </div>
@@ -87,7 +110,7 @@
 
         <div class="form-group">
             <div class="col-lg-9 col-lg-offset-1">
-                <a href="{{ url('medic/edit_consult').'/'.$consult['id'] }}" class="btn btn-warning">Editare</a>
+                <a href="{{ url('medic/edit_treatment').'/'.$treatment['id'] }}" class="btn btn-warning">Editare</a>
             </div>
         </div>
     </div>

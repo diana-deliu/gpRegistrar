@@ -25,7 +25,6 @@ Route::get('medic/add_patient', 'MedicController@addPatient');
 Route::post('medic/create_patient', 'MedicController@createPatient');
 Route::get('medic/view_patients', 'MedicController@viewPatients');
 Route::get('medic/get_patients', 'MedicController@getPatientsArray');
-
 Route::get('medic/edit_patient/{id}', 'MedicController@editPatient');
 Route::post('medic/update_patient/{id}', 'MedicController@updatePatient');
 Route::get('medic/remove_patient/{id}', 'MedicController@removePatient');
@@ -45,14 +44,26 @@ Route::get('medic/remove_consult/{id}', 'MedicController@removeConsult');
 Route::get('medic/add_lab', 'MedicController@addLab');
 Route::post('medic/create_lab', 'MedicController@createLab');
 Route::get('medic/view_labs', 'MedicController@viewLabs');
-
 Route::get('medic/lab_details/{id}', 'MedicController@labDetails');
 Route::get('medic/edit_lab/{id}', 'MedicController@editLab');
 Route::post('medic/update_lab/{id}', 'MedicController@updateLab');
 Route::get('medic/remove_lab/{id}', 'MedicController@removeLab');
 
+Route::get('medic/add_vaccine', 'MedicController@addVaccine');
+Route::post('medic/create_vaccine', 'MedicController@createVaccine');
+Route::get('medic/view_vaccines', 'MedicController@viewVaccines');
+Route::get('medic/vaccine_details/{id}', 'MedicController@vaccineDetails');
+Route::get('medic/edit_vaccine/{id}', 'MedicController@editVaccine');
+Route::post('medic/update_vaccine/{id}', 'MedicController@updateVaccine');
+Route::get('medic/remove_vaccine/{id}', 'MedicController@removeVaccine');
 
-
+Route::get('medic/add_treatment', 'MedicController@addTreatment');
+Route::post('medic/create_treatment', 'MedicController@createTreatment');
+Route::get('medic/view_treatments', 'MedicController@viewTreatments');
+Route::get('medic/treatment_details/{id}', 'MedicController@treatmentDetails');
+Route::get('medic/edit_treatment/{id}', 'MedicController@editTreatment');
+Route::post('medic/update_treatment/{id}', 'MedicController@updateTreatment');
+Route::get('medic/remove_treatment/{id}', 'MedicController@removeTreatment');
 
 Route::controllers([
     'auth' => 'Auth\AuthController',

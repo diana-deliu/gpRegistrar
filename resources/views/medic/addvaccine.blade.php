@@ -7,9 +7,9 @@
     <div class="main_container">
         @include('partials.errors')
         @include('partials.error')
-        {!! Form::open(['url' => 'medic/create_consult', 'class' => 'form-horizontal']) !!}
+        {!! Form::open(['url' => 'medic/create_vaccine', 'class' => 'form-horizontal']) !!}
         <fieldset>
-            <legend><h3>Adăugare consultaţie</h3></legend>
+            <legend><h3>Adăugare vaccinări</h3></legend>
             <div class="form-group">
                 <div class="panel panel-default col-lg-4 col-md-offset-1">
                     <div class="panel-body">
@@ -29,14 +29,14 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="date" class="col-lg-2 control-label">Dată</label>
+                <label for="start_date" class="col-lg-2 control-label">Dată de început</label>
 
                 <div class="col-lg-6">
                     <div class="container">
                         <div class="col-lg-2">
                             <div class="form-group">
                                 <div class='input-group date' id='datetimepicker11'>
-                                    {!! Form::text('date', old('date'), ['class' => 'form-control'])!!}
+                                    {!! Form::text('start_date', old('start_date'), ['class' => 'form-control'])!!}
                                     <span class="input-group-addon">
                                         <span class="glyphicon glyphicon-calendar">
                                         </span>
@@ -53,49 +53,40 @@
                 {!! Form::hidden('patient_id', null, ['id'=>'patient_id_hidden']) !!}
             @endif
             <div class="form-group">
-                <label for="height" class="col-lg-2 control-label">Înălţime [cm]</label>
+                <label for="category" class="col-lg-2 control-label">Categorie</label>
 
                 <div class="col-lg-2">
-                    {!! Form::text('height', old('height'), ['class' => 'form-control'])!!}
+                    {!! Form::select('category', $categories, null, ['class' => 'form-control'])!!}
                     <span class="help-block"></span>
                 </div>
             </div>
             <div class="form-group">
-                <label for="weight" class="col-lg-2 control-label">Greutate [kg]</label>
+                <label for="interval" class="col-lg-2 control-label">Interval [în luni]</label>
 
                 <div class="col-lg-2">
-                    {!! Form::text('weight', old('weight'), ['class' => 'form-control'])!!}
+                    {!! Form::select('interval', $intervals, null, ['class' => 'form-control'])!!}
                     <span class="help-block"></span>
                 </div>
             </div>
             <div class="form-group">
-                <label for="abdominal_circumference" class="col-lg-2 control-label">Circumferinţă abdominală
-                    [cm]</label>
+                <label for="notification" class="col-lg-2 control-label">Notificare către pacient</label>
 
                 <div class="col-lg-2">
-                    {!! Form::text('abdominal_circumference', null, ['class' => 'form-control'])!!}
+                    {!! Form::checkbox('notification', old('notification'), true)!!}
                     <span class="help-block"></span>
                 </div>
             </div>
             <div class="form-group">
-                <label for="blood_pressure" class="col-lg-2 control-label">Tensiune [mm/Hg]</label>
+                <label for="appointment" class="col-lg-2 control-label">Setare programare</label>
 
                 <div class="col-lg-2">
-                    {!! Form::text('blood_pressure', old('blood_pressure'), ['class' => 'form-control'])!!}
-                    <span class="help-block"></span>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="glucose" class="col-lg-2 control-label">Glicemie</label>
-
-                <div class="col-lg-2">
-                    {!! Form::text('glucose', old('glucose'), ['class' => 'form-control'])!!}
+                    {!! Form::checkbox('appointment', old('appointment'), true)!!}
                     <span class="help-block"></span>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-lg-6 col-lg-offset-2">
-                    <button type="submit" class="btn btn-default">Adăugare consultație</button>
+                    <button type="submit" class="btn btn-default">Adăugare</button>
                 </div>
             </div>
         </fieldset>
@@ -122,4 +113,5 @@
 @section('footer_scripts')
     @include('partials.date_picker')
     @include('partials.patients_dropdown')
+    @include('partials.popover')
 @stop

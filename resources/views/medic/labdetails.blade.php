@@ -1,3 +1,21 @@
+<?php
+function getPanelState($value, $min, $max)
+{
+    if ($value > $min && $value < $max) {
+        return "panel-success";
+    }
+    return "panel-primary";
+}
+
+function checkIfSet($value)
+{
+    if (!strlen($value)) {
+        return "-";
+    }
+    return $value;
+}
+
+?>
 @extends('layouts.master')
 
 @section('content')
@@ -17,13 +35,21 @@
                     </div>
                 </div>
             </div>
+            <div class="panel-body">
+                <div class="panel panel-default col-lg-3 col-md-offset-4">
+                    <div class="panel-body">
+                         <strong>NOTĂ:</strong> <p>Analizele afișate cu: </p> <p class="text-success"><strong>verde</strong> se află în limitele normale,</p>
+                        <p class="text-danger"><strong>roșu</strong> sugerează o anomalie! </p>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="row">
             <div class="col-xs-6 col-sm-2 col-md-offset-1">
-                <div class="panel panel-primary">
+                <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Dată analize</h3>
+                        <h3 class="panel-title">Dată</h3>
                     </div>
                     <div class="panel-body">
                         <p>{{ $lab['date'] }}</p>
@@ -31,96 +57,97 @@
                 </div>
             </div>
             <div class="col-xs-6 col-sm-2">
-                <div class="panel panel-primary">
+                <div class="panel {{ getPanelState($lab['hemoglobin'], 0, 6) }}">
                     <div class="panel-heading">
                         <h3 class="panel-title">Hemoglobină</h3>
                     </div>
                     <div class="panel-body">
-                        <p>{{ $lab['hemoglobin'] }}</p>
+                        <p>{{ checkIfSet($lab['hemoglobin']) }}</p>
                     </div>
                 </div>
             </div>
             <div class="col-xs-6 col-sm-2">
-                <div class="panel panel-primary">
+                <div class="panel {{ getPanelState($lab['vsh'], 0, 6) }}">
                     <div class="panel-heading">
                         <h3 class="panel-title">VSH</h3>
                     </div>
                     <div class="panel-body">
-                        <p>{{ $lab['vsh'] }}</p>
+                        <p>{{ checkIfSet($lab['vsh']) }}</p>
+
                     </div>
                 </div>
             </div>
             <div class="col-xs-6 col-sm-2">
-                <div class="panel panel-primary">
+                <div class="panel {{ getPanelState($lab['transaminases'], 0, 6) }}">
                     <div class="panel-heading">
                         <h3 class="panel-title">Transaminaze</h3>
                     </div>
                     <div class="panel-body">
-                        <p>{{ $lab['transaminases'] }}</p>
+                        <p>{{ checkIfSet($lab['transaminases']) }}</p>
+
                     </div>
                 </div>
             </div>
             <div class="col-xs-6 col-sm-2">
-                <div class="panel panel-primary">
+                <div class="panel {{ getPanelState($lab['cholesterol'], 0, 6) }}">
                     <div class="panel-heading">
                         <h3 class="panel-title">Colesterol</h3>
                     </div>
                     <div class="panel-body">
-                        <p>{{ $lab['cholesterol'] }}</p>
+                        <p>{{ checkIfSet($lab['cholesterol']) }}</p>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="row">
-
             <div class="col-xs-6 col-sm-2 col-md-offset-1">
-                <div class="panel panel-primary">
+                <div class="panel {{ getPanelState($lab['triglycerides'], 0, 6) }}">
                     <div class="panel-heading">
                         <h3 class="panel-title">Trigliceride</h3>
                     </div>
                     <div class="panel-body">
-                        <p>{{ $lab['triglycerides'] }}</p>
+                        <p>{{ checkIfSet($lab['triglycerides']) }}</p>
                     </div>
                 </div>
             </div>
             <div class="col-xs-6 col-sm-2">
-                <div class="panel panel-primary">
+                <div class="panel {{ getPanelState($lab['creatinine'], 0, 6) }}">
                     <div class="panel-heading">
                         <h3 class="panel-title">Creatinină</h3>
                     </div>
                     <div class="panel-body">
-                        <p>{{ $lab['creatinine'] }}</p>
+                        <p>{{ checkIfSet($lab['creatinine']) }}</p>
                     </div>
                 </div>
             </div>
             <div class="col-xs-6 col-sm-2">
-                <div class="panel panel-primary">
+                <div class="panel {{ getPanelState($lab['urea'], 0, 6) }}">
                     <div class="panel-heading">
                         <h3 class="panel-title">Uree</h3>
                     </div>
                     <div class="panel-body">
-                        <p>{{ $lab['urea'] }}</p>
+                        <p>{{ checkIfSet($lab['urea']) }}</p>
                     </div>
                 </div>
             </div>
             <div class="col-xs-6 col-sm-2">
-                <div class="panel panel-primary">
+                <div class="panel {{ getPanelState($lab['urine'], 0, 6) }}">
                     <div class="panel-heading">
                         <h3 class="panel-title">Examen de urină</h3>
                     </div>
                     <div class="panel-body">
-                        <p>{{ $lab['urine'] }}</p>
+                        <p>{{ checkIfSet($lab['urine']) }}</p>
                     </div>
                 </div>
             </div>
             <div class="col-xs-6 col-sm-2">
-                <div class="panel panel-primary">
+                <div class="panel {{ getPanelState($lab['copro'], 0, 1000) }}">
                     <div class="panel-heading">
                         <h3 class="panel-title">Examen coproparazitologic</h3>
                     </div>
                     <div class="panel-body">
-                        <p>{{ $lab['copro'] }}</p>
+                        <p>{{ checkIfSet($lab['copro']) }}</p>
                     </div>
                 </div>
             </div>
