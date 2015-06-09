@@ -93,7 +93,7 @@
             <div class="col-lg-8 col-lg-offset-1">
                 <a href="{{ url('medic/edit_patient').'/'.$patient['id'] }}" class="btn btn-warning">Editare</a>
                 <a href="{{ url('medic/view_patienthistory').'/'.$patient['id'] }}" class="btn btn-default">Istoric</a>
-                <a href="{{ url('medic/add_consult').'/'.$patient['id'] }}" class="btn btn-primary pull-right">Adăugare consultație</a>
+                <a href="{{ url('medic/add_consult').'/'.$patient['id'] }}" class="btn btn-success pull-right">Adăugare consultație</a>
             </div>
         </div>
     </div>

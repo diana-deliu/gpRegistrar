@@ -129,15 +129,15 @@
                 </a>
                 <ul class="sub-menu" style="display: none;">
                     <li>
-                        <a href="#">
+                        <a href="{{ url('medic/add_survey') }}">
                             <img src="{{ asset('images/add_red_20.png') }}"/><br/>
                             Adăugare chestionar
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{{ url('medic/view_surveys') }}">
                             <img src="{{ asset('images/edit_orange_20.png') }}"/><br/>
-                            Editează chestionar
+                            Administrare chestionare
                         </a>
                     </li>
                 </ul>

@@ -5,6 +5,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Http\Requests\CreateConsultRequest;
+use App\Http\Requests\CreateSurveyRequest;
 use App\Http\Requests\CreateTreatmentRequest;
 use App\Http\Requests\CreateLabRequest;
 use App\Http\Requests\CreatePatientRequest;
@@ -17,6 +18,8 @@ use App\Http\Requests\UpdateVaccineRequest;
 use App\Lab;
 use App\Patient;
 use App\Services\Registrar;
+use App\Survey;
+use App\SurveyQuestion;
 use App\Treatment;
 use App\Vaccine;
 use DateTime;
@@ -100,8 +103,13 @@ class MedicController extends Controller
         $patientRequest = array_only($request->all(), ['cnp', 'lastname', 'firstname', 'address']);
         $patientRequest['user_id'] = $user->id;
 
-        Patient::create($patientRequest);
-
+        $result = Patient::create($patientRequest);
+        if (is_null($result)) {
+            return redirect('medic/add_patient')->with([
+                'flash_message' => 'Pacientul a fost adăugat cu succes!',
+                'flash_message_type' => 'alert-danger'
+            ])->withInput($request->all());
+        }
         return redirect('/')->with([
             'flash_message' => 'Pacientul a fost adăugat cu succes!',
             'flash_message_type' => 'alert-success'
@@ -265,10 +273,11 @@ class MedicController extends Controller
         return view('medic.patientdetails', compact('patient'));
     }
 
-    /****************** Patient related *****************
+    /****************** Patient related *****************/
 
-    /****************** Consult related *****************
+    /****************** Consult related ****************/
 
+    /*
      * @param CreateConsultRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -279,10 +288,10 @@ class MedicController extends Controller
         $result = Consult::create($requestAll);
 
         if (is_null($result)) {
-            return redirect('/')->with([
+            return redirect('medic/add_consult')->with([
                 'flash_message' => 'Consultația nu a putut fi adăugată!',
                 'flash_message_type' => 'alert-danger'
-            ]);
+            ])->withInput($result->all());
         }
 
         return redirect('/')->with([
@@ -425,17 +434,19 @@ class MedicController extends Controller
     {
         $requestAll = $request->all();
         $requestAll['date'] = date_create_from_format('d.m.Y H:i', $requestAll['date']);
+
         $result = Lab::create($requestAll);
 
-        return redirect('medic/view_labs')->with([
-            'flash_message' => 'Analizele au fost adăugate cu succes!',
-            'flash_message_type' => 'alert-success'
-        ]);
-
         if (is_null($result)) {
-            return redirect('/')->with([
+            $requestAll['date'] = $requestAll['date']->format("Y-m-d H:i");
+            return redirect('medic/add_lab')->with([
                 'flash_message' => 'Analizele nu au putut fi adăugate!',
                 'flash_message_type' => 'alert-danger'
+            ])->withInput($result->all());
+
+            return redirect('medic/view_labs')->with([
+                'flash_message' => 'Analizele au fost adăugate cu succes!',
+                'flash_message_type' => 'alert-success'
             ]);
         }
     }
@@ -553,10 +564,10 @@ class MedicController extends Controller
         $result = Vaccine::create($requestAll);
 
         if (is_null($result)) {
-            return redirect('/')->with([
+            return redirect('medic/add_vaccine')->with([
                 'flash_message' => 'Vaccinările nu au putut fi adăugate!',
                 'flash_message_type' => 'alert-danger'
-            ]);
+            ])->withInput($result->all());
         }
 
         return redirect('medic/view_vaccines')->with([
@@ -700,10 +711,10 @@ class MedicController extends Controller
         $result = Treatment::create($requestAll);
 
         if (is_null($result)) {
-            return redirect('/')->with([
+            return redirect('medic/add_treatment')->with([
                 'flash_message' => 'Recomandarea nu a putut fi adăugată!',
                 'flash_message_type' => 'alert-danger'
-            ]);
+            ])->withInput($result->all());
         }
 
         return redirect('medic/view_treatments')->with([
@@ -818,7 +829,6 @@ class MedicController extends Controller
     public function removeTreatment($id)
     {
         $treatment = Treatment::find($id);
-
         $treatment->delete();
 
         return redirect('medic/view_treatments')->with([
@@ -826,4 +836,107 @@ class MedicController extends Controller
             'flash_message_type' => 'alert-success'
         ]);
     }
+
+    /****************** Survey related *****************/
+    public function addSurvey()
+    {
+        return view('medic.addsurvey');
+    }
+
+    public function createSurvey(CreateSurveyRequest $request)
+    {
+        $requestAll = $request->all();
+
+        $requestAll['start_date'] = date_create_from_format('d.m.Y H:i', $requestAll['start_date']);
+        $requestAll['end_date'] = date_create_from_format('d.m.Y H:i', $requestAll['end_date']);
+
+        foreach ($requestAll as $requestKey => $requestElem) {
+            if (starts_with($requestKey, "question")) {
+                if (strlen(trim($requestElem)) == 0) {
+                    $requestAll['start_date'] = $requestAll['start_date']->format("Y-m-d H:i");
+                    $requestAll['end_date'] = $requestAll['end_date']->format("Y-m-d H:i");
+
+                    return redirect('medic/add_survey')->with([
+                        'flash_message' => 'Toate întrebările trebuie să aibă conţinut!',
+                        'flash_message_type' => 'alert-danger'
+                    ])->withInput($requestAll);
+                }
+            }
+        }
+
+        if ($requestAll['end_date'] <= $requestAll['start_date']) {
+            return redirect('medic/add_survey')->with([
+                'flash_message' => 'Data de sfârşit trebuie să fie după cea de început!',
+                'flash_message_type' => 'alert-danger'
+            ])->withInput($request->all());
+        }
+        $result = Survey::create($requestAll);
+        if (is_null($result)) {
+            return redirect('medic/add_survey')->with([
+                'flash_message' => 'Chestionarul nu a putut fi adăugat!',
+                'flash_message_type' => 'alert-danger'
+            ])->withInput($request->all());
+        }
+
+        $surveyId = $result->id;
+        foreach ($requestAll as $requestKey => $requestElem) {
+            if (starts_with($requestKey, "question")) {
+                $questionId = intval(substr($requestKey, 8, strlen($requestKey)));
+                $surveyQuestionRequest = [];
+                $surveyQuestionRequest['survey_id'] = $surveyId;
+                $surveyQuestionRequest['question_id'] = $questionId;
+                $surveyQuestionRequest['question'] = $requestElem;
+                $result = SurveyQuestion::create($surveyQuestionRequest);
+            }
+        }
+        return redirect('medic/view_surveys')->with([
+            'flash_message' => 'Chestionarul a fost adăugat cu succes!',
+            'flash_message_type' => 'alert-success'
+        ]);
+    }
+
+    /**
+     * @return \Illuminate\View\View
+     */
+    public function viewSurveys()
+    {
+        $surveys = $this->getSurveys(20);
+
+        return view('medic.viewsurveys', compact('surveys'));
+    }
+
+    private function getSurveys($number)
+    {
+
+        $surveys_objects = Survey::all()->take($number)->all();
+
+        $surveys = [];
+
+        foreach ($surveys_objects as $survey) {
+
+            $surveys[] = $this->surveyToArray($survey);
+
+        }
+
+        return $surveys;
+    }
+
+    private function surveyToArray($survey)
+    {
+        $item = array_except($survey->toArray(), ['created_at', 'updated_at']);
+
+        return $item;
+    }
+
+    public function surveyDetails($id)
+    {
+        $survey = Survey::find($id);
+        $survey->questions;
+        $survey = $this->surveyToArray($survey);
+
+        return view('medic.surveydetails', compact('survey'));
+    }
+
+
+
 }

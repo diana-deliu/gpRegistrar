@@ -7,7 +7,7 @@
     <div class="main_container">
         @include('partials.errors')
         @include('partials.error')
-        {!! Form::open(['url' => 'medic/update_patient/'.$patient['id'], 'class' => 'form-horizontal']) !!}
+        {!! Form::model($patient, ['url' => 'medic/update_patient/'.$patient['id'], 'class' => 'form-horizontal']) !!}
         <fieldset>
             <legend><h3>Editare pacient</h3></legend>
             <div class="form-group">

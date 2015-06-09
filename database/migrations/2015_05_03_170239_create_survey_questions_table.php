@@ -19,9 +19,14 @@ class CreateSurveyQuestionsTable extends Migration {
         function(Blueprint $table)
 		{
 			$table->increments('id');
-            $table->string('question');
             $table->integer('question_id');
-			$table->timestamps();
+            $table->string('question');
+
+            $table->integer('survey_id')->unsigned();
+            $table->foreign('survey_id')->references('id')->on('surveys');
+
+
+            $table->timestamps();
 		});
 	}
 

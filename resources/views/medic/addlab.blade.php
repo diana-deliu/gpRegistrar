@@ -35,7 +35,7 @@
                     <div class="container">
                         <div class="col-lg-2">
                             <div class="form-group">
-                                <div class='input-group date' id='datetimepicker11'>
+                                <div class="input-group date datetimepicker">
                                     {!! Form::text('date', old('date'), ['class' => 'form-control'])!!}
                                     <span class="input-group-addon">
                                         <span class="glyphicon glyphicon-calendar">

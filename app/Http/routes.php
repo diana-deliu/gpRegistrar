@@ -65,6 +65,12 @@ Route::get('medic/edit_treatment/{id}', 'MedicController@editTreatment');
 Route::post('medic/update_treatment/{id}', 'MedicController@updateTreatment');
 Route::get('medic/remove_treatment/{id}', 'MedicController@removeTreatment');
 
+Route::get('medic/add_survey', 'MedicController@addSurvey');
+Route::post('medic/create_survey', 'MedicController@createSurvey');
+Route::get('medic/view_surveys', 'MedicController@viewSurveys');
+Route::get('medic/survey_details/{id}', 'MedicController@surveyDetails');
+
+
 Route::controllers([
     'auth' => 'Auth\AuthController',
     'password' => 'Auth\PasswordController'
