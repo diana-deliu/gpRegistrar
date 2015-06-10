@@ -9,7 +9,7 @@
         <legend><h3>Vizualizare pacient</h3></legend>
         <div class="row">
             <div class="col-xs-6 col-sm-2 col-md-offset-1">
-                <div class="panel panel-default">
+                <div class="panel panel-warning">
                     <div class="panel-heading">
                         <h3 class="panel-title">CNP</h3>
                     </div>
@@ -92,7 +92,11 @@
         <div class="form-group">
             <div class="col-lg-8 col-lg-offset-1">
                 <a href="{{ url('medic/edit_patient').'/'.$patient['id'] }}" class="btn btn-warning">Editare</a>
-                <a href="{{ url('medic/view_patienthistory').'/'.$patient['id'] }}" class="btn btn-default">Istoric</a>
+                <a href="{{ url('medic/view_patientconsults').'/'.$patient['id'] }}" class="btn btn-default col-lg-offset-1">Consultaţii</a>
+                <a href="{{ url('medic/view_patientlabs').'/'.$patient['id'] }}" class="btn btn-default">Analize</a>
+                <a href="{{ url('medic/view_patientvaccines').'/'.$patient['id'] }}" class="btn btn-default">Vaccinări</a>
+                <a href="{{ url('medic/view_patienttreatments').'/'.$patient['id'] }}" class="btn btn-default">Recomandări</a>
+                <a href="{{ url('medic/view_patientanswers').'/'.$patient['id'] }}" class="btn btn-default">Răspunsuri</a>
                 <a href="{{ url('medic/add_consult').'/'.$patient['id'] }}" class="btn btn-success pull-right">Adăugare consultație</a>
             </div>
         </div>

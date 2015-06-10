@@ -65,8 +65,9 @@ function checkIfSet($value)
             </div>
         @endforeach
         <div class="form-group">
-            <div class="col-lg-8 col-lg-offset-1">
+            <div class="col-lg-6 col-lg-offset-1">
                 <a href="{{ url('medic/edit_survey').'/'.$survey['id'] }}" class="btn btn-warning">Editare</a>
+                <a href="{{ url('medic/view_answers').'/'.$survey['id'] }}" class="btn btn-default pull-right">Vezi răspunsuri</a>
             </div>
         </div>
     </div>

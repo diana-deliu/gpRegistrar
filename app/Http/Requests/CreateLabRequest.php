@@ -24,7 +24,7 @@ class CreateLabRequest extends Request {
         return [
             'patient_id' => 'required|integer|min:0',
             'date' => 'required|date',
-            'hemoglobin' => 'max:1000|integer',
+            'hemoglobin' => 'required|max:1000|integer',
             'vsh' => 'max:1000|integer',
             'transaminases' => 'max:1000|integer',
             'cholesterol' => 'max:1000|integer',

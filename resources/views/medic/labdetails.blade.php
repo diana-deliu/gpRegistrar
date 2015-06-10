@@ -47,7 +47,7 @@ function checkIfSet($value)
 
         <div class="row">
             <div class="col-xs-6 col-sm-2 col-md-offset-1">
-                <div class="panel panel-default">
+                <div class="panel panel-warning">
                     <div class="panel-heading">
                         <h3 class="panel-title">Dată</h3>
                     </div>

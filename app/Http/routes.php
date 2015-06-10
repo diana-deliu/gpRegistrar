@@ -28,8 +28,10 @@ Route::get('medic/get_patients', 'MedicController@getPatientsArray');
 Route::get('medic/edit_patient/{id}', 'MedicController@editPatient');
 Route::post('medic/update_patient/{id}', 'MedicController@updatePatient');
 Route::get('medic/remove_patient/{id}', 'MedicController@removePatient');
-Route::get('medic/import_patient', 'MedicController@importPatient');
 Route::get('medic/patient_details/{id}', 'MedicController@patientDetails');
+
+Route::get('medic/import_patient', 'MedicController@importPatient');
+Route::get('medic/export_patient', 'MedicController@exportPatient');
 
 Route::get('medic/add_consult/{id}', 'MedicController@addConsult');
 Route::get('medic/add_consult', 'MedicController@addConsult');
@@ -69,6 +71,11 @@ Route::get('medic/add_survey', 'MedicController@addSurvey');
 Route::post('medic/create_survey', 'MedicController@createSurvey');
 Route::get('medic/view_surveys', 'MedicController@viewSurveys');
 Route::get('medic/survey_details/{id}', 'MedicController@surveyDetails');
+Route::get('medic/edit_survey/{id}', 'MedicController@editSurvey');
+Route::post('medic/update_survey/{id}', 'MedicController@updateSurvey');
+Route::get('medic/remove_survey/{id}', 'MedicController@removeSurvey');
+
+Route::get('medic/view_answers', 'MedicController@viewAnswers');
 
 
 Route::controllers([

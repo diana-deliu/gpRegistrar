@@ -63,7 +63,6 @@
             <div class="form-group">
                 <div class="col-lg-2 col-lg-offset-2">
                     <button type="submit" class="btn btn-default">Adăugare</button>
-                    <a href="{{ url ('medic/import_patient') }}" class="btn btn-primary pull-right"> Import Excel</a>
                 </div>
             </div>
         </fieldset>

@@ -13,7 +13,7 @@
             <div class="form-group">
                 <div class="panel panel-default col-lg-4 col-md-offset-1">
                     <div class="panel-body">
-                        <a href="#" class="btn btn-primary btn-xs pull-right" id="patient_change_btn">
+                        <a href="#" class="btn btn-success btn-xs pull-right" id="patient_change_btn">
                             Pacient</a>
                         CNP: <span id="patient_cnp">
                             @if(isset($patient))
@@ -35,7 +35,7 @@
                     <div class="container">
                         <div class="col-lg-2">
                             <div class="form-group">
-                                <div class='input-group date' class="datetimepicker">
+                                <div class="input-group date datetimepicker">
                                     {!! Form::text('date', old('date'), ['class' => 'form-control'])!!}
                                     <span class="input-group-addon">
                                         <span class="glyphicon glyphicon-calendar">
@@ -70,7 +70,7 @@
             </div>
             <div class="form-group">
                 <label for="extra" class="col-lg-2 control-label">Specificații</label>
-                <button type="button" class="btn btn-primary" data-container="body" data-toggle="popover" data-placement="right" data-content='Se va completa cu numărul de tablete/picături pe zi, precum și recomandări, spre exemplu "înainte de masă", exact ca pe rețetă.' data-original-title="" title="">Info</button>
+                <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="right" data-content='Se va completa cu numărul de tablete/picături pe zi, precum și recomandări, spre exemplu "înainte de masă", exact ca pe rețetă.' data-original-title="" title="">Info</button>
 
 
                 <div class="col-lg-2">
@@ -80,7 +80,7 @@
             </div>
             <div class="form-group">
                 <label for="referral" class="col-lg-2 control-label">Trimitere</label>
-                <button type="button" class="btn btn-primary" data-container="body" data-toggle="popover" data-placement="right" data-content='Se va specifica secția și motivul/id-ul și data analizelor/consultației pe baza cărora s-a considerat necesară trimiterea' data-original-title="" title="">Info</button>
+                <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="right" data-content='Se va specifica secția și motivul/id-ul și data analizelor/consultației pe baza cărora s-a considerat necesară trimiterea' data-original-title="" title="">Info</button>
 
 
                 <div class="col-lg-2">
@@ -90,7 +90,7 @@
             </div>
             <div class="form-group">
                 <label for="interval" class="col-lg-2 control-label">Interval consultație viitoare [luni]</label>
-                <button type="button" class="btn btn-primary" data-container="body" data-toggle="popover" data-placement="right" data-content='Dacă se setează acest câmp, se va seta automat și notificarea pentru pacient și medic.' data-original-title="" title="">Info</button>
+                <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="right" data-content='Dacă se setează acest câmp, se va seta automat și notificarea pentru pacient și medic.' data-original-title="" title="">Info</button>
 
                 <div class="col-lg-2">
                     {!! Form::select('interval', $intervals, null, ['class' => 'form-control'])!!}
@@ -126,7 +126,7 @@
                     <select class="form-control" id="patients_dropdown"></select>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="patient_choose">Alegere</button>
+                    <button type="button" class="btn btn-default" id="patient_choose">Alegere</button>
                 </div>
             </div>
         </div>

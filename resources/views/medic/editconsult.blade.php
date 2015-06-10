@@ -14,7 +14,7 @@
 
                 <div class="panel panel-default col-lg-3 col-md-offset-1">
                     <div class="panel-body">
-                        <a href="#" class="btn btn-primary btn-xs pull-right" id="patient_change_btn">
+                        <a href="#" class="btn btn-success btn-xs pull-right" id="patient_change_btn">
                             Pacient</a>
                         CNP: <span id="patient_cnp">
                                 {{ $patient['cnp'] }}
@@ -32,7 +32,7 @@
                     <div class="container">
                         <div class="col-lg-2">
                             <div class="form-group">
-                                <div class='input-group date' class="datetimepicker">
+                                <div class="input-group date datetimepicker">
                                     {!! Form::text('date', $consult['date'], ['class' => 'form-control'])!!}
                                     <span class="input-group-addon">
                                         <span class="glyphicon glyphicon-calendar">
@@ -87,7 +87,7 @@
             </div>
             <div class="form-group">
                 <div class="col-lg-2 col-lg-offset-2">
-                    <button type="submit" class="btn btn-default">Editare</button>
+                    <button type="submit" class="btn btn-warning">Editare</button>
                     <a href="{{ url('medic/remove_consult').'/'.$consult['id'] }}" class="btn btn-primary pull-right">Ștergere</a>
                 </div>
             </div>
@@ -106,7 +106,7 @@
                     <select class="form-control" id="patients_dropdown"></select>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="patient_choose">Alegere</button>
+                    <button type="button" class="btn btn-default" id="patient_choose">Alegere</button>
                 </div>
             </div>
         </div>

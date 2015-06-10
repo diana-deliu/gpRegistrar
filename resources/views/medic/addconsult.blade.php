@@ -11,9 +11,9 @@
         <fieldset>
             <legend><h3>Adăugare consultaţie</h3></legend>
             <div class="form-group">
-                <div class="panel panel-default col-lg-4 col-md-offset-1">
+                <div class="panel panel-default col-xs-4 col-md-offset-1">
                     <div class="panel-body">
-                        <a href="#" class="btn btn-primary btn-xs pull-right" id="patient_change_btn">
+                        <a href="#" class="btn btn-success btn-xs pull-right" id="patient_change_btn">
                             Pacient</a>
                         CNP: <span id="patient_cnp">
                             @if(isset($patient))
@@ -35,7 +35,7 @@
                     <div class="container">
                         <div class="col-lg-2">
                             <div class="form-group">
-                                <div class='input-group date' class="datetimepicker">
+                                <div class="input-group date datetimepicker">
                                     {!! Form::text('date', old('date'), ['class' => 'form-control'])!!}
                                     <span class="input-group-addon">
                                         <span class="glyphicon glyphicon-calendar">
@@ -94,8 +94,8 @@
                 </div>
             </div>
             <div class="form-group">
-                <div class="col-lg-6 col-lg-offset-2">
-                    <button type="submit" class="btn btn-default">Adăugare consultație</button>
+                <div class="col-xs-6 col-xs-offset-2">
+                    <button type="submit" class="btn btn-default">Adăugare</button>
                 </div>
             </div>
         </fieldset>
@@ -113,7 +113,7 @@
                     <select class="form-control" id="patients_dropdown"></select>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="patient_choose">Alegere</button>
+                    <button type="button" class="btn btn-default" id="patient_choose">Alegere</button>
                 </div>
             </div>
         </div>

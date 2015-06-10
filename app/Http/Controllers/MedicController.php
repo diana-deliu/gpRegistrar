@@ -13,6 +13,7 @@ use App\Http\Requests\CreateVaccineRequest;
 use App\Http\Requests\UpdateConsultRequest;
 use App\Http\Requests\UpdateLabRequest;
 use App\Http\Requests\UpdatePatientRequest;
+use App\Http\Requests\UpdateSurveyRequest;
 use App\Http\Requests\UpdateTreatmentRequest;
 use App\Http\Requests\UpdateVaccineRequest;
 use App\Lab;
@@ -266,6 +267,11 @@ class MedicController extends Controller
         return view('medic.importpatient', compact('maxFileSize'));
     }
 
+    public function exportPatient()
+    {
+        return view('medic.exportpatient');
+    }
+
     public function patientDetails($id)
     {
         $patient = Patient::find($id);
@@ -291,7 +297,7 @@ class MedicController extends Controller
             return redirect('medic/add_consult')->with([
                 'flash_message' => 'Consultația nu a putut fi adăugată!',
                 'flash_message_type' => 'alert-danger'
-            ])->withInput($result->all());
+            ])->withInput($requestAll);
         }
 
         return redirect('/')->with([
@@ -442,13 +448,14 @@ class MedicController extends Controller
             return redirect('medic/add_lab')->with([
                 'flash_message' => 'Analizele nu au putut fi adăugate!',
                 'flash_message_type' => 'alert-danger'
-            ])->withInput($result->all());
-
-            return redirect('medic/view_labs')->with([
-                'flash_message' => 'Analizele au fost adăugate cu succes!',
-                'flash_message_type' => 'alert-success'
-            ]);
+            ])->withInput($requestAll);
         }
+
+        return redirect('medic/view_labs')->with([
+            'flash_message' => 'Analizele au fost adăugate cu succes!',
+            'flash_message_type' => 'alert-success'
+        ]);
+
     }
 
     /**
@@ -567,7 +574,7 @@ class MedicController extends Controller
             return redirect('medic/add_vaccine')->with([
                 'flash_message' => 'Vaccinările nu au putut fi adăugate!',
                 'flash_message_type' => 'alert-danger'
-            ])->withInput($result->all());
+            ])->withInput($requestAll);
         }
 
         return redirect('medic/view_vaccines')->with([
@@ -714,7 +721,7 @@ class MedicController extends Controller
             return redirect('medic/add_treatment')->with([
                 'flash_message' => 'Recomandarea nu a putut fi adăugată!',
                 'flash_message_type' => 'alert-danger'
-            ])->withInput($result->all());
+            ])->withInput($requestAll);
         }
 
         return redirect('medic/view_treatments')->with([
@@ -836,6 +843,7 @@ class MedicController extends Controller
             'flash_message_type' => 'alert-success'
         ]);
     }
+    /****************** Treatment related *****************/
 
     /****************** Survey related *****************/
     public function addSurvey()
@@ -843,18 +851,26 @@ class MedicController extends Controller
         return view('medic.addsurvey');
     }
 
+    private function stringLocaleRoToDate($dateString) {
+        return date_create_from_format('d.m.Y H:i', $dateString);
+    }
+
+    private function dateToStringLocaleEn($date) {
+        return $date->format("Y-m-d H:i");
+    }
+
     public function createSurvey(CreateSurveyRequest $request)
     {
         $requestAll = $request->all();
 
-        $requestAll['start_date'] = date_create_from_format('d.m.Y H:i', $requestAll['start_date']);
-        $requestAll['end_date'] = date_create_from_format('d.m.Y H:i', $requestAll['end_date']);
+        $requestAll['start_date'] = $this->stringLocaleRoToDate($requestAll['start_date']);
+        $requestAll['end_date'] = $this->stringLocaleRoToDate($requestAll['end_date']);
 
         foreach ($requestAll as $requestKey => $requestElem) {
             if (starts_with($requestKey, "question")) {
                 if (strlen(trim($requestElem)) == 0) {
-                    $requestAll['start_date'] = $requestAll['start_date']->format("Y-m-d H:i");
-                    $requestAll['end_date'] = $requestAll['end_date']->format("Y-m-d H:i");
+                    $requestAll['start_date'] = $this->dateToStringLocaleEn($requestAll['start_date']);
+                    $requestAll['end_date'] = $this->dateToStringLocaleEn($requestAll['end_date']);
 
                     return redirect('medic/add_survey')->with([
                         'flash_message' => 'Toate întrebările trebuie să aibă conţinut!',
@@ -865,17 +881,19 @@ class MedicController extends Controller
         }
 
         if ($requestAll['end_date'] <= $requestAll['start_date']) {
+            $requestAll['start_date'] = $this->dateToStringLocaleEn($requestAll['start_date']);
+            $requestAll['end_date'] = $this->dateToStringLocaleEn($requestAll['end_date']);
             return redirect('medic/add_survey')->with([
                 'flash_message' => 'Data de sfârşit trebuie să fie după cea de început!',
                 'flash_message_type' => 'alert-danger'
-            ])->withInput($request->all());
+            ])->withInput($requestAll);
         }
         $result = Survey::create($requestAll);
         if (is_null($result)) {
             return redirect('medic/add_survey')->with([
                 'flash_message' => 'Chestionarul nu a putut fi adăugat!',
                 'flash_message_type' => 'alert-danger'
-            ])->withInput($request->all());
+            ])->withInput($requestAll);
         }
 
         $surveyId = $result->id;
@@ -935,6 +953,104 @@ class MedicController extends Controller
         $survey = $this->surveyToArray($survey);
 
         return view('medic.surveydetails', compact('survey'));
+    }
+
+    /**
+     * @param $id
+     * @return \Illuminate\View\View
+     */
+    public function editSurvey($id)
+    {
+        $survey = Survey::find($id);
+        $survey->questions;
+        $survey = $this->surveyToArray($survey);
+
+        return view('medic.editsurvey', compact('survey'));
+    }
+
+    /**
+     * @param $id
+     * @param UpdateSurveyRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function updateSurvey($id, UpdateSurveyRequest $request)
+    {
+        $survey = Survey::find($id);
+
+        $requestAll = $request->all();
+        $requestAll['start_date'] = $this->stringLocaleRoToDate($requestAll['start_date']);
+        $requestAll['end_date'] = $this->stringLocaleRoToDate($requestAll['end_date']);
+
+        foreach ($requestAll as $requestKey => $requestElem) {
+            if (starts_with($requestKey, "question")) {
+                if (strlen(trim($requestElem)) == 0) {
+                    $requestAll['start_date'] = $this->dateToStringLocaleEn($requestAll['start_date']);
+                    $requestAll['end_date'] = $this->dateToStringLocaleEn($requestAll['end_date']);
+
+                    return redirect('medic/add_survey')->with([
+                        'flash_message' => 'Toate întrebările trebuie să aibă conţinut!',
+                        'flash_message_type' => 'alert-danger'
+                    ])->withInput($requestAll);
+                }
+            }
+        }
+
+        if ($requestAll['end_date'] <= $requestAll['start_date']) {
+            $requestAll['start_date'] = $this->dateToStringLocaleEn($requestAll['start_date']);
+            $requestAll['end_date'] = $this->dateToStringLocaleEn($requestAll['end_date']);
+            return redirect('medic/edit_survey/'.$id)->with([
+                'flash_message' => 'Data de sfârşit trebuie să fie după cea de început!',
+                'flash_message_type' => 'alert-danger'
+            ])->withInput($requestAll);
+        }
+
+        $survey->update($requestAll);
+
+        $surveyId = $survey->id;
+        foreach ($requestAll as $requestKey => $requestElem) {
+            if (starts_with($requestKey, "question")) {
+                $found = false;
+                foreach($survey->questions as $question) {
+                    $questionId = intval(substr($requestKey, 8, strlen($requestKey)));
+                    if($question->question_id == $questionId) {
+                        $surveyQuestionRequest = [];
+                        $surveyQuestionRequest['question'] = $question->question;
+                        $question->update($surveyQuestionRequest);
+                        $found = true;
+                    }
+                }
+                if(!$found) {
+                    $surveyQuestionRequest = [];
+                    $surveyQuestionRequest['survey_id'] = $surveyId;
+                    $surveyQuestionRequest['question_id'] = $questionId;
+                    $surveyQuestionRequest['question'] = $requestElem;
+                    $result = SurveyQuestion::create($surveyQuestionRequest);
+                }
+            }
+        }
+
+        return redirect('medic/view_surveys')->with([
+            'flash_message' => 'Chestionarul a fost editat cu succes!',
+            'flash_message_type' => 'alert-success'
+        ]);
+    }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function removeSurvey($id)
+    {
+        $survey = Survey::find($id);
+        foreach($survey->questions as $question) {
+            $question->delete();
+        }
+        $survey->delete();
+
+        return redirect('medic/view_surveys')->with([
+            'flash_message' => 'Chestionarul a fost șters cu succes!',
+            'flash_message_type' => 'alert-success'
+        ]);
     }
 
 

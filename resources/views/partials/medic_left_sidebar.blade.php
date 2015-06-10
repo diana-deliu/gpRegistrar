@@ -14,20 +14,14 @@
                 <ul class="sub-menu" style="display: none;">
                     <li>
                         <a href="{{ url('medic/add_patient') }}">
-                            <img src="{{ asset('images/information_red_20.png') }}"/><br/>
+                            <img src="{{ asset('images/add_green_20.png') }}"/><br/>
                             Adăugare pacient
                         </a>
                     </li>
                     <li class="active droplink">
                         <a href="{{ url('medic/view_patients') }}">
-                            <img src="{{ asset('images/registry_orange_20.png') }}"/><br/>
+                            <img src="{{ asset('images/edit_orange_20.png') }}"/><br/>
                             Administrare pacienți
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <img src="{{ asset('images/chart_blue_20.png') }}"/><br/>
-                            Grafice
                         </a>
                     </li>
                 </ul>
@@ -42,7 +36,7 @@
                     <ul class="sub-menu" style="display: none;">
                         <li>
                             <a href="{{ url('medic/add_consult') }}">
-                                <img src="{{ asset('images/add_red_20.png') }}"/><br/>
+                                <img src="{{ asset('images/add_green_20.png') }}"/><br/>
                                 Adăugare consultație
                             </a>
                         </li>
@@ -56,7 +50,7 @@
                 </li>
             <li class="droplink">
                 <a href="#">
-                    <img src="{{ asset('images/lab_blue_30.png') }}"/>
+                    <img src="{{ asset('images/lab_green_30.png') }}"/>
 
                     <p>Analize</p>
                     <span class="glyphicon glyphicon-chevron-left" style="float:right;margin-top:-39px;"></span>
@@ -64,7 +58,7 @@
                 <ul class="sub-menu" style="display: none;">
                     <li>
                         <a href="{{ url('medic/add_lab') }}">
-                            <img src="{{ asset('images/add_red_20.png') }}"/><br/>
+                            <img src="{{ asset('images/add_green_20.png') }}"/><br/>
                             Adăugare analize
                         </a>
                     </li>
@@ -86,7 +80,7 @@
                 <ul class="sub-menu" style="display: none;">
                     <li>
                         <a href="{{ url('medic/add_vaccine') }}">
-                            <img src="{{ asset('images/add_red_20.png') }}"/><br/>
+                            <img src="{{ asset('images/add_green_20.png') }}"/><br/>
                             Adăugare vaccinăre
                         </a>
                     </li>
@@ -108,7 +102,7 @@
                 <ul class="sub-menu" style="display: none;">
                     <li>
                         <a href="{{ url('medic/add_treatment') }}">
-                            <img src="{{ asset('images/add_red_20.png') }}"/><br/>
+                            <img src="{{ asset('images/add_green_20.png') }}"/><br/>
                             Adăugare recomandare
                         </a>
                     </li>
@@ -122,7 +116,7 @@
             </li>
             <li class="droplink">
                 <a href="#">
-                    <img src="{{ asset('images/survey_blue_30.png') }}"/>
+                    <img src="{{ asset('images/survey_green_30.png') }}"/>
 
                     <p>Chestionare</p>
                     <span class="glyphicon glyphicon-chevron-left" style="float:right;margin-top:-39px;"></span>
@@ -130,7 +124,7 @@
                 <ul class="sub-menu" style="display: none;">
                     <li>
                         <a href="{{ url('medic/add_survey') }}">
-                            <img src="{{ asset('images/add_red_20.png') }}"/><br/>
+                            <img src="{{ asset('images/add_green_20.png') }}"/><br/>
                             Adăugare chestionar
                         </a>
                     </li>
@@ -142,13 +136,6 @@
                     </li>
                 </ul>
             </li>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="{{ asset('images/notification_red_30.png') }}"/>
-
-                    <p>Notificări</p>
-                </a>
             </li>
         </ul>
     </div>
