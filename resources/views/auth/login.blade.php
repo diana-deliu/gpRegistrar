@@ -21,11 +21,10 @@
                             <span>
                                 {!! Form::checkbox('remember', null, null, []) !!}
                                 {!! Form::label('remember', 'Ţine-mă minte') !!}
+                                <span class="help-block"></span>
                             </span>
-                            <button type="submit"
-                                    class="btn btn-primary col-lg-4 col-sm-offset-3 col-lg-offset-1 col-xs-offset-2"
-                                    style="position:absolute">Autentificare
-                            </button>
+                            <button type="submit" class="btn btn-primary col-lg-4">Autentificare</button>
+
                             <div class="pull-right">
                                 <a href="{{ url('/auth/register') }}">Nu aveţi cont activ?</a><br/>
                                 <a href="{{ url('/password/email') }}">Aţi uitat parola?</a>

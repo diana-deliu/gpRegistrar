@@ -11,7 +11,7 @@
         <fieldset>
             <legend><h3>Adăugare consultaţie</h3></legend>
             <div class="form-group">
-                <div class="panel panel-default col-xs-4 col-md-offset-1">
+                <div class="panel panel-default col-xs-4 col-xs-offset-1">
                     <div class="panel-body">
                         <a href="#" class="btn btn-success btn-xs pull-right" id="patient_change_btn">
                             Pacient</a>
@@ -29,11 +29,11 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="date" class="col-lg-2 control-label">Dată</label>
+                <label for="date" class="col-xs-2 control-label">Dată</label>
 
-                <div class="col-lg-6">
+                <div class="col-xs-6">
                     <div class="container">
-                        <div class="col-lg-2">
+                        <div class="col-xs-2">
                             <div class="form-group">
                                 <div class="input-group date datetimepicker">
                                     {!! Form::text('date', old('date'), ['class' => 'form-control'])!!}
@@ -53,42 +53,42 @@
                 {!! Form::hidden('patient_id', null, ['id'=>'patient_id_hidden']) !!}
             @endif
             <div class="form-group">
-                <label for="height" class="col-lg-2 control-label">Înălţime [cm]</label>
+                <label for="height" class="col-xs-2 control-label">Înălţime [cm]</label>
 
-                <div class="col-lg-2">
+                <div class="col-sm-6 col-md-3">
                     {!! Form::text('height', old('height'), ['class' => 'form-control'])!!}
                     <span class="help-block"></span>
                 </div>
             </div>
             <div class="form-group">
-                <label for="weight" class="col-lg-2 control-label">Greutate [kg]</label>
+                <label for="weight" class="col-xs-2 control-label">Greutate [kg]</label>
 
-                <div class="col-lg-2">
+                <div class="col-xs-2">
                     {!! Form::text('weight', old('weight'), ['class' => 'form-control'])!!}
                     <span class="help-block"></span>
                 </div>
             </div>
             <div class="form-group">
-                <label for="abdominal_circumference" class="col-lg-2 control-label">Circumferinţă abdominală
+                <label for="abdominal_circumference" class="col-xs-2 control-label">Circumferinţă abdominală
                     [cm]</label>
 
-                <div class="col-lg-2">
+                <div class="col-xs-2">
                     {!! Form::text('abdominal_circumference', null, ['class' => 'form-control'])!!}
                     <span class="help-block"></span>
                 </div>
             </div>
             <div class="form-group">
-                <label for="blood_pressure" class="col-lg-2 control-label">Tensiune [mm/Hg]</label>
+                <label for="blood_pressure" class="col-xs-2 control-label">Tensiune [mm/Hg]</label>
 
-                <div class="col-lg-2">
+                <div class="col-xs-2">
                     {!! Form::text('blood_pressure', old('blood_pressure'), ['class' => 'form-control'])!!}
                     <span class="help-block"></span>
                 </div>
             </div>
             <div class="form-group">
-                <label for="glucose" class="col-lg-2 control-label">Glicemie</label>
+                <label for="glucose" class="col-xs-2 control-label">Glicemie</label>
 
-                <div class="col-lg-2">
+                <div class="col-xs-2">
                     {!! Form::text('glucose', old('glucose'), ['class' => 'form-control'])!!}
                     <span class="help-block"></span>
                 </div>
