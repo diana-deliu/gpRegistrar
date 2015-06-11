@@ -36,7 +36,12 @@ Route::get('medic/export_patient', 'MedicController@exportPatient');
 Route::get('medic/add_consult/{id}', 'MedicController@addConsult');
 Route::get('medic/add_consult', 'MedicController@addConsult');
 Route::post('medic/create_consult', 'MedicController@createConsult');
-Route::get('medic/view_patienthistory/{id}', 'MedicController@viewPatientHistory');
+Route::get('medic/view_patientconsults/{id}', 'MedicController@viewPatientConsults');
+Route::get('medic/view_patientlabs/{id}', 'MedicController@viewPatientLabs');
+Route::get('medic/view_patientvaccines/{id}', 'MedicController@viewPatientVaccines');
+Route::get('medic/view_patienttreatments/{id}', 'MedicController@viewPatientTreatments');
+Route::get('medic/view_patientAnswers/{id}', 'MedicController@viewPatientAnswers');
+
 Route::get('medic/view_generalconsults', 'MedicController@viewGeneralConsults');
 Route::get('medic/consult_details/{id}', 'MedicController@consultDetails');
 Route::get('medic/edit_consult/{id}', 'MedicController@editConsult');
@@ -77,6 +82,24 @@ Route::get('medic/remove_survey/{id}', 'MedicController@removeSurvey');
 
 Route::get('medic/view_answers', 'MedicController@viewAnswers');
 
+/*************************** PATIENT **************************/
+Route::get('patient/view_registry', 'PatientController@viewRegistry');
+Route::get('patient/view_consults', 'PatientController@viewConsults');
+Route::get('patient/consult_details/{id}', 'PatientController@consultDetails');
+
+Route::get('patient/view_labs', 'PatientController@viewLabs');
+Route::get('patient/lab_details/{id}', 'PatientController@labDetails');
+
+Route::get('patient/view_vaccines', 'PatientController@viewVaccines');
+Route::get('patient/vaccine_details/{id}', 'PatientController@vaccineDetails');
+
+Route::get('patient/view_treatments', 'PatientController@viewTreatments');
+Route::get('patient/treatment_details/{id}', 'PatientController@treatmentDetails');
+
+Route::get('patient/view_surveys', 'PatientController@viewSurveys');
+Route::get('patient/survey_details/{id}', 'PatientController@surveyDetails');
+
+Route::get('patient/edit_registry', 'PatientController@editRegistry');
 
 Route::controllers([
     'auth' => 'Auth\AuthController',

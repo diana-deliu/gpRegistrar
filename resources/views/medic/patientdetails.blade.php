@@ -91,8 +91,8 @@
         </div>
         <div class="form-group">
             <div class="col-lg-8 col-lg-offset-1">
-                <a href="{{ url('medic/edit_patient').'/'.$patient['id'] }}" class="btn btn-warning">Editare</a>
-                <a href="{{ url('medic/view_patientconsults').'/'.$patient['id'] }}" class="btn btn-default col-lg-offset-1">Consultaţii</a>
+                <a href="{{ url('medic/edit_patient').'/'.$patient['id'] }}" class="btn btn-warning ">Editare</a>
+                <a href="{{ url('medic/view_patientconsults').'/'.$patient['id'] }}" class="btn btn-default col-lg-offset-2">Consultaţii</a>
                 <a href="{{ url('medic/view_patientlabs').'/'.$patient['id'] }}" class="btn btn-default">Analize</a>
                 <a href="{{ url('medic/view_patientvaccines').'/'.$patient['id'] }}" class="btn btn-default">Vaccinări</a>
                 <a href="{{ url('medic/view_patienttreatments').'/'.$patient['id'] }}" class="btn btn-default">Recomandări</a>

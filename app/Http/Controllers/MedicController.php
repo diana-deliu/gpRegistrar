@@ -17,6 +17,7 @@ use App\Http\Requests\UpdateSurveyRequest;
 use App\Http\Requests\UpdateTreatmentRequest;
 use App\Http\Requests\UpdateVaccineRequest;
 use App\Lab;
+use App\Medic;
 use App\Patient;
 use App\Services\Registrar;
 use App\Survey;
@@ -25,6 +26,7 @@ use App\Treatment;
 use App\Vaccine;
 use DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MedicController extends Controller
 {
@@ -103,6 +105,7 @@ class MedicController extends Controller
 
         $patientRequest = array_only($request->all(), ['cnp', 'lastname', 'firstname', 'address']);
         $patientRequest['user_id'] = $user->id;
+        $patientRequest['medic_id'] = Medic::where('user_id', '=', Auth::user()->id)->firstOrFail()->id;
 
         $result = Patient::create($patientRequest);
         if (is_null($result)) {
@@ -300,7 +303,7 @@ class MedicController extends Controller
             ])->withInput($requestAll);
         }
 
-        return redirect('/')->with([
+        return redirect('medic/view_generalconsults')->with([
             'flash_message' => 'Consultația a fost adăugată cu succes!',
             'flash_message_type' => 'alert-success'
         ]);
@@ -310,7 +313,7 @@ class MedicController extends Controller
      * @param $patient_id
      * @return \Illuminate\View\View
      */
-    public function viewPatientHistory($patient_id)
+    public function viewPatientConsults($patient_id)
     {
         $patient = Patient::find($patient_id);
         $consult_objects = $patient->consults;
@@ -318,7 +321,52 @@ class MedicController extends Controller
         foreach ($consult_objects as $consult) {
             $consults[] = $this->consultToArray($consult);
         }
-        return view('medic.viewpatienthistory', compact('consults'));
+        return view('medic.viewpatientconsults', compact('consults'));
+    }
+
+    /**
+     * @param $patient_id
+     * @return \Illuminate\View\View
+     */
+    public function viewPatientTreatments($patient_id)
+    {
+        $patient = Patient::find($patient_id);
+        $treatment_objects = $patient->treatments;
+        $treatments = [];
+        foreach ($treatment_objects as $treatment) {
+            $treatments[] = $this->treatmentToArray($treatment);
+        }
+        return view('medic.viewpatienttreatments', compact('treatments'));
+    }
+
+    /**
+     * @param $patient_id
+     * @return \Illuminate\View\View
+     */
+    public function viewPatientLabs($patient_id)
+    {
+        $patient = Patient::find($patient_id);
+        $lab_objects = $patient->labs;
+        $labs = [];
+        foreach ($lab_objects as $lab) {
+            $labs[] = $this->labToArray($lab);
+        }
+        return view('medic.viewpatientlabs', compact('labs'));
+    }
+
+    /**
+     * @param $patient_id
+     * @return \Illuminate\View\View
+     */
+    public function viewPatientVaccines($patient_id)
+    {
+        $patient = Patient::find($patient_id);
+        $vaccine_objects = $patient->vaccines;
+        $vaccines = [];
+        foreach ($vaccine_objects as $vaccine) {
+            $vaccines[] = $this->vaccineToArray($vaccine);
+        }
+        return view('medic.viewpatientvaccines', compact('vaccines'));
     }
 
     private function getConsults($number)
@@ -926,7 +974,7 @@ class MedicController extends Controller
     private function getSurveys($number)
     {
 
-        $surveys_objects = Survey::all()->take($number)->all();
+        $surveys_objects = Survey::all();
 
         $surveys = [];
 

@@ -20,33 +20,25 @@
                 <th>
                     <input type="text" id="filter_firstname" class="form-control input-sm" placeholder="Prenume">
                 </th>
-                <th>
-                    <input type="text" id="filter_category" class="form-control input-sm" placeholder="Categorie">
-                </th>
-                <th>
-                    <input type="text" id="filter_interval" class="form-control input-sm" placeholder="Interval">
-                </th>
             </tr>
             </thead>
             <tbody>
-            @foreach($vaccines as $vaccine)
+            @foreach($labs as $lab)
                 <tr>
-                    <td><a href="{{url('medic/vaccine_details').'/'.$vaccine['id']}}">{{ $vaccine['id'] }}</a></td>
-                    <td>{{ $vaccine['start_date'] }}</td>
-                    <td>{{ $vaccine['lastname'] }}</td>
-                    <td>{{ $vaccine['firstname'] }}</td>
-                    <td>{{ $vaccine['category'] }}</td>
-                    <td>{{ $vaccine['interval'] }}</td>
+                    <td><a href="{{url('medic/lab_details').'/'.$lab['id']}}">{{ $lab['id'] }}</a></td>
+                    <td>{{ $lab['date'] }}</td>
+                    <td>{{ $lab['lastname'] }}</td>
+                    <td>{{ $lab['firstname'] }}</td>
                 </tr>
                 </a>
             @endforeach
             </tbody>
         </table>
-        @if(!count($vaccines))
+        @if(!count($labs))
             <tr>
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <p class="text-danger" style="text-align:center;"><strong>Nu s-a găsit nicio întregistrare!</strong></p>
+                        <p class="text-danger" style="text-align:center;"><strong>Nu s-a găsit nicio întregistrare pentru acest pacient!</strong></p>
                     </div>
                 </div>
             </tr>

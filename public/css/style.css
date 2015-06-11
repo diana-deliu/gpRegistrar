@@ -444,9 +444,9 @@ tr.hover {
 }
 
 .main_container {
-    padding: 100px 20px 0 20px;
+    padding: 100px 20px 80px 20px;
     background: #F1F4F9;
-    min-height: 1084px !important;
+    min-height: 1024px !important;
     position: relative;
     overflow: hidden;
 }
@@ -480,6 +480,9 @@ tr.hover {
     padding-top: 19px;
     padding-bottom: 19px;
     overflow: hidden;
+    -webkit-box-shadow: 0px 1px 8px 0px rgba(51, 51, 51, 0.2);
+    -moz-box-shadow: 0px 1px 8px 0px rgba(51, 51, 51, 0.2);
+    box-shadow: 0px 1px 8px 0px rgba(51, 51, 51, 0.2);
 }
 
 .page-footer p {

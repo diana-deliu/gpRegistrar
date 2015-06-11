@@ -16,7 +16,7 @@ class Patient extends Model {
      *
      * @var array
      */
-    protected $fillable = ['cnp','firstname', 'lastname', 'address', 'user_id'];
+    protected $fillable = ['cnp','firstname', 'lastname', 'address', 'user_id', 'medic_id'];
 
 
     public function user() {
@@ -25,6 +25,26 @@ class Patient extends Model {
 
     public function consults() {
         return $this->hasMany('App\Consult');
+    }
+
+    public function labs() {
+        return $this->hasMany('App\Lab');
+    }
+
+    public function vaccines() {
+        return $this->hasMany('App\Vaccine');
+    }
+
+    public function treatments() {
+        return $this->hasMany('App\Treatment');
+    }
+
+    public function surveyAnswers() {
+        return $this->hasMany('App\SurveyAnswer');
+    }
+
+    public function medic() {
+        return $this->belongsTo('App\Medic');
     }
 
 }

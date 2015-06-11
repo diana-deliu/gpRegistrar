@@ -50,7 +50,6 @@
                     </div>
                 </div>
             </tr>
-        @endif
     </div>
 @stop
 @section('footer_scripts')

@@ -2,7 +2,7 @@
 
 @section('content')
 
-    @include('partials.medic_left_sidebar')
+    @include('partials.patient_left_sidebar')
 
     <div class="main_container">
         @include('partials.errors')
@@ -12,29 +12,31 @@
             <tr>
                 <th>Id</th>
                 <th>
-                    <input type="text" id="filter_date" class="form-control input-sm" placeholder="Dată">
+                    <input type="text" id="filter_title" class="form-control input-sm" placeholder="Titlu">
                 </th>
                 <th>
-                    <input type="text" id="filter_lastname" class="form-control input-sm" placeholder="Nume">
+                    <input type="text" id="filter_start_date" class="form-control input-sm" placeholder="Dată de început">
                 </th>
                 <th>
-                    <input type="text" id="filter_firstname" class="form-control input-sm" placeholder="Prenume">
+                    <input type="text" id="filter_endate" class="form-control input-sm" placeholder="Dată de sfârșit">
                 </th>
             </tr>
             </thead>
             <tbody>
-            @foreach($consults as $consult)
+            @foreach($surveys as $survey)
+
                 <tr>
-                    <td><a href="{{url('medic/consults_details').'/'.$consult['id']}}">{{ $consult['id'] }}</a></td>
-                    <td>{{ $consult['date'] }}</td>
-                    <td>{{ $consult['lastname'] }}</td>
-                    <td>{{ $consult['firstname'] }}</td>
+
+                    <td><a href="{{url('patient/survey_details').'/'.$survey['id']}}">{{ $survey['id'] }}</a></td>
+                    <td>{{ $survey['title'] }}</td>
+                    <td>{{ $survey['start_date'] }}</td>
+                    <td>{{ $survey['end_date'] }}</td>
                 </tr>
                 </a>
             @endforeach
             </tbody>
         </table>
-        @if(!count($consults))
+        @if(!count($surveys))
             <tr>
                 <div class="panel panel-default">
                     <div class="panel-body">

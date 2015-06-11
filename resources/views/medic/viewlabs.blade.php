@@ -31,10 +31,18 @@
                     <td>{{ $lab['firstname'] }}</td>
                 </tr>
                 </a>
-
             @endforeach
             </tbody>
         </table>
+        @if(!count($labs))
+            <tr>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <p class="text-danger" style="text-align:center;"><strong>Nu s-a găsit nicio întregistrare!</strong></p>
+                    </div>
+                </div>
+            </tr>
+        @endif
     </div>
 @stop
 @section('footer_scripts')

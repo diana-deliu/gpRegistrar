@@ -2,7 +2,7 @@
 
 @section('content')
 
-    @include('partials.medic_left_sidebar')
+    @include('partials.patient_left_sidebar')
 
     <div class="main_container">
         @include('partials.errors')
@@ -31,7 +31,7 @@
             <tbody>
             @foreach($vaccines as $vaccine)
                 <tr>
-                    <td><a href="{{url('medic/vaccine_details').'/'.$vaccine['id']}}">{{ $vaccine['id'] }}</a></td>
+                    <td><a href="{{url('patient/vaccine_details').'/'.$vaccine['id']}}">{{ $vaccine['id'] }}</a></td>
                     <td>{{ $vaccine['start_date'] }}</td>
                     <td>{{ $vaccine['lastname'] }}</td>
                     <td>{{ $vaccine['firstname'] }}</td>

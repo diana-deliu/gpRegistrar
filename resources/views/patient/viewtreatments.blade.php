@@ -2,7 +2,7 @@
 
 @section('content')
 
-    @include('partials.medic_left_sidebar')
+    @include('partials.patient_left_sidebar')
 
     <div class="main_container">
         @include('partials.errors')
@@ -21,28 +21,32 @@
                     <input type="text" id="filter_firstname" class="form-control input-sm" placeholder="Prenume">
                 </th>
                 <th>
-                    <input type="text" id="filter_category" class="form-control input-sm" placeholder="Categorie">
+                    <input type="text" id="filter_diagnosis" class="form-control input-sm" placeholder="Diagnostic">
                 </th>
                 <th>
-                    <input type="text" id="filter_interval" class="form-control input-sm" placeholder="Interval">
+                    <input type="text" id="filter_treatment" class="form-control input-sm" placeholder="Tratament">
+                </th>
+                <th>
+                    <input type="text" id="filter_extra" class="form-control input-sm" placeholder="Specificații">
                 </th>
             </tr>
             </thead>
             <tbody>
-            @foreach($vaccines as $vaccine)
+            @foreach($treatments as $treatment)
                 <tr>
-                    <td><a href="{{url('medic/vaccine_details').'/'.$vaccine['id']}}">{{ $vaccine['id'] }}</a></td>
-                    <td>{{ $vaccine['start_date'] }}</td>
-                    <td>{{ $vaccine['lastname'] }}</td>
-                    <td>{{ $vaccine['firstname'] }}</td>
-                    <td>{{ $vaccine['category'] }}</td>
-                    <td>{{ $vaccine['interval'] }}</td>
+                    <td><a href="{{url('patient/treatment_details').'/'.$treatment['id']}}">{{ $treatment['id'] }}</a></td>
+                    <td>{{ $treatment['date'] }}</td>
+                    <td>{{ $treatment['lastname'] }}</td>
+                    <td>{{ $treatment['firstname'] }}</td>
+                    <td>{{ $treatment['diagnosis'] }}</td>
+                    <td>{{ $treatment['treatment'] }}</td>
+                    <td>{{ $treatment['extra'] }}</td>
                 </tr>
                 </a>
             @endforeach
             </tbody>
         </table>
-        @if(!count($vaccines))
+        @if(!count($treatments))
             <tr>
                 <div class="panel panel-default">
                     <div class="panel-body">

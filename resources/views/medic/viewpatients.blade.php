@@ -37,9 +37,17 @@
                     <td>{{ $patient['email'] }}</td>
                 </tr>
                 </a>
-
             @endforeach
             </tbody>
+            @if(!count($patients))
+                <tr>
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <p class="text-danger" style="text-align:center;"><strong>Nu s-a găsit nicio întregistrare!</strong></p>
+                        </div>
+                    </div>
+                </tr>
+            @endif
         </table>
         <a href="{{ url ('medic/import_patient') }}" class="btn btn-success"> Import</a>
         <a href="{{ url ('medic/export_patient') }}" class="btn btn-primary pull-right"> Export</a>

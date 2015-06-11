@@ -35,6 +35,15 @@
             @endforeach
             </tbody>
         </table>
+        @if(!count($consults))
+            <tr>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <p class="text-danger" style="text-align:center;"><strong>Nu s-a găsit nicio întregistrare pentru acest pacient!</strong></p>
+                    </div>
+                </div>
+            </tr>
+        @endif
     </div>
 @stop
 @section('footer_scripts')

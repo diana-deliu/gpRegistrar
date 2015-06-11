@@ -38,7 +38,7 @@ class HomeController extends Controller {
             case 'medic':
                 return view('medic.index');
             case 'patient':
-                return view('patient.index');
+                return redirect('patient/view_registry');
         }
 		return redirect('auth/login');
 	}
