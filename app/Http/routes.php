@@ -30,7 +30,8 @@ Route::post('medic/update_patient/{id}', 'MedicController@updatePatient');
 Route::get('medic/remove_patient/{id}', 'MedicController@removePatient');
 Route::get('medic/patient_details/{id}', 'MedicController@patientDetails');
 
-Route::get('medic/import_patient', 'MedicController@importPatient');
+Route::get('medic/import_patient', 'MedicController@importPatientForm');
+Route::post('medic/import_patient', 'MedicController@importPatient');
 Route::get('medic/export_patient', 'MedicController@exportPatient');
 
 Route::get('medic/add_consult/{id}', 'MedicController@addConsult');
@@ -102,6 +103,9 @@ Route::get('patient/add_answers/{id}', 'PatientController@addAnswers');
 Route::post('patient/create_answers/{id}', 'PatientController@createAnswers');
 
 Route::get('patient/edit_registry', 'PatientController@editRegistry');
+
+Route::get('medic/calendar', 'CalendarController@medicGet');
+Route::get('patient/calendar', 'CalendarController@patientGet');
 
 Route::controllers([
     'auth' => 'Auth\AuthController',

@@ -10,6 +10,7 @@ use App\Http\Requests\CreateTreatmentRequest;
 use App\Http\Requests\CreateLabRequest;
 use App\Http\Requests\CreatePatientRequest;
 use App\Http\Requests\CreateVaccineRequest;
+use App\Http\Requests\ImportRequest;
 use App\Http\Requests\UpdateConsultRequest;
 use App\Http\Requests\UpdateLabRequest;
 use App\Http\Requests\UpdatePatientRequest;
@@ -27,6 +28,7 @@ use App\Vaccine;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
 
 class MedicController extends Controller
 {
@@ -249,10 +251,66 @@ class MedicController extends Controller
         return min($max_upload, $max_post, $memory_limit);
     }
 
-    public function importPatient()
+    public function importPatientForm()
     {
         $maxFileSize = $this->max_file_upload_in_bytes() / (1024 * 1024);
         return view('medic.importpatient', compact('maxFileSize'));
+    }
+
+    function randomPassword( $length = 8 ) {
+        $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_-=+;:,.?";
+        $password = substr( str_shuffle( $chars ), 0, $length );
+        return $password;
+    }
+
+    public function importPatient(ImportRequest $request, Registrar $registrar)
+    {
+        $file = $request->file('file');
+        $fileName = $file->getClientOriginalName();
+        $file->move('uploads', $fileName);
+
+        $results = Excel::load('uploads/'.$fileName, function($reader) {})->get();
+        $i = 0;
+        foreach($results->all() as $item) {
+            $patientData = $item->all();
+
+            $userRequest['email'] = $patientData['e_mail'];
+            $userRequest['role'] = 'patient';
+            $user = $this->createUser($userRequest, $registrar);
+
+            if(!$user) {
+                return redirect('medic/view_patients')->with([
+                    'flash_message' => 'Eroare importare pacient ' . $i,
+                    'flash_message_type' => 'alert-danger'
+                ]);
+            }
+
+            $patientRequest['cnp'] = $patientData['cnp'];
+            $patientRequest['firstname'] = $patientData['prenume'];
+            $patientRequest['lastname'] = $patientData['nume'];
+            $patientRequest['address'] = $patientData['adresa'];
+            $patientRequest['user_id'] = $user->id;
+            $patientRequest['medic_id'] = Medic::where('user_id', '=', Auth::user()->id)->firstOrFail()->id;
+
+            $patient = Patient::create($patientRequest);
+
+            if(!$patient) {
+                return redirect('medic/view_patients')->with([
+                    'flash_message' => 'Eroare importare pacient ' . $i,
+                    'flash_message_type' => 'alert-danger'
+                ]);
+            }
+
+            $i++;
+        }
+
+        unlink('uploads/'.$fileName);
+
+        return redirect('medic/view_patients')->with([
+            'flash_message' => 'Au fost importati '. $results->count() . ' pacienti!',
+            'flash_message_type' => 'alert-success'
+        ]);
+
     }
 
     public function exportPatient()

@@ -7,7 +7,7 @@
     <div class="main_container">
         @include('partials.errors')
         @include('partials.error')
-        {!! Form::open(['url' => 'medic/import_patient', 'class' => 'form-horizontal']) !!}
+        {!! Form::open(['url' => 'medic/import_patient', 'class' => 'form-horizontal', 'files' => true]) !!}
         <fieldset>
             <legend><h3>Import Excel</h3></legend>
             <div class="row">
