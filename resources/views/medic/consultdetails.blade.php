@@ -1,3 +1,21 @@
+<?php
+function checkIfSet($value)
+{
+    if (!strlen($value)) {
+        return "-";
+    }
+    return $value;
+}
+
+function getPanelState($value, $min, $max)
+{
+    if ($value > $min && $value < $max) {
+        return "panel-success";
+    }
+    return "panel-primary";
+}
+?>
+
 @extends('layouts.master')
 
 @section('content')
@@ -17,10 +35,21 @@
                     </div>
                 </div>
             </div>
+            <div class="panel panel-default col-lg-3 col-md-offset-3">
+                <div class="panel-body">
+                    <strong>NOTĂ:</strong>
+
+                    <p>Valorile afișate cu: </p>
+
+                    <p class="text-success"><strong>verde</strong> se află în limitele normale,</p>
+
+                    <p class="text-danger"><strong>roșu</strong> sugerează o anomalie! </p>
+                </div>
+            </div>
         </div>
 
         <div class="row">
-            <div class="col-xs-6 col-sm-3 col-md-offset-1">
+            <div class="col-xs-6 col-sm-2 col-md-offset-1">
                 <div class="panel panel-warning">
                     <div class="panel-heading">
                         <h3 class="panel-title">Dată consultație</h3>
@@ -30,7 +59,19 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xs-6 col-sm-3">
+            <div class="col-xs-6 col-sm-2">
+                <div class="panel panel-warning">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Dată consultaţie viitoare </h3>
+                    </div>
+                    <div class="panel-body">
+                        <p>{{ $consult['next_date'] }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-2 col-sm-2 col-md-offset-1">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">Înălțime</h3>
@@ -40,7 +81,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xs-6 col-sm-3">
+            <div class="col-xs-6 col-sm-2">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">Greutate</h3>
@@ -50,10 +91,7 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="row">
-            <div class="col-xs-6 col-sm-3 col-md-offset-1">
+            <div class="col-xs-6 col-sm-2">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">Circumferință abdominală</h3>
@@ -63,8 +101,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xs-6 col-sm-3">
-                <div class="panel panel-default">
+            <div class="col-xs-6 col-sm-2">
+                <div class="panel {{ getPanelState($consult['blood_pressure'], 100, 130) }}">
                     <div class="panel-heading">
                         <h3 class="panel-title">Tensiune</h3>
                     </div>
@@ -73,8 +111,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xs-6 col-sm-3">
-                <div class="panel panel-default">
+            <div class="col-xs-6 col-sm-2">
+                <div class="panel {{ getPanelState($consult['glucose'], 78, 120) }}">
                     <div class="panel-heading">
                         <h3 class="panel-title">Glicemie</h3>
                     </div>
@@ -84,7 +122,6 @@
                 </div>
             </div>
         </div>
-
         <div class="form-group">
             <div class="col-lg-9 col-lg-offset-1">
                 <a href="{{ url('medic/edit_consult').'/'.$consult['id'] }}" class="btn btn-warning">Editare</a>

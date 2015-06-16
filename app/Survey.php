@@ -26,4 +26,14 @@ class Survey extends Model {
         return $this->hasMany('App\SurveyQuestion');
     }
 
+    public function getStartDateAttribute($value) {
+        $date = date_create_from_format("Y-m-d H:i:s", $value);
+        return date_format($date, 'd.m.Y H:i');
+    }
+
+    public function getEndDateAttribute($value) {
+        $date = date_create_from_format("Y-m-d H:i:s", $value);
+        return date_format($date, 'd.m.Y H:i');
+    }
+
 }

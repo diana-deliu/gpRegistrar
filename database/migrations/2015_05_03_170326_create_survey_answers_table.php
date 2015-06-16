@@ -24,7 +24,6 @@ class CreateSurveyAnswersTable extends Migration {
             $table->foreign('question_id')->references('id')->on('survey_questions');
 
             $table->string('answer');
-            $table->dateTime('answer_date');
 			$table->timestamps();
 		});
 	}

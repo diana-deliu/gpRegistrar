@@ -23,8 +23,8 @@ class CreateVaccineRequest extends Request {
     {
         return [
             'patient_id' => 'required|integer|min:0',
-            'start_date' => 'required|date',
-            'interval' => 'required|integer',
+            'date' => 'required|date',
+            'next_date' => 'required|date',
             'notification' => 'in:on,',
             'appointment' => 'in:on,',
         ];

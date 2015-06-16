@@ -20,6 +20,7 @@ class CreateConsultsTable extends Migration {
 		{
 			$table->increments('id');
             $table->dateTime('date');
+            $table->dateTime('next_date');
 
             $table->integer('patient_id')->unsigned();
             $table->foreign('patient_id')->references('id')->on('patients');

@@ -19,9 +19,7 @@ class CreateTreatmentsTable extends Migration {
 
             $table->integer('patient_id')->unsigned();
             $table->foreign('patient_id')->references('id')->on('patients');
-
             $table->dateTime('date');
-            $table->integer('interval');
             $table->string('diagnosis');
             $table->string('treatment');
             $table->string('extra');

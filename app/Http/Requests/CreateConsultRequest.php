@@ -24,6 +24,7 @@ class CreateConsultRequest extends Request {
         return [
             'patient_id' => 'required|integer|min:0',
             'date' => 'required|date',
+            'next_date' => 'required|date',
             'height' => 'required|max:300|integer',
             'weight' => 'required|max:1000|integer',
             'abdominal_circumference' => 'required|max:1000|integer',

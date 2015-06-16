@@ -28,7 +28,12 @@ class SurveyAnswer extends Model {
     }
 
     public function question() {
-        return $this->belongsTo('App\SurveyQuestion');
+        return $this->belongsTo('App\SurveyQuestion', 'id', 'question_id');
+    }
+
+    public function getDateAttribute($value) {
+        $date = date_create_from_format("Y-m-d H:i:s", $value);
+        return date_format($date, 'd.m.Y H:i');
     }
 
 }

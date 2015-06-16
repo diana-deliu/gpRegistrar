@@ -24,6 +24,7 @@ class UpdateLabRequest extends Request {
         return [
             'patient_id' => 'required|integer|min:0',
             'date' => 'required|date',
+            'next_date' => 'required|date',
             'hemoglobin' => 'max:1000|integer',
             'vsh' => 'max:1000|integer',
             'transaminases' => 'max:1000|integer',

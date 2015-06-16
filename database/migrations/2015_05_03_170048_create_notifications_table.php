@@ -17,7 +17,14 @@ class CreateNotificationsTable extends Migration {
 		{
 			$table->increments('id');
             $table->integer('user_id');
-            $table->integer('medic_id');
+
+            $table->string('user_type');
+            $table->string('subject');
+            $table->string('body');
+            $table->string('object_id');
+            $table->string('object_type');
+            $table->boolean('is_read');
+            $table->dateTime('sent_at');
             $table->dateTime('start_date');
             $table->integer('interval');
 			$table->timestamps();

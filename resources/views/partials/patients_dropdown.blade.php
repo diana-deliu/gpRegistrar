@@ -25,12 +25,12 @@
     }
     $('#patient_choose').click(function () {
         var id = $("#patients_dropdown").val();
-        $("#patient_id_hidden").val(id);
+        $("input[name=patient_id]").val(id);
         fillPatientDetails(id);
         $('#patient_change').modal('hide');
     });
     $(document).ready(function () {
-        var id = $("#patient_id_hidden").val();
+        var id = $("input[name=patient_id]").val();
         if(id.trim().length > 0) {
             loadPatientsDropdown(id);
         }

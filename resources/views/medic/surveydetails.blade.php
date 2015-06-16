@@ -28,7 +28,9 @@ function checkIfSet($value)
                     </div>
                 </div>
             </div>
-            <div class="col-xs-6 col-sm-2">
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-sm-2 col-md-offset-1">
                 <div class="panel panel-warning">
                     <div class="panel-heading">
                         <h3 class="panel-title">Dată de început</h3>
@@ -49,7 +51,6 @@ function checkIfSet($value)
                 </div>
             </div>
         </div>
-
         @foreach($survey['questions'] as $question)
             <div class="row">
                 <div class="col-xs-6 col-sm-6 col-md-offset-1">
@@ -67,7 +68,8 @@ function checkIfSet($value)
         <div class="form-group">
             <div class="col-lg-6 col-lg-offset-1">
                 <a href="{{ url('medic/edit_survey').'/'.$survey['id'] }}" class="btn btn-warning">Editare</a>
-                <a href="{{ url('medic/view_answers').'/'.$survey['id'] }}" class="btn btn-default pull-right">Vezi răspunsuri</a>
+                <a href="{{ url('medic/view_answers').'/'.$survey['id'] }}" class="btn btn-default pull-right">Vezi
+                    răspunsuri</a>
             </div>
         </div>
     </div>

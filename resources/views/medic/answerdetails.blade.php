@@ -55,21 +55,16 @@ function checkIfSet($value)
                 <div class="col-xs-6 col-sm-6 col-md-offset-1">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Întrebarea {{ $question['question_id'] }}</h3>
+                            <h3 class="panel-title">Întrebarea {{ $question['question_id'] }}
+                                . {{$question['question']}}</h3>
                         </div>
                         <div class="panel-body">
-                            <p>{{ $question['question'] }}</p>
+                            <p>{{ $answers[$question['id']] }}</p>
                         </div>
                     </div>
                 </div>
             </div>
         @endforeach
-        <div class="form-group">
-            <div class="col-lg-6 col-lg-offset-1">
-                <a href="{{ url('medic/edit_survey').'/'.$survey['id'] }}" class="btn btn-warning">Editare</a>
-                <a href="{{ url('medic/view_answers').'/'.$survey['id'] }}" class="btn btn-default pull-right">Vezi răspunsuri</a>
-            </div>
-        </div>
     </div>
 
 @stop

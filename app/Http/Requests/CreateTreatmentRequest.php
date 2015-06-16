@@ -24,7 +24,6 @@ class CreateTreatmentRequest extends Request {
 		return [
             'patient_id' => 'required|integer|min:0',
             'date' => 'required|date',
-            'interval' => 'required|integer',
             'diagnosis' => 'required|integer',
             'treatment' => 'required|integer',
             'extra' => 'max:65535|string',

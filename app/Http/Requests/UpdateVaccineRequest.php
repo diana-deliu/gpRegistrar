@@ -23,11 +23,12 @@ class UpdateVaccineRequest extends Request {
 	{
 		return [
             'patient_id' => 'required|integer|min:0',
-            'start_date' => 'required|date',
+            'date' => 'required|date',
+            'next_date' => 'required|date',
             'category' => 'required|integer',
             'vsh' => 'max:1000|integer',
             'notification' => 'in:on,',
-            'appointment' => 'in:on,',
+            'appointment' => 'in:on,'
 		];
 	}
 

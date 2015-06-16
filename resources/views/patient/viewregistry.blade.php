@@ -113,70 +113,83 @@ function getPanelState($value, $min, $max)
         </div>
 
         <legend><h3>Ultima consultație</h3></legend>
-        <div class="row">
-            <div class="col-xs-6 col-sm-2 col-md-offset-1">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Înălțime [cm]</h3>
+        @if(isset($patient['last_consult']) && $patient['last_consult'])
+            <div class="row">
+                <div class="col-xs-6 col-sm-2 col-md-offset-1">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Înălțime [cm]</h3>
+                        </div>
+                        <div class="panel-body">
+                            <p>{{ $patient['last_consult']['height'] }}</p></div>
                     </div>
+                </div>
+                <div class="col-xs-6 col-sm-2">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Greutate [kg]</h3>
+                        </div>
+                        <div class="panel-body">
+                            <p>{{ $patient['last_consult']['weight'] }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-2">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Circumferință abdominală [cm]</h3>
+                        </div>
+                        <div class="panel-body">
+                            <p>{{ $patient['last_consult']['abdominal_circumference'] }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-5 col-sm-2">
+                    <div class="panel {{ getPanelState($patient['last_consult']['blood_pressure'], 7, 11) }}">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Tensiune [mm/Hg]</h3>
+                        </div>
+                        <div class="panel-body">
+                            <p>{{ $patient['last_consult']['blood_pressure'] }}</p></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="panel panel-default col-lg-2 col-lg-offset-1">
                     <div class="panel-body">
-                        <p>{{ $patient['last_consult']['height'] }}</p></div>
-                </div>
-            </div>
-            <div class="col-xs-6 col-sm-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Greutate [kg]</h3>
-                    </div>
-                    <div class="panel-body">
-                        <p>{{ $patient['last_consult']['weight'] }}</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-6 col-sm-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Circumferință abdominală [cm]</h3>
-                    </div>
-                    <div class="panel-body">
-                        <p>{{ $patient['last_consult']['abdominal_circumference'] }}</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-5 col-sm-2">
-                <div class="panel {{ getPanelState($patient['last_consult']['blood_pressure'], 7, 11) }}">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Tensiune [mm/Hg]</h3>
-                    </div>
-                    <div class="panel-body">
-                        <p>{{ $patient['last_consult']['blood_pressure'] }}</p></div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="panel panel-default col-lg-2 col-lg-offset-1">
-                <div class="panel-body">
-                    <strong>NOTĂ:</strong>
-                    <p>Valorile afișate cu: </p>
-                    <p class="text-success"><strong>verde</strong> se află în limitele normale,</p>
-                    <p class="text-danger"><strong>roșu</strong> sugerează o anomalie! </p>
-                </div>
-            </div>
-        </div>
+                        <strong>NOTĂ:</strong>
 
-        <legend><h3>Curba sănătății</h3></legend>
-        <div class="row">
-            <div class="panel panel-default col-lg-6 col-lg-offset-1">
-                <div class="panel-body">
-                    <strong>NOTĂ:</strong>
-                    <p>blablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablabla
-                        blablablablablablablablablablablablablablablablablablablablablablablablablablablabla
-                        blablablablablablablablablablablablablablablablablablablablablablablabla
-                        blablablablablablablablablablablablablablablablablablablabla
-                        blablablablablablablablablablablablablablablablablablablablablablablabla</p>
+                        <p>Valorile afișate cu: </p>
+
+                        <p class="text-success"><strong>verde</strong> se află în limitele normale,</p>
+
+                        <p class="text-danger"><strong>roșu</strong> sugerează o anomalie! </p>
+                    </div>
                 </div>
             </div>
-        </div>
+            <legend><h3>Curba sănătății</h3></legend>
+            <div class="row">
+                <div class="panel panel-default col-lg-6 col-lg-offset-1">
+                    <div class="panel-body">
+                        <strong>NOTĂ:</strong>
+
+                        <p>
+                            blablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablabla
+                            blablablablablablablablablablablablablablablablablablablablablablablablablablablabla
+                            blablablablablablablablablablablablablablablablablablablablablablablabla
+                            blablablablablablablablablablablablablablablablablablablabla
+                            blablablablablablablablablablablablablablablablablablablablablablablabla</p>
+                    </div>
+                </div>
+            </div>
+        @else
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <p class="text-danger" style="text-align:center;"><strong>Nu s-a găsit nicio întregistrare!</strong>
+                    </p>
+                </div>
+            </div>
+        @endif
     </div>
 
 @stop

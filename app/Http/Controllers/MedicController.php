@@ -41,21 +41,6 @@ class MedicController extends Controller
         '6' => 'antigripal'
     ];
 
-    private $intervals = [
-        '1' => '1',
-        '2' => '2',
-        '3' => '3',
-        '4' => '4',
-        '5' => '5',
-        '6' => '6',
-        '7' => '7',
-        '8' => '8',
-        '9' => '9',
-        '10' => '10',
-        '11' => '11',
-        '12' => '12'
-    ];
-
     private $diagnosis = [
         '0' => 'anemie',
         '1' => 'hipertensiune arterială',
@@ -284,7 +269,10 @@ class MedicController extends Controller
 
     /****************** Patient related *****************/
 
-    /****************** Consult related ****************/
+    /****************** Consult related ***************
+     * @param CreateConsultRequest $request
+     * @return $this|\Illuminate\Http\RedirectResponse
+     */
 
     /*
      * @param CreateConsultRequest $request
@@ -294,9 +282,21 @@ class MedicController extends Controller
     {
         $requestAll = $request->all();
         $requestAll['date'] = date_create_from_format('d.m.Y H:i', $requestAll['date']);
-        $result = Consult::create($requestAll);
+        $requestAll['next_date'] = date_create_from_format('d.m.Y H:i', $requestAll['next_date']);
 
+        if ($requestAll['next_date'] <= $requestAll['date']) {
+            $requestAll['date'] = $this->dateToStringLocaleEn($requestAll['date']);
+            $requestAll['next_date'] = $this->dateToStringLocaleEn($requestAll['next_date']);
+            return redirect('medic/add_consult')->with([
+                'flash_message' => 'Data consultaţiei viitoare trebuie să fie dupa cea curentă!',
+                'flash_message_type' => 'alert-danger'
+            ])->withInput($requestAll);
+        }
+
+        $result = Consult::create($requestAll);
         if (is_null($result)) {
+            $requestAll['date'] = $this->dateToStringLocaleEn($requestAll['date']);
+            $requestAll['next_date'] = $this->dateToStringLocaleEn($requestAll['next_date']);
             return redirect('medic/add_consult')->with([
                 'flash_message' => 'Consultația nu a putut fi adăugată!',
                 'flash_message_type' => 'alert-danger'
@@ -433,7 +433,6 @@ class MedicController extends Controller
             return view('medic.addconsult', compact('patient'));
         }
         return view('medic.addconsult');
-
     }
 
     /**
@@ -452,9 +451,19 @@ class MedicController extends Controller
     public function updateConsult($id, UpdateConsultRequest $request)
     {
         $consult = Consult::find($id);
-
         $requestAll = $request->all();
         $requestAll['date'] = date_create_from_format('d.m.Y H:i', $requestAll['date']);
+        $requestAll['next_date'] = date_create_from_format('d.m.Y H:i', $requestAll['next_date']);
+
+        if ($requestAll['next_date'] <= $requestAll['date']) {
+            $requestAll['date'] = $this->dateToStringLocaleEn($requestAll['date']);
+            $requestAll['next_date'] = $this->dateToStringLocaleEn($requestAll['next_date']);
+            return redirect('medic/edit_consult/'.$id)->with([
+                'flash_message' => 'Data consultaţiei viitoare trebuie să fie dupa cea curentă!',
+                'flash_message_type' => 'alert-danger'
+            ])->withInput($requestAll);
+        }
+
         $consult->update($requestAll);
 
         return redirect('medic/view_generalconsults')->with([
@@ -488,11 +497,22 @@ class MedicController extends Controller
     {
         $requestAll = $request->all();
         $requestAll['date'] = date_create_from_format('d.m.Y H:i', $requestAll['date']);
+        $requestAll['next_date'] = date_create_from_format('d.m.Y H:i', $requestAll['next_date']);
+
+        if ($requestAll['next_date'] <= $requestAll['date']) {
+            $requestAll['date'] = $this->dateToStringLocaleEn($requestAll['date']);
+            $requestAll['next_date'] = $this->dateToStringLocaleEn($requestAll['next_date']);
+            return redirect('medic/add_lab')->with([
+                'flash_message' => 'Data analizelor viitoare trebuie să fie după cea curentă!',
+                'flash_message_type' => 'alert-danger'
+            ])->withInput($requestAll);
+        }
 
         $result = Lab::create($requestAll);
 
         if (is_null($result)) {
-            $requestAll['date'] = $requestAll['date']->format("Y-m-d H:i");
+            $requestAll['date'] = $this->dateToStringLocaleEn($requestAll['date']);
+            $requestAll['next_date'] = $this->dateToStringLocaleEn($requestAll['next_date']);
             return redirect('medic/add_lab')->with([
                 'flash_message' => 'Analizele nu au putut fi adăugate!',
                 'flash_message_type' => 'alert-danger'
@@ -571,6 +591,17 @@ class MedicController extends Controller
 
         $requestAll = $request->all();
         $requestAll['date'] = date_create_from_format('d.m.Y H:i', $requestAll['date']);
+        $requestAll['next_date'] = date_create_from_format('d.m.Y H:i', $requestAll['next_date']);
+
+        if ($requestAll['next_date'] <= $requestAll['date']) {
+            $requestAll['date'] = $this->dateToStringLocaleEn($requestAll['date']);
+            $requestAll['next_date'] = $this->dateToStringLocaleEn($requestAll['next_date']);
+            return redirect('medic/edit_lab/' . $id)->with([
+                'flash_message' => 'Data analizelor viitoare trebuie să fie după cea curentă!',
+                'flash_message_type' => 'alert-danger'
+            ])->withInput($requestAll);
+        }
+
         $lab->update($requestAll);
 
         return redirect('medic/view_labs')->with([
@@ -598,14 +629,14 @@ class MedicController extends Controller
     public function addVaccine()
     {
         $categories = $this->categories;
-        $intervals = $this->intervals;
-        return view('medic.addvaccine', compact('categories', 'intervals'));
+        return view('medic.addvaccine', compact('categories'));
     }
 
     public function createVaccine(CreateVaccineRequest $request)
     {
         $requestAll = $request->all();
-        $requestAll['start_date'] = date_create_from_format('d.m.Y H:i', $requestAll['start_date']);
+        $requestAll['date'] = date_create_from_format('d.m.Y H:i', $requestAll['date']);
+        $requestAll['next_date'] = date_create_from_format('d.m.Y H:i', $requestAll['next_date']);
         if (!(isset($requestAll['notification'])) || is_null($requestAll['notification'])) {
             $requestAll['notification'] = false;
         } else {
@@ -616,9 +647,21 @@ class MedicController extends Controller
         } else {
             $requestAll['appointment'] = true;
         }
+
+        if ($requestAll['next_date'] <= $requestAll['date']) {
+            $requestAll['date'] = $this->dateToStringLocaleEn($requestAll['date']);
+            $requestAll['next_date'] = $this->dateToStringLocaleEn($requestAll['next_date']);
+            return redirect('medic/add_vaccine')->with([
+                'flash_message' => 'Data vaccinării viitoare trebuie să fie dupa cea curentă!',
+                'flash_message_type' => 'alert-danger'
+            ])->withInput($requestAll);
+        }
+
         $result = Vaccine::create($requestAll);
 
         if (is_null($result)) {
+            $requestAll['date'] = $this->dateToStringLocaleEn($requestAll['date']);
+            $requestAll['next_date'] = $this->dateToStringLocaleEn($requestAll['next_date']);
             return redirect('medic/add_vaccine')->with([
                 'flash_message' => 'Vaccinările nu au putut fi adăugate!',
                 'flash_message_type' => 'alert-danger'
@@ -666,12 +709,6 @@ class MedicController extends Controller
         $item['firstname'] = $patient->firstname;
         if ($makeReadable) {
             $item['category'] = $this->categories[$item['category']];
-            $item['interval'] = $this->intervals[$item['interval']];
-            if ($item['interval'] > 1) {
-                $item['interval'] .= " luni";
-            } else {
-                $item['interval'] .= " lună";
-            }
 
             $item['notification'] = ($item['notification']) ? 'Da' : 'Nu';
             $item['appointment'] = ($item['appointment']) ? 'Da' : 'Nu';
@@ -700,9 +737,8 @@ class MedicController extends Controller
         $vaccine = $this->vaccineToArray($vaccine, false);
         $patient = Patient::find($vaccine['patient_id']);
         $categories = $this->categories;
-        $intervals = $this->intervals;
 
-        return view('medic.editvaccine', compact('vaccine', 'patient', 'categories', 'intervals'));
+        return view('medic.editvaccine', compact('vaccine', 'patient', 'categories'));
     }
 
     public function updateVaccine($id, UpdateVaccineRequest $request)
@@ -710,7 +746,8 @@ class MedicController extends Controller
         $vaccine = Vaccine::find($id);
 
         $requestAll = $request->all();
-        $requestAll['start_date'] = date_create_from_format('d.m.Y H:i', $requestAll['start_date']);
+        $requestAll['date'] = date_create_from_format('d.m.Y H:i', $requestAll['date']);
+        $requestAll['next_date'] = date_create_from_format('d.m.Y H:i', $requestAll['next_date']);
 
         if (!(isset($requestAll['notification'])) || is_null($requestAll['notification'])) {
             $requestAll['notification'] = false;
@@ -721,6 +758,15 @@ class MedicController extends Controller
             $requestAll['appointment'] = false;
         } else {
             $requestAll['appointment'] = true;
+        }
+
+        if ($requestAll['next_date'] <= $requestAll['date']) {
+            $requestAll['date'] = $this->dateToStringLocaleEn($requestAll['date']);
+            $requestAll['next_date'] = $this->dateToStringLocaleEn($requestAll['next_date']);
+            return redirect('medic/edit_vaccine/'.$id)->with([
+                'flash_message' => 'Data vaccinării viitoare trebuie să fie dupa cea curentă!',
+                'flash_message_type' => 'alert-danger'
+            ])->withInput($requestAll);
         }
         $vaccine->update($requestAll);
 
@@ -747,25 +793,27 @@ class MedicController extends Controller
     public function addTreatment()
     {
         $categories = $this->categories;
-        $intervals = $this->intervals;
         $diagnosis = $this->diagnosis;
         $treatments = $this->treatments;
 
-        return view('medic.addtreatment', compact('categories', 'intervals', 'diagnosis', 'treatments'));
+        return view('medic.addtreatment', compact('categories', 'diagnosis', 'treatments'));
     }
 
     public function createTreatment(CreateTreatmentRequest $request)
     {
         $requestAll = $request->all();
         $requestAll['date'] = date_create_from_format('d.m.Y H:i', $requestAll['date']);
+
         if (!(isset($requestAll['appointment'])) || is_null($requestAll['appointment'])) {
             $requestAll['appointment'] = false;
         } else {
             $requestAll['appointment'] = true;
         }
+
         $result = Treatment::create($requestAll);
 
         if (is_null($result)) {
+            $requestAll['date'] = $this->dateToStringLocaleEn($requestAll['date']);
             return redirect('medic/add_treatment')->with([
                 'flash_message' => 'Recomandarea nu a putut fi adăugată!',
                 'flash_message_type' => 'alert-danger'
@@ -813,13 +861,6 @@ class MedicController extends Controller
         if ($makeReadable) {
             $item['diagnosis'] = $this->diagnosis[$item['diagnosis']];
             $item['treatment'] = $this->treatments[$item['treatment']];
-            $item['interval'] = $this->intervals[$item['interval']];
-            if ($item['interval'] > 1) {
-                $item['interval'] .= " luni";
-            } else {
-                $item['interval'] .= " lună";
-            }
-
             $item['appointment'] = ($item['appointment']) ? 'Da' : 'Nu';
         }
 
@@ -845,11 +886,10 @@ class MedicController extends Controller
         $treatment = Treatment::find($id);
         $treatment = $this->treatmentToArray($treatment, false);
         $patient = Patient::find($treatment['patient_id']);
-        $intervals = $this->intervals;
         $treatments = $this->treatments;
         $diagnosis = $this->diagnosis;
 
-        return view('medic.edittreatment', compact('treatment', 'patient', 'intervals', 'treatments', 'diagnosis'));
+        return view('medic.edittreatment', compact('treatment', 'patient', 'treatments', 'diagnosis'));
     }
 
     /**
@@ -869,6 +909,7 @@ class MedicController extends Controller
         } else {
             $requestAll['appointment'] = true;
         }
+
         $treatment->update($requestAll);
 
         return redirect('medic/view_treatments')->with([
@@ -899,11 +940,13 @@ class MedicController extends Controller
         return view('medic.addsurvey');
     }
 
-    private function stringLocaleRoToDate($dateString) {
+    private function stringLocaleRoToDate($dateString)
+    {
         return date_create_from_format('d.m.Y H:i', $dateString);
     }
 
-    private function dateToStringLocaleEn($date) {
+    private function dateToStringLocaleEn($date)
+    {
         return $date->format("Y-m-d H:i");
     }
 
@@ -938,6 +981,8 @@ class MedicController extends Controller
         }
         $result = Survey::create($requestAll);
         if (is_null($result)) {
+            $requestAll['start_date'] = $this->dateToStringLocaleEn($requestAll['start_date']);
+            $requestAll['end_date'] = $this->dateToStringLocaleEn($requestAll['end_date']);
             return redirect('medic/add_survey')->with([
                 'flash_message' => 'Chestionarul nu a putut fi adăugat!',
                 'flash_message_type' => 'alert-danger'
@@ -1046,7 +1091,7 @@ class MedicController extends Controller
         if ($requestAll['end_date'] <= $requestAll['start_date']) {
             $requestAll['start_date'] = $this->dateToStringLocaleEn($requestAll['start_date']);
             $requestAll['end_date'] = $this->dateToStringLocaleEn($requestAll['end_date']);
-            return redirect('medic/edit_survey/'.$id)->with([
+            return redirect('medic/edit_survey/' . $id)->with([
                 'flash_message' => 'Data de sfârşit trebuie să fie după cea de început!',
                 'flash_message_type' => 'alert-danger'
             ])->withInput($requestAll);
@@ -1058,16 +1103,16 @@ class MedicController extends Controller
         foreach ($requestAll as $requestKey => $requestElem) {
             if (starts_with($requestKey, "question")) {
                 $found = false;
-                foreach($survey->questions as $question) {
+                foreach ($survey->questions as $question) {
                     $questionId = intval(substr($requestKey, 8, strlen($requestKey)));
-                    if($question->question_id == $questionId) {
+                    if ($question->question_id == $questionId) {
                         $surveyQuestionRequest = [];
                         $surveyQuestionRequest['question'] = $question->question;
                         $question->update($surveyQuestionRequest);
                         $found = true;
                     }
                 }
-                if(!$found) {
+                if (!$found) {
                     $surveyQuestionRequest = [];
                     $surveyQuestionRequest['survey_id'] = $surveyId;
                     $surveyQuestionRequest['question_id'] = $questionId;
@@ -1090,7 +1135,7 @@ class MedicController extends Controller
     public function removeSurvey($id)
     {
         $survey = Survey::find($id);
-        foreach($survey->questions as $question) {
+        foreach ($survey->questions as $question) {
             $question->delete();
         }
         $survey->delete();
@@ -1101,6 +1146,55 @@ class MedicController extends Controller
         ]);
     }
 
+    /**
+     * @param $surveyId
+     * @return \Illuminate\View\View
+     */
+    public function viewAnswers($surveyId)
+    {
+        $survey = Survey::find($surveyId);
+        $patients = [];
+        foreach ($survey->questions as $question) {
+            if ($question->answers && $question->answers->count()) {
+                foreach ($question->answers as $answer) {
+                    $patient = $answer->patient->toArray();
+                    if (!in_array($patient, $patients)) {
+                        $patients[] = $patient;
+                    }
+                }
+            }
+        }
+        return view('medic.viewanswers', compact('patients', 'surveyId'));
+    }
+
+    /**
+     * @param $patientId
+     * @param $surveyId
+     * @return \Illuminate\View\View
+     */
+    public function answerDetails($patientId, $surveyId)
+    {
+        $survey = Survey::find($surveyId);
+        $answers = [];
+        foreach ($survey->questions as $question) {
+            if ($question->answers && $question->answers->count()) {
+                $answerPatient = $question->answers()->where('patient_id', '=', $patientId)->first();
+                if ($answerPatient) {
+                    $answers[$question->id] = $answerPatient->answer;
+                }
+            }
+
+        }
+
+        $survey = $survey->toArray();
+
+        return view('medic.answerdetails', compact('survey', 'answers'));
+    }
+
+    private function convertDateToRoFormat($date) {
+        return date_format($date, 'd.m.Y H:i');
+
+    }
 
 
 }

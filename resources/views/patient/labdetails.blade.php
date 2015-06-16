@@ -37,7 +37,7 @@ function checkIfSet($value)
             <div class="panel-body">
                 <div class="panel panel-default col-lg-3 col-md-offset-4">
                     <div class="panel-body">
-                         <strong>NOTĂ:</strong> <p>Analizele afișate cu: </p> <p class="text-success"><strong>verde</strong> se află în limitele normale,</p>
+                         <strong>NOTĂ:</strong> <p>Valorile afișate cu: </p> <p class="text-success"><strong>verde</strong> se află în limitele normale,</p>
                         <p class="text-danger"><strong>roșu</strong> sugerează o anomalie! </p>
                     </div>
                 </div>
@@ -153,16 +153,28 @@ function checkIfSet($value)
         </div>
         <legend><h3>Următoarele analize</h3></legend>
         <div class="row">
-            <div class="col-xs-6 col-sm-3 col-md-offset-1">
+            <div class="col-xs-6 col-sm-2 col-md-offset-1">
                 <div class="panel panel-warning">
                     <div class="panel-heading">
                         <h3 class="panel-title">Dată analize viitoare</h3>
                     </div>
                     <div class="panel-body">
-                        <p>{{ $lab['date'] }}</p>
+                        <p>{{ $lab['next_date'] }}</p>
                     </div>
                 </div>
             </div>
+            <div class="panel panel-default col-lg-3 col-md-offset-5">
+                <div class="panel-body">
+                    <strong>NOTĂ:</strong>
+
+                    <p>Dacă pacientul nu se prezintă la analize la data respectivă,
+                            acestea
+                            se vor reprograma automat
+                            o săptămână mai târziu!</p>
+
+                </div>
+            </div>
+        </div>
         </div>
     </div>
 

@@ -80,7 +80,8 @@ Route::get('medic/edit_survey/{id}', 'MedicController@editSurvey');
 Route::post('medic/update_survey/{id}', 'MedicController@updateSurvey');
 Route::get('medic/remove_survey/{id}', 'MedicController@removeSurvey');
 
-Route::get('medic/view_answers', 'MedicController@viewAnswers');
+Route::get('medic/view_answers/{id}', 'MedicController@viewAnswers');
+Route::get('medic/answer_details/{id}/{surveyId}', 'MedicController@answerDetails');
 
 /*************************** PATIENT **************************/
 Route::get('patient/view_registry', 'PatientController@viewRegistry');
@@ -97,7 +98,8 @@ Route::get('patient/view_treatments', 'PatientController@viewTreatments');
 Route::get('patient/treatment_details/{id}', 'PatientController@treatmentDetails');
 
 Route::get('patient/view_surveys', 'PatientController@viewSurveys');
-Route::get('patient/survey_details/{id}', 'PatientController@surveyDetails');
+Route::get('patient/add_answers/{id}', 'PatientController@addAnswers');
+Route::post('patient/create_answers/{id}', 'PatientController@createAnswers');
 
 Route::get('patient/edit_registry', 'PatientController@editRegistry');
 

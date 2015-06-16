@@ -47,4 +47,9 @@ class Patient extends Model {
         return $this->belongsTo('App\Medic');
     }
 
+    public function getDateAttribute($value) {
+        $date = date_create_from_format("Y-m-d H:i:s", $value);
+        return date_format($date, 'd.m.Y H:i');
+    }
+
 }

@@ -22,10 +22,6 @@ class CreateSurveyAnswerRequest extends Request {
     public function rules()
     {
         return [
-            'patient_id' => 'required|integer',
-            'question_id' => 'required|integer',
-            'answer' => 'required|min:0|max:65535|string',
-            'answer_date' => 'required|date'
         ];
     }
 

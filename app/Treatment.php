@@ -19,7 +19,6 @@ class Treatment extends Model {
         'patient_id',
         'date',
         'diagnosis',
-        'interval',
         'treatment',
         'extra',
         'referral',
@@ -29,6 +28,11 @@ class Treatment extends Model {
 
     public function patient() {
         return $this->belongsTo('App\Patient');
+    }
+
+    public function getDateAttribute($value) {
+        $date = date_create_from_format("Y-m-d H:i:s", $value);
+        return date_format($date, 'd.m.Y H:i');
     }
 
 }

@@ -2,7 +2,7 @@
 
 @section('content')
 
-    @include('partials.patient_left_sidebar')
+    @include('partials.medic_left_sidebar')
 
     <div class="main_container">
         @include('partials.errors')
@@ -12,33 +12,25 @@
             <tr>
                 <th>Id</th>
                 <th>
-                    <input type="text" id="filter_date" class="form-control input-sm" placeholder="Dată">
-                </th>
-                <th>
                     <input type="text" id="filter_lastname" class="form-control input-sm" placeholder="Nume">
                 </th>
                 <th>
                     <input type="text" id="filter_firstname" class="form-control input-sm" placeholder="Prenume">
                 </th>
-                <th>
-                    <input type="text" id="filter_category" class="form-control input-sm" placeholder="Categorie">
-                </th>
             </tr>
             </thead>
             <tbody>
-            @foreach($vaccines as $vaccine)
+            @foreach($patients as $patient)
                 <tr>
-                    <td><a href="{{url('patient/vaccine_details').'/'.$vaccine['id']}}">{{ $vaccine['id'] }}</a></td>
-                    <td>{{ $vaccine['date'] }}</td>
-                    <td>{{ $vaccine['lastname'] }}</td>
-                    <td>{{ $vaccine['firstname'] }}</td>
-                    <td>{{ $vaccine['category'] }}</td>
+                    <td><a href="{{url('medic/answer_details').'/'.$patient['id'].'/'.$surveyId}}">{{ $patient['id'] }}</a></td>
+                    <td>{{ $patient['lastname'] }}</td>
+                    <td>{{ $patient['firstname'] }}</td>
                 </tr>
                 </a>
             @endforeach
             </tbody>
         </table>
-        @if(!count($vaccines))
+        @if(!count($patients))
             <tr>
                 <div class="panel panel-default">
                     <div class="panel-body">

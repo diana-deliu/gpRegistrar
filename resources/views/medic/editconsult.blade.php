@@ -44,6 +44,25 @@
                     </div>
                 </div>
             </div>
+            <div class="form-group">
+                <label for="next_date" class="col-lg-2 control-label">Dată consultaţie viitoare</label>
+
+                <div class="col-lg-2">
+                    <div class="container">
+                        <div class="col-lg-2">
+                            <div class="form-group">
+                                <div class="input-group date datetimepicker">
+                                    {!! Form::text('next_date', $consult['next_date'], ['class' => 'form-control'])!!}
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar">
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             {!! Form::hidden('patient_id', $patient['id']) !!}
             <div class="form-group">
                 <label for="height" class="col-lg-2 control-label">Înălțime [cm]</label>

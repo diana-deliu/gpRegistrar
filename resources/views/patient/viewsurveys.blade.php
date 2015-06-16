@@ -24,10 +24,8 @@
             </thead>
             <tbody>
             @foreach($surveys as $survey)
-
                 <tr>
-
-                    <td><a href="{{url('patient/survey_details').'/'.$survey['id']}}">{{ $survey['id'] }}</a></td>
+                    <td><a href="{{url('patient/add_answers').'/'.$survey['id']}}">{{ $survey['id'] }}</a></td>
                     <td>{{ $survey['title'] }}</td>
                     <td>{{ $survey['start_date'] }}</td>
                     <td>{{ $survey['end_date'] }}</td>

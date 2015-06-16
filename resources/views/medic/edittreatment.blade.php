@@ -78,14 +78,6 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="interval" class="col-lg-2 control-label">Interval consultație viitoare</label>
-
-                <div class="col-lg-2">
-                    {!! Form::select('interval', $intervals, null, ['class' => 'form-control'])!!}
-                    <span class="help-block"></span>
-                </div>
-            </div>
-            <div class="form-group">
                 <label for="appointment" class="col-lg-2 control-label">Setare programare viitoaree</label>
 
                 <div class="col-lg-2">

@@ -4,10 +4,13 @@ use App\Consult;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Http\Requests\CreateSurveyAnswerRequest;
 use App\Lab;
 use App\Patient;
 use App\Services\Registrar;
 use App\Survey;
+use App\SurveyAnswer;
+use App\SurveyQuestion;
 use App\Treatment;
 use App\Vaccine;
 use DateTime;
@@ -80,7 +83,9 @@ class PatientController extends Controller
         $patient->medic;
         $last_consult = $patient->consults()->orderBy('date')->first();
         $patient = $this->patientToArray($patient);
-        $patient['last_consult'] = $last_consult->toArray();
+        if($last_consult) {
+            $patient['last_consult'] = $last_consult->toArray();
+        }
 
         return view('patient.viewregistry', compact('patient'));
     }
@@ -202,13 +207,6 @@ class PatientController extends Controller
         $item['lastname'] = $patient->lastname;
         $item['firstname'] = $patient->firstname;
         $item['category'] = $item['category'] = $this->categories[$item['category']];
-        $item['interval'] = $this->intervals[$item['interval']];
-        if ($item['interval'] > 1) {
-            $item['interval'] .= " luni";
-        } else {
-            $item['interval'] .= " lună";
-        }
-
         $item['notification'] = ($item['notification']) ? 'Da' : 'Nu';
         $item['appointment'] = ($item['appointment']) ? 'Da' : 'Nu';
 
@@ -254,13 +252,6 @@ class PatientController extends Controller
         if ($makeReadable) {
             $item['diagnosis'] = $this->diagnosis[$item['diagnosis']];
             $item['treatment'] = $this->treatments[$item['treatment']];
-            $item['interval'] = $this->intervals[$item['interval']];
-            if ($item['interval'] > 1) {
-                $item['interval'] .= " luni";
-            } else {
-                $item['interval'] .= " lună";
-            }
-
             $item['appointment'] = ($item['appointment']) ? 'Da' : 'Nu';
         }
 
@@ -308,13 +299,87 @@ class PatientController extends Controller
         return $item;
     }
 
-    public function surveyDetails($id)
+    public function addAnswers($id)
     {
         $survey = Survey::find($id);
-        $survey->questions;
+        $answers = [];
+        $user = Auth::user();
+        $patientId = Patient::where('user_id', '=', $user->id)->firstOrFail()->id;
+        foreach ($survey->questions as $question) {
+            $answerPatient = $question->answers()->where('patient_id', '=', $patientId)->first();
+            if ($answerPatient) {
+                $answers[$question->id] = $answerPatient->answer;
+            }
+        }
         $survey = $this->surveyToArray($survey);
 
-        return view('patient.surveydetails', compact('survey'));
+        return view('patient.addanswers', compact('survey', 'answers'));
+    }
+
+    private function upsertSurveyAnswer($questionId, $answer)
+    {
+        $question = SurveyQuestion::where('id', '=', $questionId)->first();
+        $user = Auth::user();
+        $patientId = Patient::where('user_id', '=', $user->id)->firstOrFail()->id;
+
+        $request = [
+            'patient_id' => $patientId,
+            'question_id' => $questionId,
+            'answer' => $answer
+        ];
+        if ($question->answers && $question->answers->count()) {
+            $answerPatient = $question->answers()->where('patient_id', '=', $patientId)->first();
+            if ($answerPatient) {
+                $result = $answerPatient->update(['answer' => $answer]);
+                if (!$result) {
+                    return false;
+                }
+            } else {
+                $result = SurveyAnswer::create($request);
+                if (!$result) {
+                    return false;
+                }
+            }
+        } else {
+            $result = SurveyAnswer::create($request);
+            if (!$result) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public function createAnswers(Request $request, $surveyId)
+    {
+        $requestAll = $request->all();
+        foreach ($requestAll as $key => $elem) {
+            if (starts_with($key, 'answer')) {
+                if (!strlen($elem)) {
+                    return redirect('patient/add_answers/' . $surveyId)->with([
+                        'flash_message' => 'Toate întrebările sunt obligatorii!',
+                        'flash_message_type' => 'alert-danger'
+                    ])->withInput($requestAll);
+                }
+            }
+        }
+        foreach ($requestAll as $key => $elem) {
+            if (starts_with($key, 'answer')) {
+                $questionId = intval(substr($key, 6, strlen($key)));
+                if(!$this->upsertSurveyAnswer($questionId, $elem)) {
+                    return redirect('patient/add_answers/' . $surveyId)->with([
+                        'flash_message' => 'Chestionarul nu a putut fi completat!',
+                        'flash_message_type' => 'alert-danger'
+                    ])->withInput($requestAll);
+                }
+            }
+        }
+
+        return redirect('patient/view_surveys')->with([
+            'flash_message' => 'Chestionarul a fost completat cu succes!',
+            'flash_message_type' => 'alert-success'
+        ]);
+
     }
 
 }

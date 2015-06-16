@@ -21,9 +21,9 @@ class CreateVaccinesTable extends Migration {
             $table->integer('patient_id')->unsigned();
             $table->foreign('patient_id')->references('id')->on('patients');
 
-            $table->dateTime('start_date');
+            $table->dateTime('date');
+            $table->dateTime('next_date');
             $table->integer('category')->unsigned();
-            $table->integer('interval');
             $table->boolean('notification');
             $table->boolean('appointment');
 

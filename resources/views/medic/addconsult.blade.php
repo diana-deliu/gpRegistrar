@@ -47,6 +47,25 @@
                     </div>
                 </div>
             </div>
+            <div class="form-group">
+                <label for="next_date" class="col-lg-2 control-label">Dată consultaţie viitoare</label>
+
+                <div class="col-lg-6">
+                    <div class="container">
+                        <div class="col-lg-2">
+                            <div class="form-group">
+                                <div class="input-group date datetimepicker">
+                                    {!! Form::text('next_date', old('next_date'), ['class' => 'form-control']) !!}
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar">
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             @if(isset($patient))
                 {!! Form::hidden('patient_id', $patient['id']) !!}
             @else
@@ -55,7 +74,7 @@
             <div class="form-group">
                 <label for="height" class="col-xs-2 control-label">Înălţime [cm]</label>
 
-                <div class="col-sm-6 col-md-3">
+                <div class="col-xs-2">
                     {!! Form::text('height', old('height'), ['class' => 'form-control'])!!}
                     <span class="help-block"></span>
                 </div>

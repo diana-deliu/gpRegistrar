@@ -20,17 +20,17 @@
         </div>
 
         <div class="row">
-            <div class="col-xs-6 col-sm-3 col-md-offset-1">
+            <div class="col-xs-6 col-sm-2 col-md-offset-1">
                 <div class="panel panel-warning">
                     <div class="panel-heading">
                         <h3 class="panel-title">Dată vaccinare</h3>
                     </div>
                     <div class="panel-body">
-                        <p>{{ $vaccine['start_date'] }}</p>
+                        <p>{{ $vaccine['date'] }}</p>
                     </div>
                 </div>
             </div>
-            <div class="col-xs-6 col-sm-3">
+            <div class="col-xs-6 col-sm-2">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">Categorie</h3>
@@ -40,20 +40,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xs-6 col-sm-3">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Interval</h3>
-                    </div>
-                    <div class="panel-body">
-                        <p>{{ $vaccine['interval'] }}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-xs-6 col-sm-3 col-md-offset-1">
+            <div class="col-xs-6 col-sm-2">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">Notificare către pacient</h3>
@@ -63,7 +50,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xs-6 col-sm-3">
+            <div class="col-xs-6 col-sm-2">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">Setare programare</h3>
@@ -76,17 +63,17 @@
         </div>
         <legend><h3>Următoarea vaccinare</h3></legend>
         <div class="row">
-            <div class="col-xs-6 col-sm-3 col-md-offset-1">
+            <div class="col-xs-6 col-sm-2 col-md-offset-1">
                 <div class="panel panel-warning">
                     <div class="panel-heading">
                         <h3 class="panel-title">Dată vaccinare viitoare</h3>
                     </div>
                     <div class="panel-body">
-                        <p>{{ $vaccine['start_date'] }}</p>
+                        <p>{{ $vaccine['next_date'] }}</p>
                     </div>
                 </div>
             </div>
-            <div class="col-xs-6 col-sm-3">
+            <div class="col-xs-6 col-sm-2">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">Categorie</h3>
@@ -96,6 +83,18 @@
                     </div>
                 </div>
             </div>
+            <div class="panel panel-default col-lg-3 col-md-offset-3">
+                <div class="panel-body">
+                    <strong>NOTĂ:</strong>
+
+                    <p>Dacă pacientul nu se prezintă la vaccinare la data respectivă,
+                            aceasta
+                            se va reprograma automat
+                            o săptămână mai târziu!</p>
+
+                </div>
+            </div>
+        </div>
         </div>
     </div>
 

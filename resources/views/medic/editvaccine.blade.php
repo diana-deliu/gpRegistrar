@@ -26,14 +26,33 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="start_date" class="col-lg-2 control-label">Dată de început</label>
+                <label for="date" class="col-lg-2 control-label">Dată</label>
 
                 <div class="col-lg-2">
                     <div class="container">
                         <div class="col-lg-2">
                             <div class="form-group">
                                 <div class="input-group date datetimepicker">
-                                    {!! Form::text('start_date', $vaccine['start_date'], ['class' => 'form-control'])!!}
+                                    {!! Form::text('date', $vaccine['date'], ['class' => 'form-control'])!!}
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar">
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="next_date" class="col-lg-2 control-label">Dată vaccinare viitoare</label>
+
+                <div class="col-lg-2">
+                    <div class="container">
+                        <div class="col-lg-2">
+                            <div class="form-group">
+                                <div class="input-group date datetimepicker">
+                                    {!! Form::text('next_date', $vaccine['next_date'], ['class' => 'form-control'])!!}
                                     <span class="input-group-addon">
                                         <span class="glyphicon glyphicon-calendar">
                                         </span>
@@ -50,14 +69,6 @@
 
                 <div class="col-lg-2">
                     {!! Form::select('category', $categories, null, ['class' => 'form-control'])!!}
-                    <span class="help-block"></span>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="interval" class="col-lg-2 control-label">Interval [luni]</label>
-
-                <div class="col-lg-2">
-                    {!! Form::select('interval', $intervals, null, ['class' => 'form-control'])!!}
                     <span class="help-block"></span>
                 </div>
             </div>
