@@ -2,6 +2,7 @@
     <div class="main_container">
         <div class="container">
             @include('partials.errors')
+            @include('partials.error')
             <div class="col-lg-6 col-lg-offset-3 centered">
                 {!! Form::open(['class' => 'form-horizontal form-medimpuls']) !!}
                 <h3>Înregistrare</h3>
@@ -14,6 +15,18 @@
                     <div class="form-group">
                         <div class="col-lg-12">
                             {!! Form::email('email', old('email'), ['placeholder' => 'E-mail', 'class' => 'form-control', 'autocomplete' => 'off']) !!}
+                            <span class="help-block"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-12">
+                            {!! Form::password('password', ['placeholder' => 'Parola dorită', 'class' => 'form-control', 'autocomplete' => 'off']) !!}
+                            <span class="help-block"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-12">
+                            {!! Form::password('password_confirmation', ['placeholder' => 'Confirmare parolă', 'class' => 'form-control', 'autocomplete' => 'off']) !!}
                             <span class="help-block"></span>
                         </div>
                     </div>

@@ -9,6 +9,7 @@
                     <div class="form-group">
                         <div class="col-lg-12">
                             {!! Form::email('email', old('email'), ['placeholder' => 'E-mail', 'class' => 'form-control', 'autocomplete' => 'off']) !!}
+                            <span class="help-block"></span>
                         </div>
                     </div>
                     <div class="form-group">

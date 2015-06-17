@@ -29,6 +29,7 @@ use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
+use Psy\Exception\Exception;
 
 class MedicController extends Controller
 {
@@ -86,7 +87,7 @@ class MedicController extends Controller
 
     public function createPatient(CreatePatientRequest $request, Registrar $registrar)
     {
-        $userRequest = array_only($request->all(), ['email', 'password']);
+        $userRequest = array_only($request->all(), ['email']);
         $userRequest['role'] = 'patient';
         $user = $this->createUser($userRequest, $registrar);
 
@@ -101,7 +102,7 @@ class MedicController extends Controller
                 'flash_message_type' => 'alert-danger'
             ])->withInput($request->all());
         }
-        return redirect('/')->with([
+        return redirect('medic/view_patients')->with([
             'flash_message' => 'Pacientul a fost adăugat cu succes!',
             'flash_message_type' => 'alert-success'
         ]);
@@ -257,57 +258,78 @@ class MedicController extends Controller
         return view('medic.importpatient', compact('maxFileSize'));
     }
 
-    function randomPassword( $length = 8 ) {
-        $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_-=+;:,.?";
-        $password = substr( str_shuffle( $chars ), 0, $length );
-        return $password;
-    }
-
     public function importPatient(ImportRequest $request, Registrar $registrar)
     {
         $file = $request->file('file');
         $fileName = $file->getClientOriginalName();
         $file->move('uploads', $fileName);
 
-        $results = Excel::load('uploads/'.$fileName, function($reader) {})->get();
+        $results = Excel::load('uploads/' . $fileName, function ($reader) {
+        })->get();
         $i = 0;
-        foreach($results->all() as $item) {
-            $patientData = $item->all();
+        foreach ($results->all() as $item) {
+            try {
 
-            $userRequest['email'] = $patientData['e_mail'];
-            $userRequest['role'] = 'patient';
-            $user = $this->createUser($userRequest, $registrar);
 
-            if(!$user) {
+                $patientData = $item->all();
+                if (!filter_var($patientData['e_mail'], FILTER_VALIDATE_EMAIL)) {
+                    return redirect('medic/view_patients')->with([
+                        'flash_message' => 'E-mail invalid pentru pacientul ' . $i . '. Restul pacienţilor au fost ignoraţi!',
+                        'flash_message_type' => 'alert-danger'
+                    ]);
+                }
+                $userRequest['email'] = trim($patientData['e_mail']);
+                $userRequest['role'] = 'patient';
+                $user = $this->createUser($userRequest, $registrar);
+
+                if (!$user) {
+                    return redirect('medic/view_patients')->with([
+                        'flash_message' => 'Eroare importare pacient ' . $i . '. Restul pacienţilor au fost ignoraţi!',
+                        'flash_message_type' => 'alert-danger'
+                    ]);
+                }
+
+                if (strlen(trim($patientData['cnp'])) != 13) {
+                    return redirect('medic/view_patients')->with([
+                        'flash_message' => 'CNP invalid pentru pacientul ' . $i . '. Restul pacienţilor au fost ignoraţi!',
+                        'flash_message_type' => 'alert-danger'
+                    ]);
+                }
+                $patientRequest['cnp'] = trim($patientData['cnp']);
+                if (strlen(trim($patientData['prenume'])) < 2 || strlen(trim($patientData['nume'])) < 2 || strlen(trim($patientData['adresa'])) < 2) {
+                    return redirect('medic/view_patients')->with([
+                        'flash_message' => 'Câmpurile nume, prenume şi adresă trebuie să aibă minim 2 caractere pentru pacientul ' . $i . '. Restul pacienţilor au fost ignoraţi!',
+                        'flash_message_type' => 'alert-danger'
+                    ]);
+                }
+                $patientRequest['firstname'] = trim($patientData['prenume']);
+                $patientRequest['lastname'] = trim($patientData['nume']);
+                $patientRequest['address'] = trim($patientData['adresa']);
+                $patientRequest['user_id'] = $user->id;
+                $patientRequest['medic_id'] = Medic::where('user_id', '=', Auth::user()->id)->firstOrFail()->id;
+
+                $patient = Patient::create($patientRequest);
+
+                if (!$patient) {
+                    return redirect('medic/view_patients')->with([
+                        'flash_message' => 'Eroare importare pacient ' . $i . '. Restul pacienţilor au fost ignoraţi!',
+                        'flash_message_type' => 'alert-danger'
+                    ]);
+                }
+
+                $i++;
+            } catch (Exception $e) {
                 return redirect('medic/view_patients')->with([
-                    'flash_message' => 'Eroare importare pacient ' . $i,
+                    'flash_message' => 'Eroare importare pacient ' . $i . '. Restul pacienţilor au fost ignoraţi!',
                     'flash_message_type' => 'alert-danger'
                 ]);
             }
-
-            $patientRequest['cnp'] = $patientData['cnp'];
-            $patientRequest['firstname'] = $patientData['prenume'];
-            $patientRequest['lastname'] = $patientData['nume'];
-            $patientRequest['address'] = $patientData['adresa'];
-            $patientRequest['user_id'] = $user->id;
-            $patientRequest['medic_id'] = Medic::where('user_id', '=', Auth::user()->id)->firstOrFail()->id;
-
-            $patient = Patient::create($patientRequest);
-
-            if(!$patient) {
-                return redirect('medic/view_patients')->with([
-                    'flash_message' => 'Eroare importare pacient ' . $i,
-                    'flash_message_type' => 'alert-danger'
-                ]);
-            }
-
-            $i++;
         }
 
-        unlink('uploads/'.$fileName);
+        unlink('uploads/' . $fileName);
 
         return redirect('medic/view_patients')->with([
-            'flash_message' => 'Au fost importati '. $results->count() . ' pacienti!',
+            'flash_message' => 'Au fost importati ' . $results->count() . ' pacienti!',
             'flash_message_type' => 'alert-success'
         ]);
 
@@ -315,7 +337,24 @@ class MedicController extends Controller
 
     public function exportPatient()
     {
-        return view('medic.exportpatient');
+        $filename = 'Pacienti'.date('_d_m_Y');
+        Excel::create($filename, function ($excel) {
+            $excel->setTitle('pacienti');
+            $excel->sheet('Pacienti', function ($sheet) {
+                $patients = Patient::all();
+                $patientsArray = [];
+                foreach ($patients as $patient) {
+                    $patientsArray[] = [
+                        'CNP' => $patient->cnp,
+                        'Prenume' => $patient->firstname,
+                        'Nume' => $patient->lastname,
+                        'E-mail' => $patient->user->email,
+                        'Adresa' => $patient->address
+                    ];
+                }
+                $sheet->fromArray($patientsArray);
+            });
+        })->download('xls');
     }
 
     public function patientDetails($id)
@@ -516,7 +555,7 @@ class MedicController extends Controller
         if ($requestAll['next_date'] <= $requestAll['date']) {
             $requestAll['date'] = $this->dateToStringLocaleEn($requestAll['date']);
             $requestAll['next_date'] = $this->dateToStringLocaleEn($requestAll['next_date']);
-            return redirect('medic/edit_consult/'.$id)->with([
+            return redirect('medic/edit_consult/' . $id)->with([
                 'flash_message' => 'Data consultaţiei viitoare trebuie să fie dupa cea curentă!',
                 'flash_message_type' => 'alert-danger'
             ])->withInput($requestAll);
@@ -821,7 +860,7 @@ class MedicController extends Controller
         if ($requestAll['next_date'] <= $requestAll['date']) {
             $requestAll['date'] = $this->dateToStringLocaleEn($requestAll['date']);
             $requestAll['next_date'] = $this->dateToStringLocaleEn($requestAll['next_date']);
-            return redirect('medic/edit_vaccine/'.$id)->with([
+            return redirect('medic/edit_vaccine/' . $id)->with([
                 'flash_message' => 'Data vaccinării viitoare trebuie să fie dupa cea curentă!',
                 'flash_message_type' => 'alert-danger'
             ])->withInput($requestAll);
@@ -1249,7 +1288,8 @@ class MedicController extends Controller
         return view('medic.answerdetails', compact('survey', 'answers'));
     }
 
-    private function convertDateToRoFormat($date) {
+    private function convertDateToRoFormat($date)
+    {
         return date_format($date, 'd.m.Y H:i');
 
     }

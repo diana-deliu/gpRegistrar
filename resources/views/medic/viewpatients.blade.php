@@ -50,7 +50,7 @@
             @endif
         </table>
         <a href="{{ url ('medic/import_patient') }}" class="btn btn-success"> Import</a>
-        <a href="{{ url ('medic/export_patient') }}" class="btn btn-primary pull-right"> Export</a>
+        <a href="{{ url ('medic/export_patient') }}" class="btn btn-primary pull-right" target="_blank"> Export</a>
     </div>
 @stop
 @section('footer_scripts')

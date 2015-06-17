@@ -39,20 +39,6 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="password" class="col-lg-2 control-label">Parolă</label>
-
-                <div class="col-lg-2">
-                    {!! Form::password('password', ['class' => 'form-control'])!!}
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="password_confirmation" class="col-lg-2 control-label">Confirmare parolă</label>
-
-                <div class="col-lg-2">
-                    {!! Form::password('password_confirmation', ['class' => 'form-control'])!!}
-                </div>
-            </div>
-            <div class="form-group">
                 <label for="address" class="col-lg-2 control-label">Adresă</label>
 
                 <div class="col-lg-2">

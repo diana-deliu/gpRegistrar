@@ -26,7 +26,6 @@ class CreatePatientRequest extends Request {
             'lastname' => 'required|max:255',
             'firstname' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|confirmed|min:6',
             'address' => 'required|max:65535',
         ];
     }
