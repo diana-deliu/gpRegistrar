@@ -84,16 +84,16 @@ class AdminController extends Controller
     /**
      * @return \Illuminate\View\View
      */
-    public function viewMedic()
+    public function viewMedics()
     {
-        $medics = $this->getMedics(20);
+        $medics = $this->getMedics();
 
-        return view('admin.viewmedic', compact('medics'));
+        return view('admin.viewmedics', compact('medics'));
     }
 
-    private function getMedics($number) {
+    private function getMedics() {
 
-        $medics_objects = Medic::all()->take($number)->all();
+        $medics_objects = Medic::all();
 
         $medics = [];
 

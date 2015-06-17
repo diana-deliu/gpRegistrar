@@ -32,14 +32,12 @@
             @foreach($medics as $medic)
 
                 <tr>
-                    <td>{{ $medic['id'] }}</td>
+                    <td><a href="{{url('admin/edit_medic'). '/'. $medic['id']}}">{{ $medic['id'] }}</a></td>
                     <td>{{ $medic['doc_code'] }}</td>
                     <td>{{ $medic['lastname'] }}</td>
                     <td>{{ $medic['firstname'] }}</td>
                     <td>{{ $medic['email'] }}</td>
                     <td>{{ $medic['practice'] }}</td>
-                    <td><a href="{{url ('admin/edit_medic').'/'.$medic['id']}}"
-                           class="btn btn-warning btn-xs">Editare</a></td>
                 </tr>
             @endforeach
             </tbody>

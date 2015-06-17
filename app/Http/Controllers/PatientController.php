@@ -2,12 +2,10 @@
 
 use App\Consult;
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdatePasswordRequest;
 
-use App\Http\Requests\CreateSurveyAnswerRequest;
 use App\Lab;
 use App\Patient;
-use App\Services\Registrar;
 use App\Survey;
 use App\SurveyAnswer;
 use App\SurveyQuestion;
@@ -72,6 +70,26 @@ class PatientController extends Controller
     {
         $this->middleware('patient');
     }
+
+    public function accountDetails() {
+        $user = Auth::user();
+        $patient = Patient::where('user_id', '=', $user->id)->firstOrFail();
+        $patient->user;
+        $patient = $patient->toArray();
+        return view('patient.accountDetails', compact('patient'));
+    }
+
+    public function editPassword(UpdatePasswordRequest $request) {
+        $user = Auth::user();
+
+        $user->update(['password' => bcrypt($request->input('password'))]);
+
+        return redirect('patient/account_details')->with([
+            'flash_message' => 'Parola a fost modificată cu succes!',
+            'flash_message_type' => 'alert-success'
+        ]);
+    }
+
 
     /**
      * @return \Illuminate\View\View

@@ -19,7 +19,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ url('admin/view_medic') }}">
+                        <a href="{{ url('admin/view_medics') }}">
                             <img src="{{ asset('images/edit_orange_20.png') }}"/><br/>
                             Administrează medici
                         </a>

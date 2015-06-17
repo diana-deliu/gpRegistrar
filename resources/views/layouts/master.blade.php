@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700|Open+Sans:400,300,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700|Open+Sans:400,300,700&subset=latin,latin-ext'
+          rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}"/>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}"/>
     <link rel="stylesheet" href="{{ asset('css/white.css') }}"/>
@@ -33,7 +34,6 @@
                 <div class="logo-textbox">
                     <a href="{{ url('/') }}">
                         <p><strong>gp</strong>Registrar</p>
-                        {{--<span>Cea mai la îndemână aplicație pentru medici și pacienți!</span>--}}
                     </a>
                 </div>
             </div>
@@ -43,12 +43,20 @@
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         @if(Auth::check())
-                            <li class="user"><span class="glyphicon glyphicon-user"></span></li>
-                            <li class="notification"><span class="glyphicon glyphicon-calendar"></span></li>
-                            <li class="notification"><span class="glyphicon glyphicon-globe"></span></li>
+                            @if (Auth::user()->role !== 'admin')
+                                @if(Auth::user()->role === 'medic')
+                                    <li class="user"><a href=" {{ url('medic/account_details') }}"><span
+                                                class="glyphicon glyphicon-user"></span></a></li>
+                                @endif
+                                    @if(Auth::user()->role === 'patient')
+                                        <li class="user"><a href=" {{ url('patient/account_details') }}"><span
+                                                    class="glyphicon glyphicon-user"></span></a></li>
+                                    @endif
+                                <li class="notification"><span class="glyphicon glyphicon-calendar"></span></li>
+                                <li class="notification"><span class="glyphicon glyphicon-globe"></span></li>
+                            @endif
 
                             <li class="welcome-right"><strong>{{ Auth::user()->email }}</strong></li>
-
                             <li>
                                 <a href="{{ url('/auth/logout') }}"><span>Logout</span></a>
                             </li>

@@ -13,6 +13,7 @@ use App\Http\Requests\CreateVaccineRequest;
 use App\Http\Requests\ImportRequest;
 use App\Http\Requests\UpdateConsultRequest;
 use App\Http\Requests\UpdateLabRequest;
+use App\Http\Requests\UpdatePasswordRequest;
 use App\Http\Requests\UpdatePatientRequest;
 use App\Http\Requests\UpdateSurveyRequest;
 use App\Http\Requests\UpdateTreatmentRequest;
@@ -113,9 +114,28 @@ class MedicController extends Controller
      */
     public function viewPatients()
     {
-        $patients = $this->getPatients(20);
+        $patients = $this->getPatients();
 
         return view('medic.viewpatients', compact('patients'));
+    }
+
+    public function accountDetails() {
+        $user = Auth::user();
+        $medic = Medic::where('user_id', '=', $user->id)->firstOrFail();
+        $medic->user;
+        $medic = $medic->toArray();
+        return view('medic.accountDetails', compact('medic'));
+    }
+
+    public function editPassword(UpdatePasswordRequest $request) {
+        $user = Auth::user();
+
+        $user->update(['password' => bcrypt($request->input('password'))]);
+
+        return redirect('medic/account_details')->with([
+            'flash_message' => 'Parola a fost modificată cu succes!',
+            'flash_message_type' => 'alert-success'
+        ]);
     }
 
     private function getDataFromCNP($cnp, &$sex, &$birthDate, &$age)
@@ -155,24 +175,22 @@ class MedicController extends Controller
         return $item;
     }
 
-    private function getPatientsAjax($number)
+    private function getPatientsAjax()
     {
-        $patients_objects = Patient::all()->take($number)->all();
+        $patients_objects = Patient::all();
 
         $patients = [];
 
         foreach ($patients_objects as $patient) {
-
             $patients[] = $this->patientToArrayAjax($patient);
-
         }
 
         return $patients;
     }
 
-    private function getPatients($number)
+    private function getPatients()
     {
-        $patients_objects = Patient::all()->take($number)->all();
+        $patients_objects = Patient::all();
 
         $patients = [];
 
@@ -466,10 +484,10 @@ class MedicController extends Controller
         return view('medic.viewpatientvaccines', compact('vaccines'));
     }
 
-    private function getConsults($number)
+    private function getConsults()
     {
 
-        $consults_objects = Consult::all()->take($number)->all();
+        $consults_objects = Consult::all();
 
         $consults = [];
 
@@ -497,7 +515,7 @@ class MedicController extends Controller
      */
     public function viewGeneralConsults()
     {
-        $consults = $this->getConsults(20);
+        $consults = $this->getConsults();
 
         return view('medic.viewgeneralconsults', compact('consults'));
     }
@@ -517,7 +535,7 @@ class MedicController extends Controller
      */
     public function getPatientsArray()
     {
-        $patients = $this->getPatientsAjax(20);
+        $patients = $this->getPatientsAjax();
 
         return $patients;
     }
@@ -628,15 +646,15 @@ class MedicController extends Controller
      */
     public function viewLabs()
     {
-        $labs = $this->getLabs(20);
+        $labs = $this->getLabs();
 
         return view('medic.viewlabs', compact('labs'));
     }
 
-    private function getLabs($number)
+    private function getLabs()
     {
 
-        $labs_objects = Lab::all()->take($number)->all();
+        $labs_objects = Lab::all();
 
         $labs = [];
 
@@ -776,17 +794,16 @@ class MedicController extends Controller
      */
     public function viewVaccines()
     {
-        $vaccines = $this->getVaccines(20);
+        $vaccines = $this->getVaccines();
 
         return view('medic.viewvaccines', compact('vaccines'));
     }
 
 
-    private function getVaccines($number)
+    private function getVaccines()
     {
 
-        $vaccines_objects = Vaccine::all()->take($number)->all();
-
+        $vaccines_objects = Vaccine::all();
         $vaccines = [];
 
         foreach ($vaccines_objects as $vaccine) {
@@ -928,22 +945,16 @@ class MedicController extends Controller
      */
     public function viewTreatments()
     {
-        $treatments = $this->getTreatments(20);
-
+        $treatments = $this->getTreatments();
         return view('medic.viewtreatments', compact('treatments'));
     }
 
-    private function getTreatments($number)
+    private function getTreatments()
     {
-
-        $treatments_objects = Treatment::all()->take($number)->all();
-
+        $treatments_objects = Treatment::all();
         $treatments = [];
-
         foreach ($treatments_objects as $treatment) {
-
             $treatments[] = $this->treatmentToArray($treatment);
-
         }
 
         return $treatments;
@@ -1108,12 +1119,12 @@ class MedicController extends Controller
      */
     public function viewSurveys()
     {
-        $surveys = $this->getSurveys(20);
+        $surveys = $this->getSurveys();
 
         return view('medic.viewsurveys', compact('surveys'));
     }
 
-    private function getSurveys($number)
+    private function getSurveys()
     {
 
         $surveys_objects = Survey::all();
