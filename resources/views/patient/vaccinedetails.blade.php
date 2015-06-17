@@ -83,10 +83,8 @@
                     </div>
                 </div>
             </div>
-            <div class="panel panel-default col-lg-3 col-md-offset-3">
+            <div class="panel panel-default col-lg-3 col-md-offset-1">
                 <div class="panel-body">
-                    <strong>NOTĂ:</strong>
-
                     <p>Dacă pacientul nu se prezintă la vaccinare la data respectivă,
                             aceasta
                             se va reprograma automat

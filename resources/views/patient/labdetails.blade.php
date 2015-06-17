@@ -37,8 +37,9 @@ function checkIfSet($value)
             <div class="panel-body">
                 <div class="panel panel-default col-lg-3 col-md-offset-4">
                     <div class="panel-body">
-                         <strong>NOTĂ:</strong> <p>Valorile afișate cu: </p> <p class="text-success"><strong>verde</strong> se află în limitele normale,</p>
-                        <p class="text-danger"><strong>roșu</strong> sugerează o anomalie! </p>
+                         <span>Valorile afișate cu: </span><br/>
+                        <span class="text-success"><strong>verde</strong> se află în limitele normale,</span><br/>
+                        <span class="text-danger"><strong>roșu</strong> sugerează o anomalie! </span>
                     </div>
                 </div>
             </div>
@@ -165,9 +166,7 @@ function checkIfSet($value)
             </div>
             <div class="panel panel-default col-lg-3 col-md-offset-5">
                 <div class="panel-body">
-                    <strong>NOTĂ:</strong>
-
-                    <p>Dacă pacientul nu se prezintă la analize la data respectivă,
+                    <p>Dacă nu vă prezentaţi la analize pe data respectivă,
                             acestea
                             se vor reprograma automat
                             o săptămână mai târziu!</p>

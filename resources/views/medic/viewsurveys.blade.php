@@ -15,7 +15,8 @@
                     <input type="text" id="filter_title" class="form-control input-sm" placeholder="Titlu">
                 </th>
                 <th>
-                    <input type="text" id="filter_start_date" class="form-control input-sm" placeholder="Dată de început">
+                    <input type="text" id="filter_start_date" class="form-control input-sm"
+                           placeholder="Dată de început">
                 </th>
                 <th>
                     <input type="text" id="filter_endate" class="form-control input-sm" placeholder="Dată de sfârșit">
@@ -24,15 +25,12 @@
             </thead>
             <tbody>
             @foreach($surveys as $survey)
-
-                <tr>
-
+                <tr @if(isset($survey['warning']) && $survey['warning']) class="danger" @endif>
                     <td><a href="{{url('medic/survey_details').'/'.$survey['id']}}">{{ $survey['id'] }}</a></td>
                     <td>{{ $survey['title'] }}</td>
                     <td>{{ $survey['start_date'] }}</td>
                     <td>{{ $survey['end_date'] }}</td>
                 </tr>
-                </a>
             @endforeach
             </tbody>
         </table>
@@ -40,7 +38,8 @@
             <tr>
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <p class="text-danger" style="text-align:center;"><strong>Nu s-a găsit nicio întregistrare!</strong></p>
+                        <p class="text-danger" style="text-align:center;"><strong>Nu s-a găsit nicio
+                                întregistrare!</strong></p>
                     </div>
                 </div>
             </tr>

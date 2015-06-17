@@ -1121,17 +1121,29 @@ class MedicController extends Controller
         $surveys = [];
 
         foreach ($surveys_objects as $survey) {
-
-            $surveys[] = $this->surveyToArray($survey);
-
+            $currentDate = new DateTime();
+            $startDate = date_create_from_format('d.m.Y H:i', $survey->start_date);
+            $endDate = date_create_from_format('d.m.Y H:i', $survey->end_date);
+            if (($startDate < $currentDate) && ($endDate > $currentDate)) {
+                $surveys[] = $this->surveyToArray($survey);
+            }
+            else {
+                $surveys[] = $this->surveyToArray($survey, true);
+            }
         }
 
         return $surveys;
     }
 
-    private function surveyToArray($survey)
+    private function surveyToArray($survey, $withWarning = false)
     {
         $item = array_except($survey->toArray(), ['created_at', 'updated_at']);
+        if ($withWarning) {
+            $item['warning'] = true;
+        }
+        else {
+            $item['warning'] = false;
+        }
 
         return $item;
     }

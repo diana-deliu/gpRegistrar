@@ -271,15 +271,18 @@ class PatientController extends Controller
 
     private function getSurveys()
     {
-
         $surveys_objects = Survey::all();
 
         $surveys = [];
 
         foreach ($surveys_objects as $survey) {
             $survey->questions;
-            $surveys[] = $this->surveyToArray($survey);
-
+            $currentDate = new DateTime();
+            $startDate = date_create_from_format('d.m.Y H:i', $survey->start_date);
+            $endDate = date_create_from_format('d.m.Y H:i', $survey->end_date);
+            if (($startDate < $currentDate) && ($endDate > $currentDate)) {
+                $surveys[] = $this->surveyToArray($survey);
+            }
         }
 
         return $surveys;

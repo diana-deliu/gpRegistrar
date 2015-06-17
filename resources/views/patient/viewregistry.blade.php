@@ -115,6 +115,15 @@ function getPanelState($value, $min, $max)
         <legend><h3>Ultima consultație</h3></legend>
         @if(isset($patient['last_consult']) && $patient['last_consult'])
             <div class="row">
+                <div class="panel panel-default col-lg-2 col-md-offset-1">
+                    <div class="panel-body">
+                        <span>Valorile afișate cu: </span><br/>
+                        <span class="text-success"><strong>verde</strong> se află în limitele normale,</span><br/>
+                        <span class="text-danger"><strong>roșu</strong> sugerează o anomalie! </span><br/>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-xs-6 col-sm-2 col-md-offset-1">
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -153,17 +162,13 @@ function getPanelState($value, $min, $max)
                             <p>{{ $patient['last_consult']['blood_pressure'] }}</p></div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="panel panel-default col-lg-2 col-lg-offset-1">
-                    <div class="panel-body">
-                        <strong>NOTĂ:</strong>
-
-                        <p>Valorile afișate cu: </p>
-
-                        <p class="text-success"><strong>verde</strong> se află în limitele normale,</p>
-
-                        <p class="text-danger"><strong>roșu</strong> sugerează o anomalie! </p>
+                <div class="col-xs-5 col-sm-2">
+                    <div class="panel {{ getPanelState($patient['last_consult']['glucose'], 78, 120) }}">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Glicemie </h3>
+                        </div>
+                        <div class="panel-body">
+                            <p>{{ $patient['last_consult']['glucose'] }}</p></div>
                     </div>
                 </div>
             </div>
