@@ -1,5 +1,6 @@
 <?php namespace App\Http\Middleware;
 
+use App\Http\Controllers\NotificationsController;
 use Closure;
 use Illuminate\Auth\Guard;
 
@@ -20,6 +21,7 @@ class CheckIfMedic
     public function __construct(Guard $auth)
     {
         $this->auth = $auth;
+        view()->share('notifications', NotificationsController::medicGet());
     }
 
     /**

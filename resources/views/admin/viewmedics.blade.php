@@ -6,7 +6,7 @@
 
     <div class="main_container">
         @include('partials.errors')
-        <table class="table table-striped table-hover ">
+        <table class="table table-striped table-hover">
             <thead>
             <tr>
                 <th>Id</th>
@@ -43,4 +43,7 @@
             </tbody>
         </table>
     </div>
+@stop
+@section('footer_scripts')
+    @include('partials.table_row_link')
 @stop

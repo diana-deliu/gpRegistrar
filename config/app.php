@@ -146,9 +146,9 @@ return [
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
 		'yajra\Oci8\Oci8ServiceProvider',
-        'Maatwebsite\Excel\ExcelServiceProvider'
+        'Maatwebsite\Excel\ExcelServiceProvider',
+        'Khill\Lavacharts\Laravel\LavachartsServiceProvider'
 		
-
 	],
 
 	/*

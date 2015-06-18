@@ -1135,7 +1135,7 @@ class MedicController extends Controller
             $currentDate = new DateTime();
             $startDate = date_create_from_format('d.m.Y H:i', $survey->start_date);
             $endDate = date_create_from_format('d.m.Y H:i', $survey->end_date);
-            if (($startDate < $currentDate) && ($endDate > $currentDate)) {
+            if (($endDate > $currentDate)) {
                 $surveys[] = $this->surveyToArray($survey);
             }
             else {

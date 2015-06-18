@@ -38,6 +38,28 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-sm-2 col-md-offset-1">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Cod medic</h3>
+                    </div>
+                    <div class="panel-body">
+                        <p>{{ $medic['doc_code'] }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Cabinet</h3>
+                    </div>
+                    <div class="panel-body">
+                        <p>{{ $medic['practice'] }}</p>
+                    </div>
+                </div>
+            </div>
             <div class="col-xs-6 col-sm-2">
                 <div class="panel panel-default">
                     <div class="panel-heading">

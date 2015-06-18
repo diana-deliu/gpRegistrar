@@ -29,7 +29,6 @@
             @foreach($patients as $patient)
 
                 <tr>
-
                     <td><a href="{{url('medic/patient_details').'/'.$patient['id']}}">{{ $patient['id'] }}</a></td>
                     <td>{{ $patient['cnp'] }}</td>
                     <td>{{ $patient['lastname'] }}</td>

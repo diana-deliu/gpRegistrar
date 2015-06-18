@@ -1,9 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-
     @include('partials.medic_left_sidebar')
-
     <div class="main_container">
         @include('partials.errors')
         @include('partials.error')

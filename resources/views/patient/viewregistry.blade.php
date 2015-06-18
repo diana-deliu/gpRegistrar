@@ -172,18 +172,12 @@ function getPanelState($value, $min, $max)
                     </div>
                 </div>
             </div>
-            <legend><h3>Curba sănătății</h3></legend>
+            <legend><h3>Indice de masă corporală</h3></legend>
             <div class="row">
                 <div class="panel panel-default col-lg-6 col-lg-offset-1">
                     <div class="panel-body">
-                        <strong>NOTĂ:</strong>
-
-                        <p>
-                            blablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablabla
-                            blablablablablablablablablablablablablablablablablablablablablablablablablablablabla
-                            blablablablablablablablablablablablablablablablablablablablablablablabla
-                            blablablablablablablablablablablablablablablablablablablabla
-                            blablablablablablablablablablablablablablablablablablablablablablablabla</p>
+                        <div id="linechart">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -196,5 +190,7 @@ function getPanelState($value, $min, $max)
             </div>
         @endif
     </div>
-
+    <?php
+            echo $lineChart->render('linechart');
+    ?>
 @stop

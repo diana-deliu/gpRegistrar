@@ -112,6 +112,9 @@ Route::get('patient/edit_registry', 'PatientController@editRegistry');
 Route::get('medic/calendar', 'CalendarController@medicGet');
 Route::get('patient/calendar', 'CalendarController@patientGet');
 
+Route::get('medic/notifications', 'NotificationsController@medicGet');
+Route::get('patient/notifications', 'NotificationsController@patientGet');
+
 Route::controllers([
     'auth' => 'Auth\AuthController',
     'password' => 'Auth\PasswordController'

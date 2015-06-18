@@ -14,6 +14,10 @@ use App\Vaccine;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Khill\Lavacharts\Configs\HorizontalAxis;
+use Khill\Lavacharts\Configs\TextStyle;
+use Khill\Lavacharts\Formats\DateFormat;
+use Khill\Lavacharts\Lavacharts;
 
 class PatientController extends Controller
 {
@@ -71,7 +75,14 @@ class PatientController extends Controller
         $this->middleware('patient');
     }
 
-    public function accountDetails() {
+    private function BMIFromConsult($consult)
+    {
+        $heightInM = $consult->height / 100;
+        return $consult->weight / ($heightInM * $heightInM);
+    }
+
+    public function accountDetails()
+    {
         $user = Auth::user();
         $patient = Patient::where('user_id', '=', $user->id)->firstOrFail();
         $patient->user;
@@ -79,7 +90,8 @@ class PatientController extends Controller
         return view('patient.accountDetails', compact('patient'));
     }
 
-    public function editPassword(UpdatePasswordRequest $request) {
+    public function editPassword(UpdatePasswordRequest $request)
+    {
         $user = Auth::user();
 
         $user->update(['password' => bcrypt($request->input('password'))]);
@@ -90,7 +102,6 @@ class PatientController extends Controller
         ]);
     }
 
-
     /**
      * @return \Illuminate\View\View
      */
@@ -99,13 +110,39 @@ class PatientController extends Controller
         $user = Auth::user();
         $patient = Patient::where('user_id', '=', $user->id)->firstOrFail();
         $patient->medic;
-        $last_consult = $patient->consults()->orderBy('date')->first();
+        $consults = $patient->consults()->orderBy('date')->get();
+        $last_consult = $consults->first();
         $patient = $this->patientToArray($patient);
-        if($last_consult) {
+        if ($last_consult) {
             $patient['last_consult'] = $last_consult->toArray();
-        }
+            $BMIs = \Lava::DataTable();
+            /*\Lava::TextStyle([
+                'color' => '#000000',
+                'fontName' => 'Arial',
+                'fontSize' => 50
+            ]);*/
+            $BMIs->addDateColumn('Data')
+                ->addNumberColumn('IMC');
+            foreach ($consults as $consult) {
+                $BMI = $this->BMIFromConsult($consult);
+                $BMIs->addRow([
+                    $consult->date,
+                    $BMI
+                ]);
+            }
+            $lineChart = \Lava::LineChart('IMC')
+                ->dataTable($BMIs)
+                ->title('Indice masă corporală')
+                ->hAxis(new HorizontalAxis(['format' => 'dd.MM.yyyy']))
+                ->colors(['#ff5757'])
+                ->titleTextStyle(new TextStyle([
+                    'color' => '#000',
+                    'fontName' => 'Source Sans Pro',
+                    'fontSize' => 15
+                ]));
 
-        return view('patient.viewregistry', compact('patient'));
+        }
+        return view('patient.viewregistry', compact('patient', 'lineChart'));
     }
 
     private function consultToArray($consult)
@@ -387,7 +424,7 @@ class PatientController extends Controller
         foreach ($requestAll as $key => $elem) {
             if (starts_with($key, 'answer')) {
                 $questionId = intval(substr($key, 6, strlen($key)));
-                if(!$this->upsertSurveyAnswer($questionId, $elem)) {
+                if (!$this->upsertSurveyAnswer($questionId, $elem)) {
                     return redirect('patient/add_answers/' . $surveyId)->with([
                         'flash_message' => 'Chestionarul nu a putut fi completat!',
                         'flash_message_type' => 'alert-danger'

@@ -455,14 +455,18 @@ tr.hover {
     display:inline;
 }
 
-.navbar-right .notification span {
+.table-striped tr.hidden {
+    display: none;
+}
+
+.navbar-right .notification span.glyphicon {
     line-height: 90px;
     vertical-align: middle;
     font-size: 18px;
     padding: 0 10px;
 }
 
-.navbar-right .user span {
+.navbar-right .user span.glyphicon {
     line-height: 90px;
     vertical-align: middle;
     font-size: 18px;
