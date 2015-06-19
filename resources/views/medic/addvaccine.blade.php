@@ -48,7 +48,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="next_date" class="col-lg-2 col-xs-offset-1 col-md-offset-1 col-lg-offset-0 control-label">Dată analize viitoare</label>
+                <label for="next_date" class="col-lg-2 col-xs-offset-1 col-md-offset-1 col-lg-offset-0 control-label">Dată vaccinare viitoare</label>
 
                 <div class="col-lg-5 col-xs-10 col-xs-offset-0 col-md-offset-0 col-lg-offset-0">
                     <div class="container">
@@ -72,10 +72,18 @@
                 {!! Form::hidden('patient_id', null, ['id'=>'patient_id_hidden']) !!}
             @endif
             <div class="form-group">
-                <label for="category" class="col-lg-2 col-xs-offset-1 col-md-offset-1 col-lg-offset-0 control-label">Categorie</label>
+                <label for="category" class="col-lg-2 col-xs-offset-1 col-md-offset-1 col-lg-offset-0 control-label">Categorie curentă</label>
 
                 <div class="col-lg-4 col-xs-10 col-xs-offset-1 col-md-offset-1 col-lg-offset-0">
                     {!! Form::select('category', $categories, null, ['class' => 'form-control'])!!}
+                    <span class="help-block"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="next_category" class="col-lg-2 col-xs-offset-1 col-md-offset-1 col-lg-offset-0 control-label">Categorie vaccinare viitoare</label>
+
+                <div class="col-lg-4 col-xs-10 col-xs-offset-1 col-md-offset-1 col-lg-offset-0">
+                    {!! Form::select('next_category', $categories, null, ['class' => 'form-control'])!!}
                     <span class="help-block"></span>
                 </div>
             </div>

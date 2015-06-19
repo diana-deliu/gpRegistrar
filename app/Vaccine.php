@@ -14,7 +14,7 @@ class Vaccine extends Model {
      *
      * @var array
      */
-    protected $fillable = ['patient_id', 'date', 'next_date', 'category', 'interval', 'notification', 'appointment'];
+    protected $fillable = ['patient_id', 'date', 'next_date', 'category', 'next_category'];
 
 
     public function patient() {

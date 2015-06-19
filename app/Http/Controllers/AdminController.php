@@ -72,7 +72,7 @@ class AdminController extends Controller
 
         Medic::create($medicRequest);
 
-        return redirect('/')->with([
+        return redirect('admin/view_medics')->with([
             'flash_message' => 'Medicul a fost adăugat cu succes!',
             'flash_message_type' => 'alert-success'
         ]);
@@ -157,7 +157,7 @@ class AdminController extends Controller
             ]);
         }
 
-        return redirect('admin/view_medic')->with([
+        return redirect('admin/view_medics')->with([
             'flash_message' => 'Medicul a fost șters cu succes!',
             'flash_message_type' => 'alert-success'
         ]);

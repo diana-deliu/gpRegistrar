@@ -73,6 +73,14 @@
                 </div>
             </div>
             <div class="form-group">
+                <label for="next_category" class="col-lg-2 col-xs-offset-1 col-md-offset-1 col-lg-offset-0 control-label">Categorie vaccinare viitoare</label>
+
+                <div class="col-lg-4 col-xs-10 col-xs-offset-1 col-md-offset-1 col-lg-offset-0">
+                    {!! Form::select('next_category', $categories, null, ['class' => 'form-control'])!!}
+                    <span class="help-block"></span>
+                </div>
+            </div>
+            <div class="form-group">
                 <div class="col-lg-4 col-xs-9 col-xs-offset-1 col-md-offset-1 col-lg-offset-2">
                     <button type="submit" class="btn btn-warning">Editare</button>
                     <a href="{{ url('medic/remove_vaccine').'/'.$vaccine['id'] }}" class="btn btn-primary pull-right">Ștergere</a>

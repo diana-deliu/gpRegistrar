@@ -191,6 +191,8 @@ function getPanelState($value, $min, $max)
         @endif
     </div>
     <?php
-            echo $lineChart->render('linechart');
+            if(isset($lineChart) && $lineChart) {
+                echo $lineChart->render('linechart');
+            }
     ?>
 @stop

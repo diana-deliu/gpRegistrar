@@ -813,6 +813,7 @@ class MedicController extends Controller
         $item['firstname'] = $patient->firstname;
         if ($makeReadable) {
             $item['category'] = $this->categories[$item['category']];
+            $item['next_category'] = $this->categories[$item['next_category']];
         }
 
         return $item;

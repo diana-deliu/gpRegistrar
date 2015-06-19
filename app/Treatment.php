@@ -22,7 +22,6 @@ class Treatment extends Model {
         'treatment',
         'extra',
         'referral',
-        'appointment'
     ];
 
 
