@@ -262,6 +262,7 @@ class PatientController extends Controller
         $item['lastname'] = $patient->lastname;
         $item['firstname'] = $patient->firstname;
         $item['category'] = $item['category'] = $this->categories[$item['category']];
+        $item['next_category'] = $item['next_category'] = $this->categories[$item['next_category']];
 
         return $item;
     }

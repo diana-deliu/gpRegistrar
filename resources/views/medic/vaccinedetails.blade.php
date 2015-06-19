@@ -55,7 +55,7 @@
             <div class="col-lg-2 col-xs-offset-1 col-lg-offset-0">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Categorie viitoare</h3>
+                        <h3 class="panel-title">Categorie vaccinare viitoare</h3>
                     </div>
                     <div class="panel-body">
                         <p>{{ $vaccine['next_category'] }}</p>
