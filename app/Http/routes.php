@@ -46,7 +46,6 @@ Route::get('medic/view_patientconsults/{id}', 'MedicController@viewPatientConsul
 Route::get('medic/view_patientlabs/{id}', 'MedicController@viewPatientLabs');
 Route::get('medic/view_patientvaccines/{id}', 'MedicController@viewPatientVaccines');
 Route::get('medic/view_patienttreatments/{id}', 'MedicController@viewPatientTreatments');
-Route::get('medic/view_patientAnswers/{id}', 'MedicController@viewPatientAnswers');
 
 Route::get('medic/view_generalconsults', 'MedicController@viewGeneralConsults');
 Route::get('medic/consult_details/{id}', 'MedicController@consultDetails');

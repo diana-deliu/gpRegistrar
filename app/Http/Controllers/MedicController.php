@@ -752,16 +752,6 @@ class MedicController extends Controller
         $requestAll = $request->all();
         $requestAll['date'] = date_create_from_format('d.m.Y H:i', $requestAll['date']);
         $requestAll['next_date'] = date_create_from_format('d.m.Y H:i', $requestAll['next_date']);
-        if (!(isset($requestAll['notification'])) || is_null($requestAll['notification'])) {
-            $requestAll['notification'] = false;
-        } else {
-            $requestAll['notification'] = true;
-        }
-        if (!(isset($requestAll['appointment'])) || is_null($requestAll['appointment'])) {
-            $requestAll['appointment'] = false;
-        } else {
-            $requestAll['appointment'] = true;
-        }
 
         if ($requestAll['next_date'] <= $requestAll['date']) {
             $requestAll['date'] = $this->dateToStringLocaleEn($requestAll['date']);
@@ -823,9 +813,6 @@ class MedicController extends Controller
         $item['firstname'] = $patient->firstname;
         if ($makeReadable) {
             $item['category'] = $this->categories[$item['category']];
-
-            $item['notification'] = ($item['notification']) ? 'Da' : 'Nu';
-            $item['appointment'] = ($item['appointment']) ? 'Da' : 'Nu';
         }
 
         return $item;
@@ -862,17 +849,6 @@ class MedicController extends Controller
         $requestAll = $request->all();
         $requestAll['date'] = date_create_from_format('d.m.Y H:i', $requestAll['date']);
         $requestAll['next_date'] = date_create_from_format('d.m.Y H:i', $requestAll['next_date']);
-
-        if (!(isset($requestAll['notification'])) || is_null($requestAll['notification'])) {
-            $requestAll['notification'] = false;
-        } else {
-            $requestAll['notification'] = true;
-        }
-        if (!(isset($requestAll['appointment'])) || is_null($requestAll['appointment'])) {
-            $requestAll['appointment'] = false;
-        } else {
-            $requestAll['appointment'] = true;
-        }
 
         if ($requestAll['next_date'] <= $requestAll['date']) {
             $requestAll['date'] = $this->dateToStringLocaleEn($requestAll['date']);
@@ -917,12 +893,6 @@ class MedicController extends Controller
     {
         $requestAll = $request->all();
         $requestAll['date'] = date_create_from_format('d.m.Y H:i', $requestAll['date']);
-
-        if (!(isset($requestAll['appointment'])) || is_null($requestAll['appointment'])) {
-            $requestAll['appointment'] = false;
-        } else {
-            $requestAll['appointment'] = true;
-        }
 
         $result = Treatment::create($requestAll);
 
@@ -969,7 +939,6 @@ class MedicController extends Controller
         if ($makeReadable) {
             $item['diagnosis'] = $this->diagnosis[$item['diagnosis']];
             $item['treatment'] = $this->treatments[$item['treatment']];
-            $item['appointment'] = ($item['appointment']) ? 'Da' : 'Nu';
         }
 
         return $item;
@@ -1011,12 +980,6 @@ class MedicController extends Controller
 
         $requestAll = $request->all();
         $requestAll['date'] = date_create_from_format('d.m.Y H:i', $requestAll['date']);
-
-        if (!(isset($requestAll['appointment'])) || is_null($requestAll['appointment'])) {
-            $requestAll['appointment'] = false;
-        } else {
-            $requestAll['appointment'] = true;
-        }
 
         $treatment->update($requestAll);
 

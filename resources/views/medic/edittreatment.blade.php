@@ -12,7 +12,7 @@
             <legend><h3>Editare recomandare</h3></legend>
             <div class="form-group">
 
-                <div class="panel panel-default col-lg-3 col-md-offset-1">
+                <div class="panel panel-default col-lg-7 col-xs-10 col-lg-offset-1 col-xs-offset-1">
                     <div class="panel-body">
                         <a href="#" class="btn btn-success btn-xs pull-right" id="patient_change_btn">
                             Pacient</a>
@@ -26,11 +26,11 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="date" class="col-lg-2 control-label">Dată</label>
+                <label for="date" class="col-lg-2 col-xs-offset-1 col-md-offset-1 col-lg-offset-0 control-label">Dată recomandare</label>
 
-                <div class="col-lg-2">
+                <div class="col-lg-5 col-xs-10 col-xs-offset-0 col-md-offset-0 col-lg-offset-0">
                     <div class="container">
-                        <div class="col-lg-2">
+                        <div class="col-lg-5 col-xs-10 col-xs-offset-1 col-md-offset-1 col-lg-offset-0">
                             <div class="form-group">
                                 <div class="input-group date datetimepicker">
                                     {!! Form::text('date', $treatment['date'], ['class' => 'form-control'])!!}
@@ -46,47 +46,39 @@
             </div>
             {!! Form::hidden('patient_id', $patient['id']) !!}
             <div class="form-group">
-                <label for="diagnosis" class="col-lg-2 control-label">Diagnostic</label>
+                <label for="diagnosis" class="col-lg-2 col-xs-offset-1 col-md-offset-1 col-lg-offset-0 control-label">Diagnostic</label>
 
-                <div class="col-lg-2">
+                <div class="col-lg-5 col-xs-10 col-xs-offset-1 col-md-offset-1 col-lg-offset-0">
                     {!! Form::select('diagnosis', $diagnosis, null, ['class' => 'form-control'])!!}
                     <span class="help-block"></span>
                 </div>
             </div>
             <div class="form-group">
-                <label for="treatment" class="col-lg-2 control-label">Tratament</label>
+                <label for="treatment" class="col-lg-2 col-xs-offset-1 col-md-offset-1 col-lg-offset-0 control-label">Tratament</label>
 
-                <div class="col-lg-2">
+                <div class="col-lg-5 col-xs-10 col-xs-offset-1 col-md-offset-1 col-lg-offset-0">
                     {!! Form::select('treatment', $treatments, null, ['class' => 'form-control'])!!}
                     <span class="help-block"></span>
                 </div>
             </div>
             <div class="form-group">
-                <label for="extra" class="col-lg-2 control-label">Specificații</label>
+                <label for="extra" class="col-lg-2 col-xs-offset-1 col-md-offset-1 col-lg-offset-0 control-label">Specificații</label>
 
-                <div class="col-lg-2">
+                <div class="col-lg-5 col-xs-10 col-xs-offset-1 col-md-offset-1 col-lg-offset-0">
                     {!! Form::textarea('extra', $treatment['extra'], ['class' => 'form-control', 'rows' => '3'])!!}
                     <span class="help-block"></span>
                 </div>
             </div>
             <div class="form-group">
-                <label for="referral" class="col-lg-2 control-label">Trimitere</label>
+                <label for="referral" class="col-lg-2 col-xs-offset-1 col-md-offset-1 col-lg-offset-0 control-label">Trimitere</label>
 
-                <div class="col-lg-2">
+                <div class="col-lg-5 col-xs-10 col-xs-offset-1 col-md-offset-1 col-lg-offset-0">
                     {!! Form::textarea('referral', $treatment['referral'], ['class' => 'form-control', 'rows' => '3'])!!}
                     <span class="help-block"></span>
                 </div>
             </div>
             <div class="form-group">
-                <label for="appointment" class="col-lg-2 control-label">Setare programare viitoaree</label>
-
-                <div class="col-lg-2">
-                    {!! Form::checkbox('appointment', old('appointment'), true)!!}
-                    <span class="help-block"></span>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-lg-2 col-lg-offset-2">
+                <div class="col-lg-5 col-xs-9 col-xs-offset-1 col-md-offset-1 col-lg-offset-2">
                     <button type="submit" class="btn btn-warning">Editare</button>
                     <a href="{{ url('medic/remove_treatment').'/'.$treatment['id'] }}" class="btn btn-primary pull-right">Ștergere</a>
                 </div>

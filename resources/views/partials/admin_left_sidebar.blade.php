@@ -15,13 +15,16 @@
                     <li class="droplink">
                         <a href="{{ url('admin/add_medic') }}">
                             <img src="{{ asset('images/add_green_20.png') }}"/><br/>
-                            Adaugă medici
+
+                            <p>Adaugă medici</p>
                         </a>
                     </li>
                     <li>
                         <a href="{{ url('admin/view_medics') }}">
                             <img src="{{ asset('images/edit_orange_20.png') }}"/><br/>
-                            Administrează medici
+
+                            <p>Administrează medici</p>
+                        </a>
                         </a>
                     </li>
 

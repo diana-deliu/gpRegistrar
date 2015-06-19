@@ -27,8 +27,6 @@ class UpdateVaccineRequest extends Request {
             'next_date' => 'required|date',
             'category' => 'required|integer',
             'vsh' => 'max:1000|integer',
-            'notification' => 'in:on,',
-            'appointment' => 'in:on,'
 		];
 	}
 

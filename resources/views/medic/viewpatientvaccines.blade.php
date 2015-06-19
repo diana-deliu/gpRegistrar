@@ -23,20 +23,16 @@
                 <th>
                     <input type="text" id="filter_category" class="form-control input-sm" placeholder="Categorie">
                 </th>
-                <th>
-                    <input type="text" id="filter_interval" class="form-control input-sm" placeholder="Interval">
-                </th>
             </tr>
             </thead>
             <tbody>
             @foreach($vaccines as $vaccine)
                 <tr>
                     <td><a href="{{url('medic/vaccine_details').'/'.$vaccine['id']}}">{{ $vaccine['id'] }}</a></td>
-                    <td>{{ $vaccine['start_date'] }}</td>
+                    <td>{{ $vaccine['date'] }}</td>
                     <td>{{ $vaccine['lastname'] }}</td>
                     <td>{{ $vaccine['firstname'] }}</td>
                     <td>{{ $vaccine['category'] }}</td>
-                    <td>{{ $vaccine['interval'] }}</td>
                 </tr>
                 </a>
             @endforeach
@@ -46,10 +42,12 @@
             <tr>
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <p class="text-danger" style="text-align:center;"><strong>Nu s-a găsit nicio întregistrare!</strong></p>
+                        <p class="text-danger" style="text-align:center;"><strong>Nu s-a găsit nicio
+                                întregistrare!</strong></p>
                     </div>
                 </div>
             </tr>
+        @endif
     </div>
 @stop
 @section('footer_scripts')

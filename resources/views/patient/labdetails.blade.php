@@ -26,7 +26,7 @@ function checkIfSet($value)
         <legend><h3>Vizualizare analize</h3></legend>
         <div class="row">
             <div class="form-group">
-                <div class="panel panel-default col-lg-3 col-md-offset-1">
+                <div class="panel panel-default col-lg-2 col-xs-offset-1 col-lg-offset-1">
                     <div class="panel-body">
                         CNP: {{ $patient['cnp'] }} <br/>
                         Nume: {{ $patient['firstname'] }} {{ $patient['lastname'] }} <br/>
@@ -35,7 +35,7 @@ function checkIfSet($value)
                 </div>
             </div>
             <div class="panel-body">
-                <div class="panel panel-default col-lg-3 col-md-offset-4">
+                <div class="panel panel-default col-lg-2 col-xs-offset-1 col-lg-offset-6">
                     <div class="panel-body">
                          <span>Valorile afișate cu: </span><br/>
                         <span class="text-success"><strong>verde</strong> se află în limitele normale,</span><br/>
@@ -46,7 +46,7 @@ function checkIfSet($value)
         </div>
 
         <div class="row">
-            <div class="col-xs-6 col-sm-2 col-md-offset-1">
+            <div class="col-lg-2 col-xs-offset-1">
                 <div class="panel panel-warning">
                     <div class="panel-heading">
                         <h3 class="panel-title">Dată</h3>
@@ -56,7 +56,7 @@ function checkIfSet($value)
                     </div>
                 </div>
             </div>
-            <div class="col-xs-6 col-sm-2">
+            <div class="col-lg-2 col-xs-offset-1 col-lg-offset-0">
                 <div class="panel {{ getPanelState($lab['hemoglobin'], 0, 6) }}">
                     <div class="panel-heading">
                         <h3 class="panel-title">Hemoglobină</h3>
@@ -66,7 +66,7 @@ function checkIfSet($value)
                     </div>
                 </div>
             </div>
-            <div class="col-xs-6 col-sm-2">
+            <div class="col-lg-2 col-xs-offset-1 col-lg-offset-0">
                 <div class="panel {{ getPanelState($lab['vsh'], 0, 6) }}">
                     <div class="panel-heading">
                         <h3 class="panel-title">VSH</h3>
@@ -77,7 +77,7 @@ function checkIfSet($value)
                     </div>
                 </div>
             </div>
-            <div class="col-xs-6 col-sm-2">
+            <div class="col-lg-2 col-xs-offset-1 col-lg-offset-0">
                 <div class="panel {{ getPanelState($lab['transaminases'], 0, 6) }}">
                     <div class="panel-heading">
                         <h3 class="panel-title">Transaminaze</h3>
@@ -88,7 +88,7 @@ function checkIfSet($value)
                     </div>
                 </div>
             </div>
-            <div class="col-xs-6 col-sm-2">
+            <div class="col-lg-2 col-xs-offset-1 col-lg-offset-0">
                 <div class="panel {{ getPanelState($lab['cholesterol'], 0, 6) }}">
                     <div class="panel-heading">
                         <h3 class="panel-title">Colesterol</h3>
@@ -101,7 +101,7 @@ function checkIfSet($value)
         </div>
 
         <div class="row">
-            <div class="col-xs-6 col-sm-2 col-md-offset-1">
+            <div class="col-lg-2 col-xs-offset-1">
                 <div class="panel {{ getPanelState($lab['triglycerides'], 0, 6) }}">
                     <div class="panel-heading">
                         <h3 class="panel-title">Trigliceride</h3>
@@ -111,7 +111,7 @@ function checkIfSet($value)
                     </div>
                 </div>
             </div>
-            <div class="col-xs-6 col-sm-2">
+            <div class="col-lg-2 col-xs-offset-1 col-lg-offset-0">
                 <div class="panel {{ getPanelState($lab['creatinine'], 0, 6) }}">
                     <div class="panel-heading">
                         <h3 class="panel-title">Creatinină</h3>
@@ -121,7 +121,7 @@ function checkIfSet($value)
                     </div>
                 </div>
             </div>
-            <div class="col-xs-6 col-sm-2">
+            <div class="col-lg-2 col-xs-offset-1 col-lg-offset-0">
                 <div class="panel {{ getPanelState($lab['urea'], 0, 6) }}">
                     <div class="panel-heading">
                         <h3 class="panel-title">Uree</h3>
@@ -131,7 +131,7 @@ function checkIfSet($value)
                     </div>
                 </div>
             </div>
-            <div class="col-xs-6 col-sm-2">
+            <div class="col-lg-2 col-xs-offset-1 col-lg-offset-0">
                 <div class="panel {{ getPanelState($lab['urine'], 0, 6) }}">
                     <div class="panel-heading">
                         <h3 class="panel-title">Examen de urină</h3>
@@ -141,7 +141,7 @@ function checkIfSet($value)
                     </div>
                 </div>
             </div>
-            <div class="col-xs-6 col-sm-2">
+            <div class="col-lg-2 col-xs-offset-1 col-lg-offset-0">
                 <div class="panel {{ getPanelState($lab['copro'], 0, 1000) }}">
                     <div class="panel-heading">
                         <h3 class="panel-title">Examen coproparazitologic</h3>
@@ -154,7 +154,7 @@ function checkIfSet($value)
         </div>
         <legend><h3>Următoarele analize</h3></legend>
         <div class="row">
-            <div class="col-xs-6 col-sm-2 col-md-offset-1">
+            <div class="col-lg-2 col-xs-offset-1">
                 <div class="panel panel-warning">
                     <div class="panel-heading">
                         <h3 class="panel-title">Dată analize viitoare</h3>
@@ -164,7 +164,7 @@ function checkIfSet($value)
                     </div>
                 </div>
             </div>
-            <div class="panel panel-default col-lg-3 col-md-offset-5">
+            <div class="panel panel-default col-lg-3 col-xs-offset-1 col-lg-offset-5">
                 <div class="panel-body">
                     <p>Dacă nu vă prezentaţi la analize pe data respectivă,
                             acestea

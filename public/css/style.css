@@ -6,6 +6,7 @@ body {
 }
 
 .navbar {
+    min-width: 700px;
     border: none;
     background: #FFF;
     padding: 0px;
@@ -498,6 +499,21 @@ tr.hover {
     min-height: 100%;
     overflow: hidden;
     background: #000000;
+}
+
+@media screen and (max-width: 1190px) {
+    .logo-textbox {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .page-sidebar .menu .droplink p,  .page-sidebar .menu .droplink span.glyphicon, .page-sidebar .menu .droplink .sub-menu li p {
+        display: none;
+    }
+    .page-sidebar, .menu.accordion-menu{
+        width: 80px;
+    }
 }
 
 

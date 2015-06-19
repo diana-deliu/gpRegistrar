@@ -9,7 +9,9 @@ use App\Http\Requests\UpdateMedicRequest;
 use App\Medic;
 use App\Services\Registrar;
 use App\User;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use Psy\Exception\Exception;
 
 class AdminController extends Controller
 {
@@ -91,7 +93,8 @@ class AdminController extends Controller
         return view('admin.viewmedics', compact('medics'));
     }
 
-    private function getMedics() {
+    private function getMedics()
+    {
 
         $medics_objects = Medic::all();
 
@@ -134,7 +137,7 @@ class AdminController extends Controller
         $medic->update(array_only($request->all(), ['lastname', 'firstname', 'doc_code', 'practice', 'address']));
         $user->update(array_only($request->all(), ['email']));
 
-        return redirect('admin/view_medic')->with([
+        return redirect('admin/view_medics')->with([
             'flash_message' => 'Medicul a fost editat cu succes!',
             'flash_message_type' => 'alert-success'
         ]);
@@ -144,9 +147,15 @@ class AdminController extends Controller
     {
         $medic = Medic::find($id);
         $user = $medic->user();
-
-        $medic->delete();
-        $user->delete();
+        try {
+            $medic->delete();
+            $user->delete();
+        } catch (QueryException $e) {
+            return redirect('admin/edit_medic/' . $id)->with([
+                'flash_message' => 'Nu poate fi şters un medic care încă are pacienţi!',
+                'flash_message_type' => 'alert-danger'
+            ]);
+        }
 
         return redirect('admin/view_medic')->with([
             'flash_message' => 'Medicul a fost șters cu succes!',

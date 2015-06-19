@@ -24,7 +24,6 @@ class CreateTreatmentsTable extends Migration {
             $table->string('treatment');
             $table->string('extra');
             $table->string('referral');
-            $table->boolean('appointment');
             $table->timestamps();
 		});
 	}

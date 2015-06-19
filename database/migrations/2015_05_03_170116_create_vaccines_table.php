@@ -24,8 +24,6 @@ class CreateVaccinesTable extends Migration {
             $table->dateTime('date');
             $table->dateTime('next_date');
             $table->integer('category')->unsigned();
-            $table->boolean('notification');
-            $table->boolean('appointment');
 
             $table->timestamps();
 		});

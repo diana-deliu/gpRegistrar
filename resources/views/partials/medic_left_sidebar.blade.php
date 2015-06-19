@@ -15,13 +15,13 @@
                     <li>
                         <a href="{{ url('medic/add_patient') }}">
                             <img src="{{ asset('images/add_green_20.png') }}"/><br/>
-                            Adăugare pacient
+                            <p>Adăugare pacient</p>
                         </a>
                     </li>
                     <li class="active droplink">
                         <a href="{{ url('medic/view_patients') }}">
                             <img src="{{ asset('images/edit_orange_20.png') }}"/><br/>
-                            Administrare pacienți
+                            <p>Administrare pacienți</p>
                         </a>
                     </li>
                 </ul>
@@ -37,13 +37,13 @@
                         <li>
                             <a href="{{ url('medic/add_consult') }}">
                                 <img src="{{ asset('images/add_green_20.png') }}"/><br/>
-                                Adăugare consultație
+                                <p>Adăugare consultație</p>
                             </a>
                         </li>
                         <li class="droplink">
                             <a href="{{ url('medic/view_generalconsults') }}">
                                 <img src="{{ asset('images/edit_orange_20.png') }}"/><br/>
-                                Administrare consultații
+                                <p>Administrare consultații</p>
                             </a>
                         </li>
                     </ul>
@@ -59,13 +59,13 @@
                     <li>
                         <a href="{{ url('medic/add_lab') }}">
                             <img src="{{ asset('images/add_green_20.png') }}"/><br/>
-                            Adăugare analize
+                            <p>Adăugare analize</p>
                         </a>
                     </li>
                     <li>
                         <a href="{{ url('medic/view_labs') }}">
                             <img src="{{ asset('images/edit_orange_20.png') }}"/><br/>
-                            Administrare analize
+                            <p>Administrare analize</p>
                         </a>
                     </li>
                 </ul>
@@ -81,13 +81,13 @@
                     <li>
                         <a href="{{ url('medic/add_vaccine') }}">
                             <img src="{{ asset('images/add_green_20.png') }}"/><br/>
-                            Adăugare vaccinăre
+                            <p>Adăugare vaccinăre</p>
                         </a>
                     </li>
                     <li>
                         <a href="{{ url('medic/view_vaccines') }}">
                             <img src="{{ asset('images/edit_orange_20.png') }}"/><br/>
-                            Administrare vaccinări
+                            <p>Administrare vaccinări</p>
                         </a>
                     </li>
                 </ul>
@@ -103,13 +103,13 @@
                     <li>
                         <a href="{{ url('medic/add_treatment') }}">
                             <img src="{{ asset('images/add_green_20.png') }}"/><br/>
-                            Adăugare recomandare
+                            <p>Adăugare recomandare</p>
                         </a>
                     </li>
                     <li>
                         <a href="{{ url('medic/view_treatments') }}">
                             <img src="{{ asset('images/edit_orange_20.png') }}"/><br/>
-                            Administrare recomandări
+                            <p>Administrare recomandări</p>
                         </a>
                     </li>
                 </ul>
@@ -125,13 +125,13 @@
                     <li>
                         <a href="{{ url('medic/add_survey') }}">
                             <img src="{{ asset('images/add_green_20.png') }}"/><br/>
-                            Adăugare chestionar
+                            <p>Adăugare chestionar</p>
                         </a>
                     </li>
                     <li>
                         <a href="{{ url('medic/view_surveys') }}">
                             <img src="{{ asset('images/edit_orange_20.png') }}"/><br/>
-                            Administrare chestionare
+                            <p>Administrare chestionare</p>
                         </a>
                     </li>
                 </ul>

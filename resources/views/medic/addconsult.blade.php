@@ -11,7 +11,7 @@
         <fieldset>
             <legend><h3>Adăugare consultaţie</h3></legend>
             <div class="form-group">
-                <div class="panel panel-default col-xs-4 col-xs-offset-1">
+                <div class="panel panel-default col-lg-6 col-xs-10 col-lg-offset-1 col-xs-offset-1">
                     <div class="panel-body">
                         <a href="#" class="btn btn-success btn-xs pull-right" id="patient_change_btn">
                             Pacient</a>
@@ -22,21 +22,22 @@
                             </span><br/>
                         Nume: <span id="patient_name">
                                 @if(isset($patient))
-                                    {{ $patient['firstname'] }} {{ $patient['lastname'] }}
-                                @endif
+                                {{ $patient['firstname'] }} {{ $patient['lastname'] }}
+                            @endif
                             </span>
                     </div>
                 </div>
             </div>
             <div class="form-group">
-                <label for="date" class="col-xs-2 control-label">Dată</label>
+                <label for="date"
+                       class="col-lg-2 col-xs-offset-1 col-md-offset-1 col-lg-offset-0 control-label">Dată consultaţie</label>
 
-                <div class="col-xs-6">
+                <div class="col-lg-5 col-xs-10 col-xs-offset-0 col-md-offset-0 col-lg-offset-0">
                     <div class="container">
-                        <div class="col-xs-2">
+                        <div class="col-lg-5 col-xs-10 col-xs-offset-1 col-md-offset-1 col-lg-offset-0">
                             <div class="form-group">
                                 <div class="input-group date datetimepicker">
-                                    {!! Form::text('date', old('date'), ['class' => 'form-control'])!!}
+                                    {!! Form::text('date', old('date'), ['class' => 'form-control']) !!}
                                     <span class="input-group-addon">
                                         <span class="glyphicon glyphicon-calendar">
                                         </span>
@@ -47,12 +48,14 @@
                     </div>
                 </div>
             </div>
-            <div class="form-group">
-                <label for="next_date" class="col-lg-2 control-label">Dată consultaţie viitoare</label>
 
-                <div class="col-lg-6">
+            <div class="form-group">
+                <label for="next_date" class="col-lg-2 col-xs-offset-1 col-md-offset-1 col-lg-offset-0 control-label">Dată
+                    consultaţie viitoare</label>
+
+                <div class="col-lg-5 col-xs-10 col-xs-offset-0 col-md-offset-0 col-lg-offset-0">
                     <div class="container">
-                        <div class="col-lg-2">
+                        <div class="col-lg-5 col-xs-10 col-xs-offset-1 col-md-offset-1 col-lg-offset-0">
                             <div class="form-group">
                                 <div class="input-group date datetimepicker">
                                     {!! Form::text('next_date', old('next_date'), ['class' => 'form-control']) !!}
@@ -66,54 +69,61 @@
                     </div>
                 </div>
             </div>
+
             @if(isset($patient))
                 {!! Form::hidden('patient_id', $patient['id']) !!}
             @else
                 {!! Form::hidden('patient_id', null, ['id'=>'patient_id_hidden']) !!}
             @endif
             <div class="form-group">
-                <label for="height" class="col-xs-2 control-label">Înălţime [cm]</label>
+                <label for="height" class="col-lg-2 col-xs-offset-1 col-md-offset-1 col-lg-offset-0 control-label">Înălţime
+                    [cm]</label>
 
-                <div class="col-xs-2">
+                <div class="col-lg-5 col-xs-10 col-xs-offset-1 col-md-offset-1 col-lg-offset-0">
                     {!! Form::text('height', old('height'), ['class' => 'form-control'])!!}
                     <span class="help-block"></span>
                 </div>
             </div>
             <div class="form-group">
-                <label for="weight" class="col-xs-2 control-label">Greutate [kg]</label>
+                <label for="weight" class="col-lg-2 col-xs-offset-1 col-md-offset-1 col-lg-offset-0 control-label">Greutate
+                    [kg]</label>
 
-                <div class="col-xs-2">
+                <div class="col-lg-5 col-xs-10 col-xs-offset-1 col-md-offset-1 col-lg-offset-0">
                     {!! Form::text('weight', old('weight'), ['class' => 'form-control'])!!}
                     <span class="help-block"></span>
                 </div>
             </div>
             <div class="form-group">
-                <label for="abdominal_circumference" class="col-xs-2 control-label">Circumferinţă abdominală
+                <label for="abdominal_circumference"
+                       class="col-lg-2 col-xs-offset-1 col-md-offset-1 col-lg-offset-0 control-label">Circumferinţă
+                    abdominală
                     [cm]</label>
 
-                <div class="col-xs-2">
+                <div class="col-lg-5 col-xs-10 col-xs-offset-1 col-md-offset-1 col-lg-offset-0">
                     {!! Form::text('abdominal_circumference', null, ['class' => 'form-control'])!!}
                     <span class="help-block"></span>
                 </div>
             </div>
             <div class="form-group">
-                <label for="blood_pressure" class="col-xs-2 control-label">Tensiune [mm/Hg]</label>
+                <label for="blood_pressure"
+                       class="col-lg-2 col-xs-offset-1 col-md-offset-1 col-lg-offset-0 control-label">Tensiune
+                    [mm/Hg]</label>
 
-                <div class="col-xs-2">
+                <div class="col-lg-5 col-xs-10 col-xs-offset-1 col-md-offset-1 col-lg-offset-0">
                     {!! Form::text('blood_pressure', old('blood_pressure'), ['class' => 'form-control'])!!}
                     <span class="help-block"></span>
                 </div>
             </div>
             <div class="form-group">
-                <label for="glucose" class="col-xs-2 control-label">Glicemie</label>
+                <label for="glucose" class="col-lg-2 col-xs-offset-1 col-md-offset-1 col-lg-offset-0 control-label">Glicemie [unităţi]</label>
 
-                <div class="col-xs-2">
+                <div class="col-lg-5 col-xs-10 col-xs-offset-1 col-md-offset-1 col-lg-offset-0">
                     {!! Form::text('glucose', old('glucose'), ['class' => 'form-control'])!!}
                     <span class="help-block"></span>
                 </div>
             </div>
             <div class="form-group">
-                <div class="col-xs-6 col-xs-offset-2">
+                <div class="col-lg-5 col-xs-9 col-xs-offset-1 col-md-offset-1 col-lg-offset-2">
                     <button type="submit" class="btn btn-default">Adăugare</button>
                 </div>
             </div>

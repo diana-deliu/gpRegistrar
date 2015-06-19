@@ -15,6 +15,7 @@ html {
 
 body {
     margin: 0;
+    min-width: 700px;
 }
 
 article,
@@ -5195,7 +5196,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     line-height: 23px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 200px) {
     .navbar-nav .open .dropdown-menu {
         position: static;
         float: none;
@@ -5222,7 +5223,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 200px) {
     .navbar-nav {
         float: left;
         margin: 0;
@@ -5376,7 +5377,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 200px) {
     .navbar-left {
         float: left !important;
     }

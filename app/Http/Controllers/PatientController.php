@@ -262,8 +262,6 @@ class PatientController extends Controller
         $item['lastname'] = $patient->lastname;
         $item['firstname'] = $patient->firstname;
         $item['category'] = $item['category'] = $this->categories[$item['category']];
-        $item['notification'] = ($item['notification']) ? 'Da' : 'Nu';
-        $item['appointment'] = ($item['appointment']) ? 'Da' : 'Nu';
 
         return $item;
     }
@@ -289,12 +287,6 @@ class PatientController extends Controller
             $treatments[] = $this->treatmentToArray($treatment);
         }
 
-        if (!(isset($requestAll['appointment'])) || is_null($requestAll['appointment'])) {
-            $requestAll['appointment'] = false;
-        } else {
-            $requestAll['appointment'] = true;
-        }
-
         return view('patient.viewtreatments', compact('treatments'));
     }
 
@@ -307,7 +299,6 @@ class PatientController extends Controller
         if ($makeReadable) {
             $item['diagnosis'] = $this->diagnosis[$item['diagnosis']];
             $item['treatment'] = $this->treatments[$item['treatment']];
-            $item['appointment'] = ($item['appointment']) ? 'Da' : 'Nu';
         }
 
         return $item;

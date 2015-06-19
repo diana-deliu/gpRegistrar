@@ -47,8 +47,6 @@
             </div>
             <div class="topmenu-outer">
                 <div class="top-menu">
-                    <ul class="nav navbar-nav navbar-left">
-                    </ul>
                     <ul class="nav navbar-nav navbar-right">
                         @if(Auth::check())
                             @if (Auth::user()->role !== 'admin')

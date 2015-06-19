@@ -28,7 +28,6 @@ class UpdateTreatmentRequest extends Request {
             'treatment' => 'required|integer',
             'extra' => 'max:65535|string',
             'referral' => 'max:65535|string',
-            'appointment' => 'in:on,'
 		];
 	}
 
