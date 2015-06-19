@@ -4,7 +4,7 @@
 
         </div>
         <ul class="menu accordion-menu">
-            <li class="active droplink">
+            <li class="droplink {{ active(['admin/add_medic', 'admin/view_medics']) }}">
                 <a href="#">
                     <img src="{{ asset('images/doctor_blue_30.png') }}"/>
 
@@ -12,14 +12,14 @@
                     <span class="glyphicon glyphicon-chevron-left" style="float:right;margin-top:-39px;"></span>
                 </a>
                 <ul class="sub-menu" style="display: none;">
-                    <li class="droplink">
+                    <li class="{{ active('admin/add_medic') }}">
                         <a href="{{ url('admin/add_medic') }}">
                             <img src="{{ asset('images/add_green_20.png') }}"/><br/>
 
                             <p>Adaugă medici</p>
                         </a>
                     </li>
-                    <li>
+                    <li class="{{ active('admin/view_medics') }}">
                         <a href="{{ url('admin/view_medics') }}">
                             <img src="{{ asset('images/edit_orange_20.png') }}"/><br/>
 

@@ -172,10 +172,10 @@ var calendar = {
             $('tbody.event-calendar td').on('click', function (e) {
                 e.stopPropagation();
                 e.preventDefault();
-                $('.day-event[date-month="' + monthEvent + '"][date-day="' + dayEvent + '"]').fadeOut('fast');
+                $('.day-event').fadeOut(200);
                 var monthEvent = $(this).attr('date-month');
                 var dayEvent = $(this).text();
-                $('.day-event[date-month="' + monthEvent + '"][date-day="' + dayEvent + '"]').fadeIn('fast');
+                $('.day-event[date-month="' + monthEvent + '"][date-day="' + dayEvent + '"]').delay(200).fadeIn(200);
             });
         };
 
