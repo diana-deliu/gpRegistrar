@@ -8,7 +8,7 @@
         max: 30,
         container: $('#notification-list'),
         wrapper: '<div/>',
-        emptyHTML: '<div class="no-notification">Nu exista notificari</div>',
+        emptyHTML: '<div class="no-notification">Nu există notificari</div>',
         callback: {
             onOpen: function () {
             },
@@ -22,7 +22,10 @@
             closeWith: ['button']
         }
     });
-    var notifications = <?php if(isset($notifications)) echo json_encode($notifications) ?>;
+    <?php
+    if (isset($notifications)):
+    ?>
+    var notifications = <?php echo json_encode($notifications) ?>;
     var consultImageUrl = "{{ asset('images/consult_orange_30.png') }}";
     var labImageUrl = "{{ asset('images/lab_green_30.png') }}";
     var vaccineImageUrl = "{{ asset('images/vaccine_red_30.png') }}";
@@ -45,4 +48,7 @@
         }
         NotyManager.alert(notif);
     });
+    <?php
+    endif;
+    ?>
 </script>

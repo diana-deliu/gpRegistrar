@@ -16,7 +16,8 @@
   },
   "require-dev": {
     "phpunit/phpunit": "~4.0",
-    "phpspec/phpspec": "~2.1"
+    "phpspec/phpspec": "~2.1",
+    "stolz/laravel-schema-spy": "^0.1.0"
   },
   "autoload": {
     "classmap": [

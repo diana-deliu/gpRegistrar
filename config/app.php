@@ -147,9 +147,10 @@ return [
 		'App\Providers\RouteServiceProvider',
 		'yajra\Oci8\Oci8ServiceProvider',
         'Maatwebsite\Excel\ExcelServiceProvider',
-        'Khill\Lavacharts\Laravel\LavachartsServiceProvider'
-		
-	],
+        'Khill\Lavacharts\Laravel\LavachartsServiceProvider',
+        'Stolz\SchemaSpy\ServiceProvider'
+
+    ],
 
 	/*
 	|--------------------------------------------------------------------------
