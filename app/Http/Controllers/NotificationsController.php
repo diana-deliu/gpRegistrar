@@ -18,7 +18,6 @@ class NotificationsController extends Controller {
     {
         $this->middleware('patient', ['only' => 'patientGet']);
         $this->middleware('medic', ['only' => 'medicGet']);
-
     }
 
     public static function patientGet()

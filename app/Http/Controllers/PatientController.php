@@ -33,21 +33,6 @@ class PatientController extends Controller
         '6' => 'antigripal'
     ];
 
-    private $intervals = [
-        '1' => '1',
-        '2' => '2',
-        '3' => '3',
-        '4' => '4',
-        '5' => '5',
-        '6' => '6',
-        '7' => '7',
-        '8' => '8',
-        '9' => '9',
-        '10' => '10',
-        '11' => '11',
-        '12' => '12'
-    ];
-
     private $diagnosis = [
         '0' => 'anemie',
         '1' => 'hipertensiune arterială',
