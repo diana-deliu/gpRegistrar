@@ -72,7 +72,7 @@ class PatientController extends Controller
         $patient = Patient::where('user_id', '=', $user->id)->firstOrFail();
         $patient->user;
         $patient = $patient->toArray();
-        return view('patient.accountDetails', compact('patient'));
+        return view('patient.accountdetails', compact('patient'));
     }
 
     public function editPassword(UpdatePasswordRequest $request)
