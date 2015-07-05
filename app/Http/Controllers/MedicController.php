@@ -124,7 +124,7 @@ class MedicController extends Controller
         $medic = Medic::where('user_id', '=', $user->id)->firstOrFail();
         $medic->user;
         $medic = $medic->toArray();
-        return view('medic.accountDetails', compact('medic'));
+        return view('medic.accountdetails', compact('medic'));
     }
 
     public function editPassword(UpdatePasswordRequest $request) {
