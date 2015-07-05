@@ -108,8 +108,6 @@
                        class="btn btn-default">Vaccinări</a>
                     <a href="{{ url('medic/view_patienttreatments').'/'.$patient['id'] }}"
                        class="btn btn-default">Recomandări</a>
-                    <a href="{{ url('medic/view_answers').'/'.$patient['id'] }}"
-                       class="btn btn-default">Răspunsuri</a><br/>
                 </div>
             </div>
         </div>
