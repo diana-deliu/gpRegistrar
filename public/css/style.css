@@ -500,7 +500,7 @@ tr.hover {
 }
 
 @media screen and (max-width: 767px) {
-    .page-sidebar .menu .droplink p,  .page-sidebar .menu .droplink span.glyphicon, .page-sidebar .menu .droplink .sub-menu li p {
+    .page-sidebar .menu li p,  .page-sidebar .menu li span.glyphicon, .page-sidebar .menu li .sub-menu li p {
         display: none;
     }
     .page-sidebar, .menu.accordion-menu{
