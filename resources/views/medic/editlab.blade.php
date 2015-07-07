@@ -63,10 +63,10 @@
                     </div>
                 </div>
             </div>
-            {!! Form::hidden('patient_id', $lab['id']) !!}
+            {!! Form::hidden('patient_id', $lab['patient_id']) !!}
             <div class="form-group">
                 <label for="hemoglobin" class="col-lg-2 col-xs-offset-1 col-md-offset-1 col-lg-offset-0 control-label">Hemoglobină</label>
-                <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="right" data-content="Valorile normale sunt cuprinse intre 10 si 50." data-original-title="" title="">Info</button>
+                <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="left" data-content="Valorile normale sunt cuprinse intre 13 si 18." data-original-title="" title="">Info</button>
 
                 <div class="col-lg-5 col-xs-10 col-xs-offset-1 col-md-offset-1 col-lg-offset-0">
                     {!! Form::text('hemoglobin', $lab['hemoglobin'], ['class' => 'form-control']) !!}
@@ -75,7 +75,7 @@
             </div>
             <div class="form-group">
                 <label for="vsh" class="col-lg-2 col-xs-offset-1 col-md-offset-1 col-lg-offset-0 control-label">VSH</label>
-                <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="left" data-content="Valorile normale sunt cuprinse intre 50 si 100." data-original-title="" title="">Info</button>
+                <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="left" data-content="Valorile normale sunt cuprinse intre 1 si 20." data-original-title="" title="">Info</button>
 
                 <div class="col-lg-5 col-xs-10 col-xs-offset-1 col-md-offset-1 col-lg-offset-0">
                     {!! Form::text('vsh', $lab['vsh'], ['class' => 'form-control']) !!}
@@ -84,7 +84,7 @@
             </div>
             <div class="form-group">
                 <label for="transaminases" class="col-lg-2 col-xs-offset-1 col-md-offset-1 col-lg-offset-0 control-label">Transaminaze</label>
-                <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="right" data-content="Valorile normale sunt cuprinse intre 10 si 50." data-original-title="" title="">Info</button>
+                <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="right" data-content="Valorile normale sunt cuprinse intre 5 si 56." data-original-title="" title="">Info</button>
 
                 <div class="col-lg-5 col-xs-10 col-xs-offset-1 col-md-offset-1 col-lg-offset-0">
                     {!! Form::text('transaminases', $lab['transaminases'], ['class' => 'form-control']) !!}
@@ -93,7 +93,7 @@
             </div>
             <div class="form-group">
                 <label for="cholesterol" class="col-lg-2 col-xs-offset-1 col-md-offset-1 col-lg-offset-0 control-label">Colesterol</label>
-                <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="left" data-content="Valorile normale sunt cuprinse intre 10 si 50." data-original-title="" title="">Info</button>
+                <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="left" data-content="Valorile normale sunt cuprinse intre 0 si 130." data-original-title="" title="">Info</button>
 
                 <div class="col-lg-5 col-xs-10 col-xs-offset-1 col-md-offset-1 col-lg-offset-0">
                     {!! Form::text('cholesterol', $lab['cholesterol'], ['class' => 'form-control']) !!}
@@ -102,7 +102,7 @@
             </div>
             <div class="form-group">
                 <label for="triglycerides" class="col-lg-2 col-xs-offset-1 col-md-offset-1 col-lg-offset-0 control-label">Trigliceride</label>
-                <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="right" data-content="Valorile normale sunt cuprinse intre 10 si 50." data-original-title="" title="">Info</button>
+                <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="right" data-content="Valorile normale sunt cuprinse intre 0 si 100." data-original-title="" title="">Info</button>
 
                 <div class="col-lg-5 col-xs-10 col-xs-offset-1 col-md-offset-1 col-lg-offset-0">
                     {!! Form::text('triglycerides', $lab['triglycerides'], ['class' => 'form-control']) !!}
@@ -111,7 +111,7 @@
             </div>
             <div class="form-group">
                 <label for="creatinine" class="col-lg-2 col-xs-offset-1 col-md-offset-1 col-lg-offset-0 control-label">Creatinină</label>
-                <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="left" data-content="Valorile normale sunt cuprinse intre 10 si 50." data-original-title="" title="">Info</button>
+                <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="left" data-content="Valorile normale sunt cuprinse intre 0 si 43." data-original-title="" title="">Info</button>
 
                 <div class="col-lg-5 col-xs-10 col-xs-offset-1 col-md-offset-1 col-lg-offset-0">
                     {!! Form::text('creatinine', $lab['creatinine'], ['class' => 'form-control']) !!}
@@ -128,8 +128,8 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="urine" class="col-lg-2 col-xs-offset-1 col-md-offset-1 col-lg-offset-0 control-label">Examen de urină</label>
-                <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="left" data-content="Valorile normale sunt cuprinse intre 10 si 50." data-original-title="" title="">Info</button>
+                <label for="urine" class="col-lg-2 col-xs-offset-1 col-md-offset-1 col-lg-offset-0 control-label">Examen de urină [pH]</label>
+                <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="left" data-content="Valorile normale sunt cuprinse intre 4.8 si 7.4." data-original-title="" title="">Info</button>
 
                 <div class="col-lg-5 col-xs-10 col-xs-offset-1 col-md-offset-1 col-lg-offset-0">
                     {!! Form::text('urine', $lab['urine'], ['class' => 'form-control']) !!}
@@ -175,4 +175,5 @@
 @section('footer_scripts')
     @include('partials.date_picker')
     @include('partials.patients_dropdown')
+    @include('partials.popover')
 @stop

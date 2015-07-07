@@ -22,7 +22,7 @@ var calendar = {
         var monthNumber = d.getMonth() + 1;
 
         function GetMonthName(monthNumber) {
-            var months = ['Ianuarie', 'Februarie', 'Martie', 'Aprilie', 'Mai', 'Iunie', 'Iulie', 'August', 'Seprembrie', 'Octombrie', 'Noiembrie', 'Decembrie'];
+            var months = ['Ianuarie', 'Februarie', 'Martie', 'Aprilie', 'Mai', 'Iunie', 'Iulie', 'August', 'Septembrie', 'Octombrie', 'Noiembrie', 'Decembrie'];
             return months[monthNumber - 1];
         }
 

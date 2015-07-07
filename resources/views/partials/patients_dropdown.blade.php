@@ -31,9 +31,9 @@
     });
     $(document).ready(function () {
         var id = $("input[name=patient_id]").val();
-        if(id.trim().length > 0) {
+        /*if(id.trim().length > 0) {
             loadPatientsDropdown(id);
-        }
+        }*/
     });
 
 </script>

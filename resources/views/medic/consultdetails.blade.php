@@ -109,7 +109,7 @@ function getPanelState($value, $min, $max)
                 </div>
             </div>
             <div class="col-lg-2 col-xs-offset-1 col-lg-offset-0">
-                <div class="panel {{ getPanelState($consult['glucose'], 78, 120) }}">
+                <div class="panel {{ getPanelState($consult['glucose'], 78, 110) }}">
                     <div class="panel-heading">
                         <h3 class="panel-title">Glicemie</h3>
                     </div>

@@ -237,7 +237,7 @@ class MedicController extends Controller
         $patient->delete();
         $user->delete();
 
-        return redirect('medic/view_patient')->with([
+        return redirect('medic/view_patients')->with([
             'flash_message' => 'Pacientul a fost șters cu succes!',
             'flash_message_type' => 'alert-success'
         ]);

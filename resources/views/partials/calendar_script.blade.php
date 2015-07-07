@@ -17,7 +17,11 @@
         $("#events").append(element);
     }
 
+    var openedCalendar = false;
     $("#open_calendar").click(function (event) {
+        if(openedCalendar) {
+            return;
+        }
         var url = "<?php
         if (Auth::user() && Auth::user()->role == 'patient') {
             echo url('patient/calendar');
@@ -56,7 +60,7 @@
             });
             calendar.init();
         });
-
+        openedCalendar = true;
     });
 
     $(".dropdown-menu").click(function (event) {

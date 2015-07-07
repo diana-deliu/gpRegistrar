@@ -1,7 +1,7 @@
 <?php
 function getPanelState($value, $min, $max)
 {
-    if ($value > $min && $value < $max) {
+    if ($value >= $min && $value <= $max) {
         return "panel-success";
     }
     return "panel-primary";
@@ -57,7 +57,7 @@ function checkIfSet($value)
                 </div>
             </div>
             <div class="col-lg-2 col-xs-offset-1 col-lg-offset-0">
-                <div class="panel {{ getPanelState($lab['hemoglobin'], 0, 6) }}">
+                <div class="panel {{ getPanelState($lab['hemoglobin'], 13, 18) }}">
                     <div class="panel-heading">
                         <h3 class="panel-title">Hemoglobină</h3>
                     </div>
@@ -67,7 +67,7 @@ function checkIfSet($value)
                 </div>
             </div>
             <div class="col-lg-2 col-xs-offset-1 col-lg-offset-0">
-                <div class="panel {{ getPanelState($lab['vsh'], 0, 6) }}">
+                <div class="panel {{ getPanelState($lab['vsh'], 1, 20) }}">
                     <div class="panel-heading">
                         <h3 class="panel-title">VSH</h3>
                     </div>
@@ -78,7 +78,7 @@ function checkIfSet($value)
                 </div>
             </div>
             <div class="col-lg-2 col-xs-offset-1 col-lg-offset-0">
-                <div class="panel {{ getPanelState($lab['transaminases'], 0, 6) }}">
+                <div class="panel {{ getPanelState($lab['transaminases'], 5, 56) }}">
                     <div class="panel-heading">
                         <h3 class="panel-title">Transaminaze</h3>
                     </div>
@@ -89,7 +89,7 @@ function checkIfSet($value)
                 </div>
             </div>
             <div class="col-lg-2 col-xs-offset-1 col-lg-offset-0">
-                <div class="panel {{ getPanelState($lab['cholesterol'], 0, 6) }}">
+                <div class="panel {{ getPanelState($lab['cholesterol'], 0, 130) }}">
                     <div class="panel-heading">
                         <h3 class="panel-title">Colesterol</h3>
                     </div>
@@ -102,7 +102,7 @@ function checkIfSet($value)
 
         <div class="row">
             <div class="col-lg-2 col-xs-offset-1">
-                <div class="panel {{ getPanelState($lab['triglycerides'], 0, 6) }}">
+                <div class="panel {{ getPanelState($lab['triglycerides'], 0, 100) }}">
                     <div class="panel-heading">
                         <h3 class="panel-title">Trigliceride</h3>
                     </div>
@@ -112,7 +112,7 @@ function checkIfSet($value)
                 </div>
             </div>
             <div class="col-lg-2 col-xs-offset-1 col-lg-offset-0">
-                <div class="panel {{ getPanelState($lab['creatinine'], 0, 6) }}">
+                <div class="panel {{ getPanelState($lab['creatinine'], 0, 43) }}">
                     <div class="panel-heading">
                         <h3 class="panel-title">Creatinină</h3>
                     </div>
@@ -132,7 +132,7 @@ function checkIfSet($value)
                 </div>
             </div>
             <div class="col-lg-2 col-xs-offset-1 col-lg-offset-0">
-                <div class="panel {{ getPanelState($lab['urine'], 0, 6) }}">
+                <div class="panel {{ getPanelState($lab['urine'], 4.8, 7.4) }}">
                     <div class="panel-heading">
                         <h3 class="panel-title">Examen de urină</h3>
                     </div>
